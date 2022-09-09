@@ -3,6 +3,11 @@
     src: url(ARCADECLASSIC.TTF);
 }
 
+:root{
+    --nav_2nd: #454545;
+    --nav_font: #cacdcf;
+}
+
 body{
     padding: 0px;
     margin: 0px;   
@@ -23,14 +28,20 @@ nav{
     gap: 5px;
 }
 nav div{
+    cursor: pointer;
     height: 100%;
     width: 100%;
     line-height: 80px;
     text-align: center;
     font-size: 40px;
     overflow: hidden;
-    background: #454545;
+    background: var(--nav_2nd);
+    color: var(--nav_font);
     grid-row: 2;
+}
+nav div:hover{
+    background: var(--nav_font);
+    color: var(--nav_2nd);
 }
 nav #login{
     grid-column: 2;
@@ -39,10 +50,20 @@ nav #characters{
     grid-column: 3;
 }
 nav #bpm{
+    cursor: default;
     grid-column: 5;
 }
+nav #bpm:hover{
+    background: var(--nav_2nd);    /* getting rid of the changeing colors while hovering */    
+    color: var(--nav_font);
+}
 nav #score{
+    cursor: default;
     grid-column: 6;
+}
+nav #score:hover{
+    background: var(--nav_2nd);     /* getting rid of the changeing colors while hovering */
+    color: var(--nav_font);
 }
 nav #lb{
     grid-column: 8;
