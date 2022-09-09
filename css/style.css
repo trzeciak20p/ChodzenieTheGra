@@ -6,6 +6,7 @@
 :root{
     --nav_2nd: #232121;
     --nav_font: #cacdcf;
+    --border: 2px solid #e0a13c;
 }
 
 body{
@@ -17,11 +18,37 @@ body{
     height: 100vh;
 }
 #popup{
-    display: none;
+    /* display: none; */
+    justify-content: center;
+    align-items: center;
     position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4;
+    background-color: #0003;
+}
+#popup div{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 60%;
+    z-index: 5;
+    background-color: #000a;
 
 }
-
+#popup #popup_close{
+    align-self: end;
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 21px;
+    background-color: red;
+}
+#popup .slider{
+    background: rgb(101, 99, 99);
+}
 nav{
     display: grid;
     margin: 0px;

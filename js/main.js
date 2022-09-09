@@ -6,8 +6,14 @@ nav[0].addEventListener("click", () => {Popup(0)})  //Przypisywanie guzikom poka
 nav[1].addEventListener("click", () => {Popup(1)})
 nav[4].addEventListener("click", () => {Popup(2)})
 nav[5].addEventListener("click", () => {Popup(3)})
+let close_popup = 0
 document.getElementById("popup_close").addEventListener("click", () => {popup.style.display = "none"})  //Zamykanie pop-up'a
 
+// popup.addEventListener("click", () => {      MAke it work somehow
+//     if(self.id == "popup"){
+//         popup.style.display = "none"
+//     }
+// })
 
 const canvas = document.createElement("canvas")
 const ctx = canvas.getContext("2d")
@@ -24,7 +30,7 @@ function WidnowResize(){
 }
 
 function Popup(button){
-    popup.style.display = "block"
+    popup.style.display = "flex"
     
     
 
