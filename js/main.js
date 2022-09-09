@@ -9,11 +9,16 @@ nav[5].addEventListener("click", () => {Popup(3)})
 
 document.getElementById("popup_close").addEventListener("click", () => {popup.style.display = "none"})  //Zamykanie pop-up'a
 
-// popup.addEventListener("click", () => {      MAke it work somehow
-//     if(self.id == "popup"){
-//         popup.style.display = "none"
-//     }
-// })
+popup.addEventListener("click", () => { 
+    let x = GetMousePos()[0]
+    let y = GetMousePos()[1]
+    if(x >= window.innerWidth * 0.3 && x <= window.innerWidth * 0.7 && y >= window.innerWidth * 0.2 && y <= window.innerHeight * 0.8){
+    }else{
+        popup.style.display = "none"
+        
+    }
+    
+})
 
 const canvas = document.getElementById("main_canvas")
 
@@ -41,9 +46,5 @@ function Popup(button){
 
 function GetMousePos(){       
     let e = window.event
-    p.x = e.clientX - Math.round(canvas.getBoundingClientRect().x)
-    p.y = e.clientY - Math.round(canvas.getBoundingClientRect().y)
-    s_p.x = p.x
-    s_p.y = p.y
-    // console.log("mouse: ", p.x, p.y)
+    return [e.clientX, e.clientY];
 }
