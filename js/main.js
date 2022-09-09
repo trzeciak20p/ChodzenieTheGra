@@ -15,18 +15,20 @@ document.getElementById("popup_close").addEventListener("click", () => {popup.st
 //     }
 // })
 
-const canvas = document.createElement("canvas")
+const canvas = document.getElementById("main_canvas")
+
 const ctx = canvas.getContext("2d")
-
-document.addEventListener("resize", WidnowResize)
-
-
+CanvasResize()
+window.addEventListener("resize", CanvasResize)
 
 
 
-function WidnowResize(){
-    canvas.height = body.height - 90     // wywalamy h nava   
-    canvas.width = body.width           //nwm czy usefull wgl chyba ta wsm bo zapomniałem że go nawet nie dodaje jeszcze na stronie
+
+
+function CanvasResize(){
+    console.log()
+    canvas.setAttribute("height", window.innerHeight - 94)        
+    canvas.setAttribute("width", window.innerWidth)
 }
 
 function Popup(button){
@@ -35,4 +37,13 @@ function Popup(button){
     
 
 
+}
+
+function GetMousePos(){       
+    let e = window.event
+    p.x = e.clientX - Math.round(canvas.getBoundingClientRect().x)
+    p.y = e.clientY - Math.round(canvas.getBoundingClientRect().y)
+    s_p.x = p.x
+    s_p.y = p.y
+    // console.log("mouse: ", p.x, p.y)
 }
