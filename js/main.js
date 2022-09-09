@@ -6,7 +6,7 @@ nav[0].addEventListener("click", () => {Popup(0)})  //Przypisywanie guzikom poka
 nav[1].addEventListener("click", () => {Popup(1)})
 nav[4].addEventListener("click", () => {Popup(2)})
 nav[5].addEventListener("click", () => {Popup(3)})
-let close_popup = 0
+
 document.getElementById("popup_close").addEventListener("click", () => {popup.style.display = "none"})  //Zamykanie pop-up'a
 
 // popup.addEventListener("click", () => {      MAke it work somehow

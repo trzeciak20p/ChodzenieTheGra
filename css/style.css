@@ -18,7 +18,7 @@ body{
     height: 100vh;
 }
 #popup{
-    /* display: none; */
+    display: none;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -37,6 +37,7 @@ body{
 
 }
 #popup #popup_close{
+    cursor: pointer;
     align-self: end;
     margin: 10px;
     width: 30px;
@@ -45,6 +46,9 @@ body{
     text-align: center;
     font-size: 21px;
     background-color: red;
+}
+#popup #popup_close:hover{
+    background-color: var(--nav_font);
 }
 #popup .slider{
     background: rgb(101, 99, 99);
