@@ -4,7 +4,7 @@
 }
 
 :root{
-    --nav_2nd: #454545;
+    --nav_2nd: #2d2a2a;
     --nav_font: #cacdcf;
 }
 
@@ -71,9 +71,17 @@ nav #score:hover{
 }
 nav #lb{
     grid-column: 8;
+    background-image: url(../graphics/lb1.png);
+}
+nav #lb:hover{
+    background-image: url(../graphics/lb2.png);
 }
 nav #options{
     grid-column: 9;
+    background-image: url(../graphics/cog1.png);
+}
+nav #options:hover{
+    background-image: url(../graphics/cog2.png);
 }
 main{
     margin: 0px;
