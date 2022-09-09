@@ -46,7 +46,7 @@ nav div:hover{
 nav #login{
     grid-column: 2;
 }
-nav #characters{  
+nav #customize{  
     grid-column: 3;
 }
 nav #bpm{
