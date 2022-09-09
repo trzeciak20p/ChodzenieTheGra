@@ -1,3 +1,8 @@
+@font-face {
+    font-family: ArcadeClassic;
+    src: url(ARCADECLASSIC.TTF);
+}
+
 body{
     padding: 0px;
     margin: 0px;   
@@ -12,6 +17,7 @@ nav{
     width: 100%;
     height: 90px;
     background: #118822;
+    font-family: ArcadeClassic;
     grid-template-columns: 0px 80px 80px 1fr 160px 160px 1fr 80px 80px 0px;
     grid-template-rows: 0px 80px 0px;
     gap: 5px;
@@ -19,6 +25,10 @@ nav{
 nav div{
     height: 100%;
     width: 100%;
+    line-height: 80px;
+    text-align: center;
+    font-size: 40px;
+    overflow: hidden;
     background: #454545;
     grid-row: 2;
 }
