@@ -5,25 +5,15 @@ const canvas = document.createElement("canvas")
 document.getElementsByTagName("main")
 
 
-document.addEventListener("resize", ZmianaRozmiaru)
-
-// 
+document.addEventListener("resize", WidnowResize)
 
 
 
 
-function ZmianaRozmiaru(){
-    c.height = body.height - 90     // wywalamy h nava   
-    c.width = body.width
+
+function WidnowResize(){
+    canvas.height = body.height - 90     // wywalamy h nava   
+    canvas.width = body.width
 }
 
 
-function Skok(){
-
-
-}
-
-function Kuc(){
-
-
-}
