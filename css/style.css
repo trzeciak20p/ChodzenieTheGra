@@ -16,6 +16,12 @@ body{
     width: 100vw;
     height: 100vh;
 }
+#popup{
+    display: none;
+    position: absolute;
+
+}
+
 nav{
     display: grid;
     margin: 0px;
