@@ -45,6 +45,7 @@ nav div:hover{
 }
 nav #login{
     grid-column: 2;
+    background-image: url();
 }
 nav #customize{  
     grid-column: 3;
