@@ -84,11 +84,18 @@ class Slider{
         this.slider_circle.setAttribute("class", "slider_circle")
         this.slider.appendChild(this.slider_circle)
         where.appendChild(this.slider)       //wyświetlanie slidera w określonym miejscu
-        this.slider.addEventListener("mousedown", () => {this.SliderValueChange(functn)})
+
+        this.mouse_down = 0
+        this.slider.addEventListener("mousedown", () => { this.mouse_down = 1 })    // na sprawdzanie czy myszka kliknięta
+        this.slider.addEventListener("mouseup", () => { this.mouse_down = 0 })
+        this.slider.addEventListener("mousemove", () => { this.SliderValueChange(functn) })
 
     }
 
     SliderValueChange(functn) {
+        if(this.mouse_down == 0){       //jeśli myszka jest przytrzymana zmiana pozycji itp. jak nie to nie
+            return;
+        }
         this.rect = this.slider.getBoundingClientRect()
         this.GetSliderMousePos()
 
@@ -122,6 +129,7 @@ class Slider{
     }
 
 }
+
 
 
 
