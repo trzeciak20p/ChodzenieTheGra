@@ -51,8 +51,8 @@ function Popup(button){
             
             break;
         case 3:
-            new Slider(popup, "music")
-            new Slider(popup, "effect")
+            new Slider(popup, "music volume")
+            new Slider(popup, "effects volume")
 
             break;
         default:
@@ -71,9 +71,12 @@ class Slider{
     static effects_volume = 50
     
 
-    constructor(where, functn){
+    constructor(where, functn){     //gdzie umieścić, funkcja slidera
         this.slider = document.createElement("DIV")      //tworzenie wyglądu slidera
         this.slider.setAttribute("class", "slider")
+        this.slider_text = document.createElement("SPAN")
+        this.slider_text.innerText = functn
+        this.slider.appendChild(this.slider_text)
         this.slider_slide = document.createElement("DIV")
         this.slider_slide.setAttribute("class", "slider_slide")
         this.slider.appendChild(this.slider_slide)
@@ -87,13 +90,13 @@ class Slider{
 
     SliderValueChange(functn) {
         this.GetSliderMousePos()
-        this.slider_circle.style.left = this.mouse_x   //zmiana pozycji kółka slidera
+        this.slider_circle.style.left = this.mouse_x + "px"   //zmiana pozycji kółka slidera
 
         switch (functn){
-            case "music":
+            case "music volume":
                     Slider.music_volume = this.mouse_x
                 break;
-            case "effects":
+            case "effects volume":
                     Slider.effects_volume = this.mouse_x
                 break;
             default:
