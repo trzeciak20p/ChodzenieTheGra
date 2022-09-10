@@ -54,6 +54,7 @@ body{
     background-color: var(--nav_font);
 }
 #popup .slider{
+    user-select: none;
     cursor: pointer;
     align-self: center;
     margin-top: 20px;
@@ -62,7 +63,6 @@ body{
     background-color: transparent;
 }
 #popup .slider span{
-    user-select: none;
     height: 20px;
     width: 100%;
     text-transform: uppercase;
