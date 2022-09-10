@@ -21,4 +21,5 @@ Konto jest wymagane aby przesyłać wynik na leaderboard, ale można grać bez k
 
 
 ## Podziękowania
-    Specjalne podziękowania dla Pada Michała za pomysł i bycie wspaniałym klientem.
+    Dla Pada Michała za pomysł i bycie wspaniałym klientem.
+    Dla Pani Egzyste za najlepsze grafikowanie dostępne na rynku.
