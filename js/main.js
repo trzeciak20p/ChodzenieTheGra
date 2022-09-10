@@ -51,7 +51,9 @@ function Popup(button){
             
             break;
         case 3:
-            
+            new Slider(popup, "music")
+            new Slider(popup, "effect")
+
             break;
         default:
             let text = document.createElement("SPAN")
@@ -61,9 +63,55 @@ function Popup(button){
             break;
     }
     
+}
+
+class Slider{
+
+    static music_volume = 50
+    static effects_volume = 50
+    
+
+    constructor(where, functn){
+        this.slider = document.createElement("DIV")      //tworzenie wyglądu slidera
+        this.slider.setAttribute("class", "slider")
+        this.slider_slide = document.createElement("DIV")
+        this.slider_slide.setAttribute("class", "slider_slide")
+        this.slider.appendChild(this.slider_slide)
+        this.slider_circle = document.createElement("DIV")
+        this.slider_circle.setAttribute("class", "slider_circle")
+        this.slider.appendChild(this.slider_circle)
+        where.appendChild(this.slider)       //wyświetlanie slidera w określonym miejscu
+        this.slider.addEventListener("mousedown", () => {this.SliderValueChange(functn)})
+
+    }
+
+    SliderValueChange(functn) {
+        this.GetSliderMousePos()
+        this.slider_circle.style.left = this.mouse_x   //zmiana pozycji kółka slidera
+
+        switch (functn){
+            case "music":
+                    Slider.music_volume = this.mouse_x
+                break;
+            case "effects":
+                    Slider.effects_volume = this.mouse_x
+                break;
+            default:
+
+                break;
+        }
+
+    }
+
+    GetSliderMousePos(){
+        let e = window.event
+        this.mouse_x = e.clientX - Math.round(this.slider.getBoundingClientRect().x)     //zczytywanie x z slidera
+    }
 
 
 }
+
+
 
 function GetMousePos(){       
     let e = window.event
