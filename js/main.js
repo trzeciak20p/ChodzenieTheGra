@@ -67,7 +67,7 @@ function Popup(button){
 
 class Slider{
 
-    static music_volume = 50
+    static music_volume = 50        //startowe poziomy głośności
     static effects_volume = 50 
 
     constructor(where, functn){     //gdzie umieścić, funkcja slidera
