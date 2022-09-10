@@ -8,7 +8,7 @@ nav[1].addEventListener("click", () => {Popup(1)})
 nav[4].addEventListener("click", () => {Popup(2)})
 nav[5].addEventListener("click", () => {Popup(3)})
 
-document.getElementById("popup_close").addEventListener("click", () => {popup.style.display = "none"})  //Zamykanie pop-up'a
+document.getElementById("popup_close").addEventListener("click", () => {popup_display.style.display = "none"})  //Zamykanie pop-up'a
 
 popup_display.addEventListener("click", () => { 
     let rect = popup.getBoundingClientRect()
@@ -74,8 +74,7 @@ class Slider{
     constructor(where, functn){     //gdzie umieścić, funkcja slidera
         this.slider = document.createElement("DIV")      //tworzenie wyglądu slidera
         this.slider.setAttribute("class", "slider")
-        this.slider_text = document.createElement("SPAN")
-        this.slider_text.innerText = functn + ": 50"
+        this.slider_text = document.createElement("SPAN")     
         this.slider.appendChild(this.slider_text)
         this.slider_slide = document.createElement("DIV")
         this.slider_slide.setAttribute("class", "slider_slide")
@@ -85,9 +84,24 @@ class Slider{
         this.slider.appendChild(this.slider_circle)
         where.appendChild(this.slider)       //wyświetlanie slidera w określonym miejscu
 
+        this.rect = this.slider.getBoundingClientRect() 
+        switch (functn){
+            case "music volume":        
+                this.slider_text.innerText = functn + ": " + Slider.music_volume    //wyświetlanie poziomu głośności już przy stworzeniu
+                this.slider_circle.style.left = Slider.music_volume * this.rect.width / 100 - 10 + "px"        //zmiana położenia kółka slidera już przy stworzeniu
+                break;
+            case "effects volume":
+                this.slider_text.innerText = functn + ": " + Slider.effects_volume
+                this.slider_circle.style.left = Slider.effects_volume * this.rect.width / 100 - 10 +  "px"        
+                break;
+            default:
+
+                break;
+        }
+        
         this.mouse_down = 0
         this.slider.addEventListener("mousedown", () => { this.mouse_down = 1 })    // na sprawdzanie czy myszka kliknięta
-        this.slider.addEventListener("mouseup", () => { this.mouse_down = 0 })
+        popup.addEventListener("mouseup", () => { this.mouse_down = 0 })
         this.slider.addEventListener("mousemove", () => { this.SliderValueChange(functn) })
 
     }
@@ -96,7 +110,7 @@ class Slider{
         if(this.mouse_down == 0){       //jeśli myszka jest przytrzymana zmiana pozycji itp. jak nie to nie
             return;
         }
-        this.rect = this.slider.getBoundingClientRect()
+        
         this.GetSliderMousePos()
 
         let x = Math.round(this.mouse_x / this.rect.width * 100)        //patrzy na stosunek myszki do slidera aby mieć przedział 0-100
