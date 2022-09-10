@@ -14,9 +14,9 @@ popup_display.addEventListener("click", () => {
     let rect = popup.getBoundingClientRect()
     let x = GetMousePos()[0]
     let y = GetMousePos()[1]
-    if(x >= rect.x && x <= rect.x + rect.width &&  y >= rect.y && y <= rect.y + rect.height){
+    if(x >= rect.x && x <= rect.x + rect.width &&  y >= rect.y && y <= rect.y + rect.height){       //sprawdzanie czy myszka jest w obrębie popu-pa
     }else{
-        popup_display.style.display = "none"
+        popup_display.style.display = "none"        //jak nie to zamknięcie popupa
         
     }
     
