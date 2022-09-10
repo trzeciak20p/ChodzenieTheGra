@@ -142,6 +142,7 @@ nav #bpm:hover{
 nav #score{
     cursor: default;
     grid-column: 6;
+    background-image: url(../graphics/trophy1.png);
 }
 nav #score:hover{
     background: var(--nav_2nd);     /* getting rid of the changeing colors while hovering */
@@ -149,10 +150,10 @@ nav #score:hover{
 }
 nav #lb{
     grid-column: 8;
-    background-image: url(../graphics/lb1.png);
+    background-image: url(../graphics/trophy1.png);
 }
 nav #lb:hover{
-    background-image: url(../graphics/lb2.png);
+    background-image: url(../graphics/trophy2.png);
 }
 nav #options{
     grid-column: 9;
