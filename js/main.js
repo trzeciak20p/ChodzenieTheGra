@@ -68,14 +68,13 @@ function Popup(button){
 class Slider{
 
     static music_volume = 50
-    static effects_volume = 50
-    
+    static effects_volume = 50 
 
     constructor(where, functn){     //gdzie umieścić, funkcja slidera
         this.slider = document.createElement("DIV")      //tworzenie wyglądu slidera
         this.slider.setAttribute("class", "slider")
         this.slider_text = document.createElement("SPAN")
-        this.slider_text.innerText = functn
+        this.slider_text.innerText = functn + ": 50"
         this.slider.appendChild(this.slider_text)
         this.slider_slide = document.createElement("DIV")
         this.slider_slide.setAttribute("class", "slider_slide")
@@ -89,28 +88,37 @@ class Slider{
     }
 
     SliderValueChange(functn) {
+        this.rect = this.slider.getBoundingClientRect()
         this.GetSliderMousePos()
-        this.slider_circle.style.left = this.mouse_x + "px"   //zmiana pozycji kółka slidera
+
+        let x = Math.round(this.mouse_x / this.rect.width * 100)        //patrzy na stosunek myszki do slidera aby mieć przedział 0-100
+        if(x < 0){      //ogranicza wyjeżdżanie slidera
+            x = 0   
+        }else if(x > 100){
+            x = 100
+        }else{
+            this.slider_circle.style.left = this.mouse_x - 10 + "px"   //zmiana pozycji kółka slidera
+        }
 
         switch (functn){
-            case "music volume":
-                    Slider.music_volume = this.mouse_x
+            case "music volume":        //zmiana poziomu głośności
+                    Slider.music_volume = x
                 break;
             case "effects volume":
-                    Slider.effects_volume = this.mouse_x
+                    Slider.effects_volume = x
                 break;
             default:
 
                 break;
         }
+        this.slider_text.innerText = functn + ": " + x      //zmiana tekstu slidera
 
     }
 
     GetSliderMousePos(){
         let e = window.event
-        this.mouse_x = e.clientX - Math.round(this.slider.getBoundingClientRect().x)     //zczytywanie x z slidera
+        this.mouse_x = e.clientX - Math.round(this.rect.x)     //zczytywanie x z slidera
     }
-
 
 }
 

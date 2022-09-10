@@ -78,7 +78,7 @@ body{
 #popup .slider_circle{
     position: relative;
     bottom: 10px;
-    left: 50px;
+    left: 50px;     /* w połowie rodzica */
     height: 20px;
     width: 20px;
     border-radius: 100%;
