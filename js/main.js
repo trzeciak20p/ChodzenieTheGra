@@ -10,12 +10,13 @@ nav[5].addEventListener("click", () => {Popup(3)})
 
 document.getElementById("popup_close").addEventListener("click", () => {popup.style.display = "none"})  //Zamykanie pop-up'a
 
-popup_display .addEventListener("click", () => { 
+popup_display.addEventListener("click", () => { 
+    let rect = popup.getBoundingClientRect()
     let x = GetMousePos()[0]
     let y = GetMousePos()[1]
-    if(x >= window.innerWidth * 0.3 && x <= window.innerWidth * 0.7 && y >= window.innerWidth * 0.2 && y <= window.innerHeight * 0.8){
+    if(x >= rect.x && x <= rect.x + rect.width &&  y >= rect.y && y <= rect.y + rect.height){
     }else{
-        popup_display .style.display = "none"
+        popup_display.style.display = "none"
         
     }
     
@@ -31,7 +32,7 @@ window.addEventListener("resize", CanvasResize)
 
 
 
-function CanvasResize(){
+function CanvasResize(){        //dopasowywuje rozmiar canvasa do okna
     console.log()
     canvas.setAttribute("height", window.innerHeight - 94)        
     canvas.setAttribute("width", window.innerWidth)
@@ -41,17 +42,17 @@ function Popup(button){
     popup_display.style.display = "flex"        //pokazuje popupa
     popup.innerHTML = '<input id="popup_close" type="button" value="X">'       //dodaje guziczek
     switch (button) {
-        case 0:
+        case 0:     //login
             
             break;
-        case 1:
+        case 1:     //customizacja
             
             break;
-        case 2:
+        case 2:     //leaderboard
             
             break;
-        case 3:
-            new Slider(popup, "music volume")
+        case 3:     //opcje
+            new Slider(popup, "music volume")   //dodanie sliderów
             new Slider(popup, "effects volume")
 
             break;
