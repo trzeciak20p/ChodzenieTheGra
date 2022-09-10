@@ -48,6 +48,7 @@ body{
     text-align: center;
     font-size: 21px;
     background-color: red;
+    z-index: 6;
 }
 #popup #popup_close:hover{
     background-color: var(--nav_font);
@@ -61,7 +62,7 @@ body{
     background-color: transparent;
 }
 #popup .slider span{
-    cursor: default;
+    user-select: none;
     height: 20px;
     width: 100%;
     text-transform: uppercase;

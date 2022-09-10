@@ -1,6 +1,6 @@
 const body = document.getElementsByTagName("body")
 const nav = document.querySelectorAll("nav div")
-const popup_display  = document.getElementById("popup")
+const popup_display = document.getElementById("popup")
 const popup = document.querySelector("#popup > div")
 
 nav[0].addEventListener("click", () => {Popup(0)})  //Przypisywanie guzikom pokazywania pop-up'a  
@@ -8,7 +8,7 @@ nav[1].addEventListener("click", () => {Popup(1)})
 nav[4].addEventListener("click", () => {Popup(2)})
 nav[5].addEventListener("click", () => {Popup(3)})
 
-document.getElementById("popup_close").addEventListener("click", () => {popup_display.style.display = "none"})  //Zamykanie pop-up'a
+  //Zamykanie pop-up'a
 
 popup_display.addEventListener("click", () => { 
     let rect = popup.getBoundingClientRect()
@@ -41,6 +41,7 @@ function CanvasResize(){        //dopasowywuje rozmiar canvasa do okna
 function Popup(button){
     popup_display.style.display = "flex"        //pokazuje popupa
     popup.innerHTML = '<input id="popup_close" type="button" value="X">'       //dodaje guziczek
+    document.getElementById("popup_close").addEventListener("click", () => {popup_display.style.display = "none"})
     switch (button) {
         case 0:     //login
             
@@ -66,10 +67,13 @@ function Popup(button){
     
 }
 
+popup.addEventListener("mouseup", () => { Slider.mouse_down = 0 })      //jest tutaj żeby nie dołączać przy każym otwarciu popupa
 class Slider{
 
     static music_volume = 50        //startowe poziomy głośności
     static effects_volume = 50 
+    static mouse_down = 0       //czy myszka kliknięta
+
 
     constructor(where, functn){     //gdzie umieścić, funkcja slidera
         this.slider = document.createElement("DIV")      //tworzenie wyglądu slidera
@@ -99,15 +103,13 @@ class Slider{
                 break;
         }
         
-        this.mouse_down = 0
-        this.slider.addEventListener("mousedown", () => { this.mouse_down = 1 })    // na sprawdzanie czy myszka kliknięta
-        popup.addEventListener("mouseup", () => { this.mouse_down = 0 })
+        this.slider.addEventListener("mousedown", () => { Slider.mouse_down = 1 })    // na sprawdzanie czy myszka kliknięta
         this.slider.addEventListener("mousemove", () => { this.SliderValueChange(functn) })
 
     }
 
     SliderValueChange(functn) {
-        if(this.mouse_down == 0){       //jeśli myszka jest przytrzymana zmiana pozycji itp. jak nie to nie
+        if(Slider.mouse_down == 0){       //jeśli myszka jest przytrzymana zmiana pozycji itp. jak nie to nie
             return;
         }
         
