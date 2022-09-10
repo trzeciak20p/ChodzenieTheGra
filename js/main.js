@@ -102,10 +102,9 @@ class Slider{
 
                 break;
         }
-        
+
         this.slider.addEventListener("mousedown", () => { Slider.mouse_down = 1 })    // na sprawdzanie czy myszka kliknięta
         this.slider.addEventListener("mousemove", () => { this.SliderValueChange(functn) })
-
     }
 
     SliderValueChange(functn) {
@@ -114,7 +113,6 @@ class Slider{
         }
         
         this.GetSliderMousePos()
-
         let x = Math.round(this.mouse_x / this.rect.width * 100)        //patrzy na stosunek myszki do slidera aby mieć przedział 0-100
         if(x < 0){      //ogranicza wyjeżdżanie slidera
             x = 0   
@@ -143,10 +141,13 @@ class Slider{
         let e = window.event
         this.mouse_x = e.clientX - Math.round(this.rect.x)     //zczytywanie x z slidera
     }
-
 }
 
+let GameObejct = {
 
+
+    
+}
 
 
 function GetMousePos(){       
