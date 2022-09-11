@@ -39,6 +39,7 @@ function Popup(button){
             popup
         
             new Button(popup, 0, 1, "url.here")
+            new Button(popup, 0, 2, "url.here")
 
             
             break;
@@ -141,32 +142,38 @@ class Slider{
 class Button{
 
     static section_names = ["characters", "background", "ground", "music"]
+    static section_urls = [" ", "../graphics/world/bg/"]
     static sections = new Array(4)
     static section_check = [false, false, false, false]        //0 - characters, 1 - bg, 2 - ground, 3 - music
 
-    constructor(where, functn, number, thumbnail){
+    constructor(where, functn, number){
         this.SectionCheck(where, functn)
 
         this.btn = document.createElement("DIV")
-        this.btn.style.backgroundImage = "url(" + thumbnail + ")"
+        this.btn.style.backgroundImage = "url(" + Button.section_urls[functn] + number +  ".png)"
+        this.btn.appendChild(document.createElement("DIV"))
 
-        where.appendChild(this.btn)
+        Button.sections[functn].appendChild(this.btn)
 
     }
 
     SectionCheck(where, functn){    
 
-        if(Button.section_check[functn]){      //Sprawdza czy dana sekcja istnieje
+        if(Button.section_check[functn]){      //Sprawdza czy dana sekcja istnieje, a jak nie to ją tworzy
             return;
-        }
-        let section = document.createElement("DIV")
+        }       
+        Button.section_check[functn] = true     //odznacza sekcje jako zrobioną
+
+        let section = document.createElement("DIV") 
         section.setAttribute("class", "customize_section")
-        let section_header = document.createElement("SPAN")
+        let section_header = document.createElement("SPAN")     //tytuł sekcji
         section_header.innerText = Button.section_names[functn]
         section.appendChild(section_header)
         where.appendChild(section)
-        
-        Button.sections[functn] = section
+        let display = document.createElement("DIV")
+        section.appendChild(display)
+
+        Button.sections[functn] = display
 
 
     }

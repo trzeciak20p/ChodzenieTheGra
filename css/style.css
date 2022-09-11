@@ -72,8 +72,12 @@ body{
     color: var(--nav_2nd);
 }
 
-#popup .customize_section{
-
+#popup .customize_section > div{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 10px;
+    width: 80%;
 
 }
 #popup .customize_section span{
@@ -84,10 +88,23 @@ body{
     font-size: 25px;
     color: var(--font);
 }
-#popup .customize_section div{
+#popup .customize_section > div > div{
+    cursor: pointer;
     width: 80px;
     height: 80px;
+    background-color: var(--nav_1st);
 }
+#popup .customize_section > div > div > div{
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+#popup .customize_section > div > div:hover > div{
+    display: block;
+    background-color: #cacdcf70;
+}
+
 
 #popup .slider{
     user-select: none;
