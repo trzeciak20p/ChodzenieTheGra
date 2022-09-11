@@ -1,24 +1,27 @@
 
-
 document.addEventListener("keydown", function (event) {              
     if (event.code == "KeyW" || event.code == "Space" || event.code == "ArrowUp") {   //wykrywanie w, s, strzałek, spacji i przypisanie im skoku, kucnięcia          
         event.preventDefault()
-        Jump()
+        Player.Jump()
     }else if(event.code == "KeyS" || event.code == "ArrowDown"){
         // event.preventDefault()
-        Duck()
+        Player.Duck()
     }
 })
 
+let Player = {
 
 
-function Jump(){
-    console.log("jump")
 
+    Jump(){
+        console.log("jump")
+    
+    },
+    
+    Duck(){
+        console.log("duck")
+    
+    
+    }
 }
 
-function Duck(){
-    console.log("duck")
-
-
-}
