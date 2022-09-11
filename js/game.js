@@ -1,5 +1,3 @@
-Game.CanvasResize()     //dopasowywuje canvas przy uruchomieniu str
-window.addEventListener("resize", Game.CanvasResize)
 
 let Game = {
 
@@ -8,6 +6,8 @@ let Game = {
     bg: "bg1.png",
     ground: "ground1.png",
     day_time: "day",
+    bpm: 50,
+    score: 0,
 
 
     CanvasResize(){        //dopasowywuje rozmiar canvasa do okna
@@ -21,6 +21,19 @@ let Game = {
 
 
 
+    },
+    
+    BpmUpdate(){
+        nav[2].innerText = Game.bpm
+    },
+
+    ScoreUpdate(){
+        nav[3].innerText = Game.score
     }
     
+
 }
+
+
+Game.CanvasResize()     //dopasowywuje canvas przy uruchomieniu str
+window.addEventListener("resize", Game.CanvasResize)

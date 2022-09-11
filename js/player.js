@@ -11,6 +11,8 @@ document.addEventListener("keydown", function (event) {
 
 let Player = {
 
+    character: 0,
+
 
 
     Jump(){
