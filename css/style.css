@@ -53,6 +53,11 @@ body{
     font-size: 40px;
     color: var(--border);
 }
+
+#popup .customize{
+
+}
+
 #popup #popup_close{
     cursor: pointer;
     grid-column: 3;
@@ -141,10 +146,10 @@ nav div:hover{
 }
 nav #login{
     grid-column: 2;
-    background-image: url(../graphics/login1.png);
+    background-image: url(../graphics/nav/login1.png);
 }
 nav #login:hover{
-    background-image: url(../graphics/login2.png);
+    background-image: url(../graphics/nav/login2.png);
 }
 nav #customize{  
     grid-column: 3;
@@ -155,14 +160,14 @@ nav #bpm{
     cursor: default;
     grid-column: 5;
     text-align: justify;
-    background-image: url("../graphics/note1.png");
+    background-image: url("../graphics/nav/note1.png");
     background-repeat: no-repeat;
     background-position: 110%;
 }
 nav #bpm:hover{
     background: var(--nav_2nd);    /* getting rid of the changeing colors while hovering */    
     color: var(--nav_1st);
-    background-image: url("../graphics/note1.png");
+    background-image: url("../graphics/nav/note1.png");
     background-repeat: no-repeat;
     background-position: 110%;
 }
@@ -176,17 +181,17 @@ nav #score:hover{
 }
 nav #lb{
     grid-column: 8;
-    background-image: url(../graphics/trophy1.png);
+    background-image: url(../graphics/nav/trophy1.png);
 }
 nav #lb:hover{
-    background-image: url(../graphics/trophy2.png);
+    background-image: url(../graphics/nav/trophy2.png);
 }
 nav #options{
     grid-column: 9;
-    background-image: url(../graphics/cog1.png);
+    background-image: url(../graphics/nav/cog1.png);
 }
 nav #options:hover{
-    background-image: url(../graphics/cog2.png);
+    background-image: url(../graphics/nav/cog2.png);
 }
 main{
     margin: 0px;
