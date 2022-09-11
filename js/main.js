@@ -23,14 +23,9 @@ popup_display.addEventListener("click", () => {
 })
 
 const canvas = document.getElementById("main_canvas")
-
 const ctx = canvas.getContext("2d")
 CanvasResize()
 window.addEventListener("resize", CanvasResize)
-
-
-
-
 
 function CanvasResize(){        //dopasowywuje rozmiar canvasa do okna
     console.log()
@@ -142,13 +137,6 @@ class Slider{
         this.mouse_x = e.clientX - Math.round(this.rect.x)     //zczytywanie x z slidera
     }
 }
-
-let GameObejct = {
-
-
-    
-}
-
 
 function GetMousePos(){       
     let e = window.event
