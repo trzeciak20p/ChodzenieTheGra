@@ -36,12 +36,19 @@ function Popup(button){
             break;
 
         case "customize": 
-            popup
-        
-            new Button(popup, 0, 1, "url.here")
-            new Button(popup, 0, 2, "url.here")
-
-            
+            Button.ClassReset()
+            new Button(popup, 0, 1)
+            new Button(popup, 0, 2)
+            new Button(popup, 0, 3)
+            new Button(popup, 1, 1)
+            new Button(popup, 1, 2)
+            new Button(popup, 1, 3)
+            new Button(popup, 2, 1)
+            new Button(popup, 2, 2)
+            new Button(popup, 2, 3)
+            new Button(popup, 3, 1)
+            new Button(popup, 3, 2)
+            new Button(popup, 3, 3)    
             break;
 
         case "leaderboard":     
@@ -142,7 +149,7 @@ class Slider{
 class Button{
 
     static section_names = ["characters", "background", "ground", "music"]
-    static section_urls = [" ", "../graphics/world/bg/"]
+    static section_urls = ["..graphics/animations/character_prev/character", "../graphics/world/bg/bg", "../graphics/world/ground/ground", "../graphics/world/music/song"]
     static sections = new Array(4)
     static section_check = [false, false, false, false]        //0 - characters, 1 - bg, 2 - ground, 3 - music
 
@@ -151,7 +158,7 @@ class Button{
 
         this.btn = document.createElement("DIV")
         this.btn.style.backgroundImage = "url(" + Button.section_urls[functn] + number +  ".png)"
-        this.btn.appendChild(document.createElement("DIV"))
+        this.btn.appendChild(document.createElement("DIV"))     //div do podświetlania buttona przy najechaniu
 
         Button.sections[functn].appendChild(this.btn)
 
@@ -174,10 +181,12 @@ class Button{
         section.appendChild(display)
 
         Button.sections[functn] = display
-
-
     }
 
+    static ClassReset(){
+        Button.sections = new Array(4)
+        Button.section_check = [false, false, false, false]
+    }    
 
 }
 
