@@ -5,7 +5,7 @@ document.addEventListener("keydown", function (event) {
         event.preventDefault()
         Jump()
     }else if(event.code == "KeyS" || event.code == "ArrowDown"){
-        event.preventDefault()
+        // event.preventDefault()
         Duck()
     }
 })

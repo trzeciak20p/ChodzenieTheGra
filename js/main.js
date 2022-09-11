@@ -3,10 +3,10 @@ const nav = document.querySelectorAll("nav div")
 const popup_display = document.getElementById("popup")
 const popup = document.querySelector("#popup > div")
 
-nav[0].addEventListener("click", () => {Popup(0)})  //Przypisywanie guzikom pokazywania pop-up'a  
-nav[1].addEventListener("click", () => {Popup(1)})
-nav[4].addEventListener("click", () => {Popup(2)})
-nav[5].addEventListener("click", () => {Popup(3)})
+nav[0].addEventListener("click", () => {Popup("login")})  //Przypisywanie guzikom pokazywania pop-up'a  
+nav[1].addEventListener("click", () => {Popup("customize")})
+nav[4].addEventListener("click", () => {Popup("leaderboard")})
+nav[5].addEventListener("click", () => {Popup("opcje")})
 
 
 
@@ -40,19 +40,19 @@ function CanvasResize(){        //dopasowywuje rozmiar canvasa do okna
 
 function Popup(button){
     popup_display.style.display = "flex"        //pokazuje popupa
-    popup.innerHTML = '<input id="popup_close" type="button" value="X">'       //dodaje guziczek
+    popup.innerHTML = '<div class="header"><span>' + button + '</span><input id="popup_close" type="button" value="X"></div>'       //dodaje guziczek
     document.getElementById("popup_close").addEventListener("click", () => {popup_display.style.display = "none"})      //Zamykanie pop-up'a
     switch (button) {
-        case 0:     //login
+        case "login":     
             
             break;
-        case 1:     //customizacja
+        case "customize":    
             
             break;
-        case 2:     //leaderboard
+        case "leaderboard":     
             
             break;
-        case 3:     //opcje
+        case "opcje":     
             new Slider(popup, "music volume")   //dodanie sliderów
             new Slider(popup, "effects volume")
 
