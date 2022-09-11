@@ -9,6 +9,18 @@
     --font:  #e0a13c;
     /* 2px solid */
 }
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: var(--nav_2nd);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--nav_1st);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(243, 243, 243);
+}
 
 body{
     overflow: hidden;
@@ -32,7 +44,7 @@ body{
     background-color: #0003;
 }
 #popup > div{
-    overflow: scroll;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     width: 40%;
