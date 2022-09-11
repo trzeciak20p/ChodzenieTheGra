@@ -164,7 +164,7 @@ nav #bpm:hover{
     color: var(--nav_1st);
     background-image: url("../graphics/note1.png");
     background-repeat: no-repeat;
-    background-position: 100%;
+    background-position: 110%;
 }
 nav #score{
     cursor: default;
