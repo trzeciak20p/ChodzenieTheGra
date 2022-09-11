@@ -24,14 +24,7 @@ popup_display.addEventListener("click", () => {
 
 const canvas = document.getElementById("main_canvas")
 const ctx = canvas.getContext("2d")
-CanvasResize()
-window.addEventListener("resize", CanvasResize)
 
-function CanvasResize(){        //dopasowywuje rozmiar canvasa do okna
-    console.log()
-    canvas.setAttribute("height", window.innerHeight - 94)        
-    canvas.setAttribute("width", window.innerWidth)
-}
 
 function Popup(button){
     popup_display.style.display = "flex"        //pokazuje popupa
