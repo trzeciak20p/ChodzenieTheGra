@@ -3,9 +3,8 @@ let Game = {
 
     window_w: window.innerWidth,
     window_h: window.innerHeight,
-    bg: "world/bg1.png",
-    ground: "world/ground1.png",
-    day_time: "day",
+    //urls w liście possibly
+    world: [0, 0, 0, 0],     //day, ground, day_time, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
     bpm: 50,
     score: 0,
     feed: [0,0,0],      //nadciągający przeciwnicy 0 - brak,  1 - dół, 2 - góra
@@ -25,8 +24,6 @@ let Game = {
         this.feed = [0,0,0,0]
         this.game_state = 1
 
-
-
     },
 
 
@@ -45,6 +42,7 @@ let Game = {
 
 }
 
+console.log(Game.world[1])
 
 Game.CanvasResize()     //dopasowywuje canvas przy uruchomieniu str
 window.addEventListener("resize", Game.CanvasResize)

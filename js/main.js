@@ -159,6 +159,11 @@ class Button{
         this.btn = document.createElement("DIV")
         this.btn.style.backgroundImage = "url(" + Button.section_urls[functn] + number +  ".png)"
         this.btn.appendChild(document.createElement("DIV"))     //div do podświetlania buttona przy najechaniu
+        this.btn.addEventListener("click", () => {
+            Game.world[functn] = number     //zmiana tego co trzeba na to co trzeba
+            
+            //jakąś responsywność tu potem dodać
+        })
 
         Button.sections[functn].appendChild(this.btn)
 
