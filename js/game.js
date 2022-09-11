@@ -18,9 +18,7 @@ let Game = {
     },
 
     RenderBG(){
-
-
-
+        ctx.drawImage(bg)
     },
     
     BpmUpdate(){

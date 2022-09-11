@@ -53,11 +53,6 @@ body{
     font-size: 40px;
     color: var(--border);
 }
-
-#popup .customize{
-
-}
-
 #popup #popup_close{
     cursor: pointer;
     grid-column: 3;
@@ -76,6 +71,16 @@ body{
     background-color: var(--nav_1st);
     color: var(--nav_2nd);
 }
+
+#popup .customize_section{
+
+
+}
+#popup .customize_section div{
+    width: 90px;
+
+}
+
 #popup .slider{
     user-select: none;
     cursor: pointer;
@@ -87,11 +92,12 @@ body{
     background-color: transparent;
 }
 #popup .slider span{
-    height: 20px;
+    display: inline-block;
+    height: 30px;
     width: 100%;
     text-transform: uppercase;
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 30px;
+    line-height: 30px;
     text-align: center;
     color: var(--border);
 }

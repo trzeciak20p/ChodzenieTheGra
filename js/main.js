@@ -34,17 +34,22 @@ function Popup(button){
         case "login":     
             
             break;
+
         case "customize":    
+            new Button(popup, "character", 1, "url.here")
+
             
             break;
+
         case "leaderboard":     
             
             break;
+
         case "opcje":     
             new Slider(popup, "music volume")   //dodanie sliderów
             new Slider(popup, "effects volume")
-
             break;
+
         default:
             let text = document.createElement("SPAN")
             text.innerText = "COŚ POSZEDŁO NIE TAK :c"
@@ -130,6 +135,23 @@ class Slider{
         this.mouse_x = e.clientX - Math.round(this.rect.x)     //zczytywanie x z slidera
     }
 }
+
+class Button{
+
+
+    constructor(where, functn, number, thumbnail){
+        this.btn = document.createElement("DIV")
+        this.btn.style.backgroundImage = "url(" + thumbnail + ")"
+
+        where.appendChild(this.btn)
+
+    }
+
+
+
+
+}
+
 
 function GetMousePos(){       
     let e = window.event
