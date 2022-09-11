@@ -6,7 +6,7 @@
 :root{
     --nav_2nd: #232121;
     --nav_1st: #cacdcf;
-    --border:  #e0a13c;
+    --font:  #e0a13c;
     /* 2px solid */
 }
 
@@ -51,7 +51,7 @@ body{
     text-align: center;
     line-height: 50px;
     font-size: 40px;
-    color: var(--border);
+    color: var(--font);
 }
 #popup #popup_close{
     cursor: pointer;
@@ -76,9 +76,17 @@ body{
 
 
 }
+#popup .customize_section span{
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 25px;
+    font-size: 25px;
+    color: var(--font);
+}
 #popup .customize_section div{
-    width: 90px;
-
+    width: 80px;
+    height: 80px;
 }
 
 #popup .slider{
@@ -99,7 +107,7 @@ body{
     font-size: 30px;
     line-height: 30px;
     text-align: center;
-    color: var(--border);
+    color: var(--font);
 }
 #popup .slider_slide{
     justify-self: center;
@@ -115,7 +123,7 @@ body{
     height: 20px;
     width: 20px;
     border-radius: 100%;
-    background-color: var(--border);
+    background-color: var(--font);
     z-index: 6;
 }
 #popup .slider:hover .slider_slide{

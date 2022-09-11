@@ -35,8 +35,10 @@ function Popup(button){
             
             break;
 
-        case "customize":    
-            new Button(popup, "character", 1, "url.here")
+        case "customize": 
+            popup
+        
+            new Button(popup, 0, 1, "url.here")
 
             
             break;
@@ -138,8 +140,13 @@ class Slider{
 
 class Button{
 
+    static section_names = ["characters", "background", "ground", "music"]
+    static sections = new Array(4)
+    static section_check = [false, false, false, false]        //0 - characters, 1 - bg, 2 - ground, 3 - music
 
     constructor(where, functn, number, thumbnail){
+        this.SectionCheck(where, functn)
+
         this.btn = document.createElement("DIV")
         this.btn.style.backgroundImage = "url(" + thumbnail + ")"
 
@@ -147,7 +154,22 @@ class Button{
 
     }
 
+    SectionCheck(where, functn){    
 
+        if(Button.section_check[functn]){      //Sprawdza czy dana sekcja istnieje
+            return;
+        }
+        let section = document.createElement("DIV")
+        section.setAttribute("class", "customize_section")
+        let section_header = document.createElement("SPAN")
+        section_header.innerText = Button.section_names[functn]
+        section.appendChild(section_header)
+        where.appendChild(section)
+        
+        Button.sections[functn] = section
+
+
+    }
 
 
 }
