@@ -149,7 +149,7 @@ class Slider{
 class Button{
 
     static section_names = ["characters", "background", "ground", "music"]
-    static section_urls = ["..graphics/animations/character_prev/character", "../graphics/world/bg/bg", "../graphics/world/ground/ground", "../graphics/world/music/song"]
+    static section_urls = ["../graphics/world/characters/char", "../graphics/world/bg/bg", "../graphics/world/ground/ground", "../graphics/world/music/song"]
     static sections = new Array(4)
     static section_check = [false, false, false, false]        //0 - characters, 1 - bg, 2 - ground, 3 - music
 
@@ -157,7 +157,7 @@ class Button{
         this.SectionCheck(where, functn)
 
         this.btn = document.createElement("DIV")
-        this.btn.style.backgroundImage = "url(" + Button.section_urls[functn] + number +  ".png)"
+        this.btn.style.backgroundImage = "url( " + Button.section_urls[functn] + number +  ".png )"
         this.btn.appendChild(document.createElement("DIV"))     //div do podświetlania buttona przy najechaniu
         this.btn.addEventListener("click", () => {
             Game.world[functn] = number     //zmiana tego co trzeba na to co trzeba

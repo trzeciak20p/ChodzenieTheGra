@@ -10,6 +10,7 @@
     /* 2px solid */
 }
 ::-webkit-scrollbar{
+    cursor: pointer;
     width: 5px;
 }
 ::-webkit-scrollbar-track {
