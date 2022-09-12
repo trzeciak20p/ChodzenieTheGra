@@ -149,7 +149,7 @@ class Slider{
 class Button{
 
     static section_names = ["characters", "background", "ground", "music"]
-    static section_urls = ["../graphics/world/characters/char", "../graphics/world/bg/bg", "../graphics/world/ground/ground", "../graphics/world/music/song"]
+    static section_urls = ["graphics/world/characters/char", "graphics/world/bg/bg", "graphics/world/ground/ground", "graphics/world/music/song"]
     static sections = new Array(4)
     static section_check = [false, false, false, false]        //0 - characters, 1 - bg, 2 - ground, 3 - music
 
