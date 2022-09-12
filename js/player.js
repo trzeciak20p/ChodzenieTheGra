@@ -11,6 +11,7 @@ document.addEventListener("keydown", function (event) {
 
 let Player = {
 
+    character_url: "",
     character: 0,
 
 
