@@ -24,7 +24,9 @@ popup_display.addEventListener("click", () => {
 
 const canvas = document.getElementById("main_canvas")
 const ctx = canvas.getContext("2d")
-
+let c_rect = canvas.getBoundingClientRect()
+this.ctx.filter = 'blur(0px)';
+this.ctx.imageSmoothingEnabled = false;
 
 function Popup(button){
     popup_display.style.display = "flex"        //pokazuje popupa
