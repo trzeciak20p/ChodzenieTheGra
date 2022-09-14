@@ -39,18 +39,18 @@ function Popup(button){
 
         case "customize": 
             Button.ClassReset()
+            new Button(popup, 0, 0)
             new Button(popup, 0, 1)
             new Button(popup, 0, 2)
-            new Button(popup, 0, 3)
+            new Button(popup, 1, 0)
             new Button(popup, 1, 1)
-            new Button(popup, 1, 2)
             new Button(popup, 1, 3)
+            new Button(popup, 2, 0)
             new Button(popup, 2, 1)
             new Button(popup, 2, 2)
-            new Button(popup, 2, 3)
+            new Button(popup, 3, 0)
             new Button(popup, 3, 1)
-            new Button(popup, 3, 2)
-            new Button(popup, 3, 3)    
+            new Button(popup, 3, 2)    
             break;
 
         case "leaderboard":     
@@ -191,6 +191,11 @@ class Button{
         section.appendChild(display)
 
         Button.sections[functn] = display
+    }
+
+    MakeSelected(where, functn){        //podświetla guzik po wybraniu
+
+
     }
 
     static ClassReset(){
