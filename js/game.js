@@ -3,7 +3,7 @@ let Game = {
     window_w: window.innerWidth,
     window_h: window.innerHeight,
     //urls w liście possibly
-    world_urls: ["graphics/world/bg/bg", ""],
+    world_urls: ["", "graphics/world/bg/bg", "graphics/world/groud/ground", "sound/music/song"],
     world: [0, 0, 0, 0],     //bg, ground, day_time, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
     bpm: 50,
     score: 0,
@@ -13,16 +13,16 @@ let Game = {
 
     
 
-    StartNewGame(){
-        this.bpm = 50
+    StartNewGame(){     //zaczyna nową gre
+        this.bpm = 50       // ustawia startowe zmienne
         this.score = 0
         this.feed = [0,0,0,0]
         this.game_state = 1
 
     },
 
-    RenderBG(){
-        let url = this.world_urls[0] + this.world[0] + ".png"
+    RenderBG(){     //Rysuje obecnie wybrany bg
+        let url = this.world_urls[1] + this.world[0] + ".png"
         image = new Image()
         image.src = url
         image.onload = () => {
@@ -30,11 +30,11 @@ let Game = {
         }
     },
 
-    BpmUpdate(){
+    BpmUpdate(){        //wyświetla obecny bpm
         nav[2].innerText = Game.bpm
     },
 
-    ScoreUpdate(){
+    ScoreUpdate(){      //wyświetla obecną ilość punktów
         nav[3].innerText = Game.score
     },
     
