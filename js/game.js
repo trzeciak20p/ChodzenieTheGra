@@ -43,11 +43,12 @@ let Game = {
         this.window_h = window.innerHeight
         canvas.setAttribute("height", this.window_h - 94)        
         canvas.setAttribute("width", this.window_w)
-        this.RenderBG()     //zamienić na render ogólnie, abo potem wgl wywalić
+        //this.RenderBG()     //zamienić na render ogólnie, abo potem wgl wywalić
     }
 
 }
 
+Game.RenderBG()
 Game.CanvasResize()     //dopasowywuje canvas przy uruchomieniu str
 window.addEventListener("resize", Game.CanvasResize)
 

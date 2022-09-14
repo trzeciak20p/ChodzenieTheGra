@@ -25,8 +25,8 @@ popup_display.addEventListener("click", () => {
 const canvas = document.getElementById("main_canvas")
 const ctx = canvas.getContext("2d")
 let c_rect = canvas.getBoundingClientRect()
-this.ctx.filter = 'blur(0px)';
-this.ctx.imageSmoothingEnabled = false;
+ctx.filter = 'blur(0px)';
+ctx.imageSmoothingEnabled = false;
 
 function Popup(button){
     popup_display.style.display = "flex"        //pokazuje popupa
@@ -162,8 +162,11 @@ class Button{
         this.btn.style.backgroundImage = "url( " + Button.section_urls[functn] + number +  ".png )"
         this.btn.appendChild(document.createElement("DIV"))     //div do podświetlania buttona przy najechaniu
         this.btn.addEventListener("click", () => {
-            Game.world[functn] = number     //zmiana tego co trzeba na to co trzeba
-            
+            if(functn == 0){
+                Player.character = number
+            }else{
+                Game.world[functn] = number     //zmiana tego co trzeba na to co trzeba
+            }
             //jakąś responsywność tu potem dodać
         })
 
