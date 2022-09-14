@@ -102,6 +102,9 @@ body{
     font-size: 25px;
     color: var(--font);
 }
+#popup .customize_section .selected{
+    box-shadow: inset 0px 0px 5px 7px var(--font) ;
+}
 #popup .customize_section > div > div{
     cursor: pointer;
     width: 80px;

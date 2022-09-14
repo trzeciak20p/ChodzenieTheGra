@@ -51,6 +51,7 @@ function Popup(button){
             new Button(popup, 3, 0)
             new Button(popup, 3, 1)
             new Button(popup, 3, 2)    
+            
             break;
 
         case "leaderboard":     
@@ -167,11 +168,15 @@ class Button{
             }else{
                 Game.world[functn] = number     //zmiana tego co trzeba na to co trzeba
             }
+            this.MakeSelected(functn)
             //jakąś responsywność tu potem dodać
         })
 
         Button.sections[functn].appendChild(this.btn)
 
+        if(Game.world[functn] == number){       //pokazuje zaznaczone guziki zaraz po otwarciu okienka
+            this,this.MakeSelected(functn)
+        }
     }
 
     SectionCheck(where, functn){    
@@ -193,8 +198,12 @@ class Button{
         Button.sections[functn] = display
     }
 
-    MakeSelected(where, functn){        //podświetla guzik po wybraniu
+    MakeSelected(functn){        //podświetla guzik po wybraniu
 
+        Button.sections[functn].querySelectorAll("div").forEach(element => {
+            element.setAttribute("class", "")
+        });
+        this.btn.setAttribute("class", "selected")
 
     }
 

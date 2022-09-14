@@ -4,7 +4,7 @@ let Game = {
     window_h: window.innerHeight,
     //urls w liście possibly
     world_urls: ["graphics/world/bg/bg", ""],
-    world: [1, 0, 0, 0],     //bg, ground, day_time, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
+    world: [0, 0, 0, 0],     //bg, ground, day_time, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
     bpm: 50,
     score: 0,
     feed: [0,0,0],      //nadciągający przeciwnicy 0 - brak,  1 - dół, 2 - góra
