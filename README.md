@@ -4,17 +4,17 @@ Gra w chodzenie ale szypkie takie. Prawie rytmiczna ale wsm nie do końca.
 ## Założenia
 
 ### Gra
-Idziesz do przodu w rytm muzyki i musisz skakać bądź kucać, aby unikać nadchodzących przeszkód. Gra i muzyka z czase m przyśpieszają!
+Idziesz do przodu w rytm muzyki i musisz niszczyć nadchodzące przeszkody. Gra i muzyka z czasem przyśpieszają!
 Do wyboru są 3 postacie, 2 odblokowywane po uzaskaniu odpowiedniego wyniku.
 3 miejsca góry, las, zamek.
-Pora dnia/pogoda może być, ale może też zostać wybrane samemu. Do tego 3 utwory do wyboru (2 premium albo zależne od planszy?)
+Do tego 3 utwory do wyboru (2 premium albo zależne od planszy?)
 
 ### Logowanie
-Konto jest wymagane aby przesyłać wynik na leaderboard, ale można grać bez konta.
+Można grać bez konta, ale jest ono wymagane do przesyłania wyniku na leaderboard.
 
 ### Opcje
 - Głośność muzyki
-- Głośność efektów dźwiękowych (na milestony, skok, kucnięcie, może coiny czy coś)
+- Głośność efektów dźwiękowych (hitsoundy)
 - Czy udostępnia się wyniki na LB
 
 ### Leaderboard
