@@ -14,8 +14,8 @@ let Game = {
     
 
     StartNewGame(){     //zaczyna nową gre
-        this.bpm = 50       // ustawia startowe zmienne
-        this.score = 0
+        this.bpm = 5000       // ustawia startowe zmienne
+        this.score = 011
         this.feed = [0,0,0,0]
         this.game_state = 1
 
@@ -43,12 +43,13 @@ let Game = {
         this.window_h = window.innerHeight
         canvas.setAttribute("height", this.window_h - 94)        
         canvas.setAttribute("width", this.window_w)
-        //this.RenderBG()     //zamienić na render ogólnie, abo potem wgl wywalić
+        Game.RenderBG()     //zamienić na render ogólnie, abo potem wgl wywalić
     }
 
 }
 
 Game.RenderBG()
 Game.CanvasResize()     //dopasowywuje canvas przy uruchomieniu str
+Game.StartNewGame()
 window.addEventListener("resize", Game.CanvasResize)
 

@@ -175,7 +175,7 @@ class Button{
         Button.sections[functn].appendChild(this.btn)
 
         if(Game.world[functn] == number){       //pokazuje zaznaczone guziki zaraz po otwarciu okienka
-            this,this.MakeSelected(functn)
+            this.MakeSelected(functn)
         }
     }
 
