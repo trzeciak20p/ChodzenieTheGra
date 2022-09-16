@@ -144,18 +144,17 @@ body{
     line-height: var(--lb_height);
     font-size: 20px;
     color: var(--nav_1st);
-    border-collapse: collapse;
     border: var(--lb_border);
 }
 #popup .lb th td{ 
+    padding: 0px;
     display: block; 
     height: var(--lb_height);
     color: var(--font);
-    border-collapse: collapse;
     border: var(--lb_border);
 }
 #popup .lb tr td{ 
-
+    padding: 0px;
     border-collapse: collapse;
     border: var(--lb_border);
 
