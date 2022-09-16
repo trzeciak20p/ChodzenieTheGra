@@ -22,7 +22,7 @@ popup_display.addEventListener("click", () => {
     
 })
 
-const canvas = document.getElementById("main_canvas")
+const canvas = document.getElementById("main_canvas")       //canvas stuff
 const ctx = canvas.getContext("2d")
 let c_rect = canvas.getBoundingClientRect()
 ctx.filter = 'blur(0px)';
@@ -39,7 +39,7 @@ function Popup(button){
 
         case "customize": 
             Button.ClassReset()
-            new Button(popup, 0, 0)
+            new Button(popup, 0, 0)     //dodawanie guzików
             new Button(popup, 0, 1)
             new Button(popup, 0, 2)
             new Button(popup, 1, 0)
@@ -50,12 +50,11 @@ function Popup(button){
             new Button(popup, 2, 2)
             new Button(popup, 3, 0)
             new Button(popup, 3, 1)
-            new Button(popup, 3, 2)    
-            
+            new Button(popup, 3, 2)       
             break;
 
         case "leaderboard":     
-            
+            new Leaderboard(popup, 50)
             break;
 
         case "opcje":     
@@ -64,7 +63,7 @@ function Popup(button){
             break;
 
         default:
-            let text = document.createElement("SPAN")
+            let text = document.createElement("SPAN")       //jeśli popup sie jakimś cudem wywali
             text.innerText = "COŚ POSZEDŁO NIE TAK :c"
             popup.appendChild(text)
             console.log("ae")
@@ -169,7 +168,6 @@ class Button{
                 Game.world[functn] = number     //zmiana tego co trzeba na to co trzeba
             }
             this.MakeSelected(functn)
-            //jakąś responsywność tu potem dodać
         })
 
         Button.sections[functn].appendChild(this.btn)
@@ -211,6 +209,54 @@ class Button{
         Button.sections = new Array(4)
         Button.section_check = [false, false, false, false]
     }    
+
+}
+
+class Leaderboard{
+
+    place = 0;
+
+    constructor(where, limit){
+        this.limit = limit
+        this.lb = document.createElement("TABLE")       //tworzenie tabeli z wynikami
+        this.lb.setAttribute("class", "lb")
+          
+        this.AddHeader(["#", "name", "score"])  
+        this.DisplayScores()
+        
+        where.appendChild(this.lb)
+    }
+
+    DisplayScores(){
+
+
+        let scores = [1,2,3]        //dablica dwuwymiarowa tutaj wynik [(miejsce da sie z i+1)[nazwa][score]]
+        
+        for(;this.place < this.limit; this.place++){
+
+            this.tr = document.createElement("TR")
+            scores.forEach(element => {
+                let td =  document.createElement("TD")
+                td.innerText = element
+                this.tr.appendChild(td)
+            });
+            this.lb.appendChild(this.tr)
+        }
+
+    }
+
+    AddHeader(names){       //po każdym elemencie z tablicy tworzy inny td 
+
+        this.th = document.createElement("TH")
+        names.forEach(element => {
+            let td =  document.createElement("TD")
+            td.innerText = element
+            this.th.appendChild(td)
+        });
+        this.lb.appendChild(this.th)
+        
+    }
+
 
 }
 
