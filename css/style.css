@@ -133,6 +133,7 @@ body{
     padding: 0px;
     width: 80%;
     border-collapse: collapse;
+    border-right: var(--lb_border);
 }
 #popup .lb th, #popup .lb tr{
     display: grid;
@@ -155,7 +156,7 @@ body{
 }
 #popup .lb tr td{ 
     padding: 0px;
-    border-collapse: collapse;
+
     border: var(--lb_border);
 
 }
