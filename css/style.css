@@ -7,6 +7,8 @@
     --nav_2nd: #232121;
     --nav_1st: #cacdcf;
     --font:  #e0a13c;
+    --lb_border: 1px solid var(--nav_1st);
+    --lb_height: 25px;
     /* 2px solid */
 }
 ::-webkit-scrollbar{
@@ -126,7 +128,38 @@ body{
     display: block;
     background-color: #cacdcf70;
 }
+#popup .lb{
+    align-self: center;
+    padding: 0px;
+    width: 80%;
+    border-collapse: collapse;
+}
+#popup .lb th, #popup .lb tr{
+    display: grid;
+    grid-template-columns: 30px 1fr 100px;
+    padding: 0px;
+    height: var(--lb_height);
+    width: 100%;
+    text-align: center;
+    line-height: var(--lb_height);
+    font-size: 20px;
+    color: var(--nav_1st);
+    border-collapse: collapse;
+    border: var(--lb_border);
+}
+#popup .lb th td{ 
+    display: block; 
+    height: var(--lb_height);
+    color: var(--font);
+    border-collapse: collapse;
+    border: var(--lb_border);
+}
+#popup .lb tr td{ 
 
+    border-collapse: collapse;
+    border: var(--lb_border);
+
+}
 #popup .slider{
     user-select: none;
     cursor: pointer;
@@ -151,7 +184,7 @@ body{
     justify-self: center;
     margin-top: 20px;
     height: 3px;
-    width: 100%;       /* 100% - 20px z kółek */       
+    width: 100%;       /*do SASS 100% - 20px z kółek */       
     background-color: rgb(101, 99, 99);
 }
 #popup .slider_circle{  
