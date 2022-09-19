@@ -1,4 +1,4 @@
 <?php
 
 session_start()
-$con = mysqli_connect("localhost", "marekse", ");
+$con = mysqli_connect("localhost", "", "");
