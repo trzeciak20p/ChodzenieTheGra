@@ -128,6 +128,16 @@ body{
     display: block;
     background-color: #cacdcf70;
 }
+#popup .best_score{
+    display: block;
+    margin: 5px 0px;
+    width: 100%;
+    height: 30px;
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: var(--font);
+}
 #popup .lb{
     align-self: center;
     padding: 0px;

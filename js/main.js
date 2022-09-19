@@ -54,7 +54,7 @@ function Popup(button){
             break;
 
         case "leaderboard":     
-            new Leaderboard(popup, 50)
+            new Leaderboard(popup, 50, true)
             break;
 
         case "opcje":     
@@ -216,7 +216,12 @@ class Leaderboard{
 
     place = 0;
 
-    constructor(where, limit){
+    constructor(where, limit, best){
+
+        if(best){
+            this.DisplayBestScore(where)
+        }
+
         this.limit = limit
         this.lb = document.createElement("TABLE")       //tworzenie tabeli z wynikami
         this.lb.setAttribute("class", "lb")
@@ -229,7 +234,7 @@ class Leaderboard{
 
     DisplayScores(){
 
-
+        
         let scores = [1,2,3]        //dablica dwuwymiarowa tutaj wynik [(miejsce da sie z i+1)[nazwa][score]]
         
         for(;this.place < this.limit; this.place++){
@@ -243,6 +248,15 @@ class Leaderboard{
             this.lb.appendChild(this.tr)
         }
 
+    }
+
+    DisplayBestScore(where){      //pokazuje najlepszy wynik gracza
+
+        let score = 727     //zmienić na pobieranie z bazy danych
+        this.best_score = document.createElement("SPAN")
+        this.best_score.setAttribute("class", "best_score")
+        this.best_score.innerHTML = "your best: " + score
+        where.appendChild(this.best_score)
     }
 
     AddHeader(names){       //po każdym elemencie z tablicy tworzy inny td 
