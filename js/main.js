@@ -235,17 +235,20 @@ class Leaderboard{
     DisplayScores(){
 
         
-        let scores = [1,2,3]        //dablica dwuwymiarowa tutaj wynik [(miejsce da sie z i+1)[nazwa][score]]
+        let scores = [1,"Ola",727]        //dablica dwuwymiarowa tutaj wynik [(miejsce da sie z i+1)[nazwa][score]]
         
+
         for(;this.place < this.limit; this.place++){
 
             this.tr = document.createElement("TR")
+            
             scores.forEach(element => {
                 let td =  document.createElement("TD")
                 td.innerText = element
                 this.tr.appendChild(td)
-            });
+            });         
             this.lb.appendChild(this.tr)
+            scores = [2,1,37]        //do wywalenia
         }
 
     }
