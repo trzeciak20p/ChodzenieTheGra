@@ -1,4 +1,4 @@
-# Chodzenie The Gra
+# [Chodzenie The Gra](https://trzeciak20p.github.io/ChodzenieTheGra/)
 Gra w chodzenie ale szypkie takie. Prawie rytmiczna ale wsm nie do końca.
 
 ## Założenia
