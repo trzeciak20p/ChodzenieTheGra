@@ -23,6 +23,6 @@ Można grać bez konta, ale jest ono wymagane do przesyłania wyniku na leaderbo
 
 
 ## Podziękowania
-Dla Pada Michała za pomysł i bycie wspaniałym klientem.
-Dla [Pani Egzyste](https://www.vinted.pl/kobiety/akcesoria/inne-akcesoria-i-bizuteria/2230085847-narysuje-ciebie-lub-inna-postac) za najlepsze grafikowanie dostępne na rynku.
-Dla Pana Kuby, który już się przyczynił.
+- Dla Pana Michała za pomysł i bycie wspaniałym klientem.
+- Dla [Pani Egzyste](https://www.vinted.pl/kobiety/akcesoria/inne-akcesoria-i-bizuteria/2230085847-narysuje-ciebie-lub-inna-postac) za najlepsze grafikowanie dostępne na rynku.
+- Dla Pana Kuby, który już się przyczynił.
