@@ -2,12 +2,11 @@
 let GameSingleton = (function(){
     let instance        // tu zapisujemy instancje klasy
 
-    class Game {
+    class GameClass {
 
         window_w = window.innerWidth
         window_h = window.innerHeight
         world_urls = ["", "graphics/world/bg/bg", "graphics/world/groud/ground", "sound/music/song",]
-        bg_image = new Image()
         world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
         bpm = 50
         score = 0
@@ -24,9 +23,10 @@ let GameSingleton = (function(){
         RenderBG(){
             //Rysuje obecnie wybrany bg
             let url = this.world_urls[1] + this.world[0] + ".png";
-            this.bg_image.src = url;
-            this.bg_image.onload = () => {
-                ctx.drawImage(this.bg_image, 0, 0, canvas.width, canvas.height);
+            let image = new Image()
+            image.src = url;
+            image.onload = () => {
+                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
             };
         }
     
@@ -40,8 +40,8 @@ let GameSingleton = (function(){
 
         FeedUpdate(){
             this.feed.shift()
-            this.feed.push(RandomNumber(1,4))
-
+            this.feed.push(RandomNumber(1, 4))
+            // console.log(this.feed)
         }
 
         CanvasResize() {
@@ -50,13 +50,15 @@ let GameSingleton = (function(){
             this.window_h = window.innerHeight;
             canvas.setAttribute("height", this.window_h - 94);
             canvas.setAttribute("width", this.window_w);
-            this.RenderBG(); //zamienić na render ogólnie, abo potem wgl wywalić
+
+            this.RenderBG()//zamienić na render ogólnie, abo potem wgl wywalić
+
         }
     }
 
 
     function CreateInstance(){
-        let object = new Game()   
+        let object = new GameClass()   
         return object;  
     }
 
@@ -76,15 +78,19 @@ let GameSingleton = (function(){
 let Game = GameSingleton.getInstance()
 
 function RandomNumber(min, max){
-    return Math.random() * (max - min) + min;
+    return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
+console.log(GameSingleton)
 
 Game.RenderBG();
 Game.CanvasResize(); //dopasowywuje canvas przy uruchomieniu str
 Game.StartNewGame();
-window.addEventListener("resize", Game.CanvasResize);
+window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() });
   
+Game.FeedUpdate()
+Game.FeedUpdate()
+Game.FeedUpdate()
 Game.FeedUpdate()
 Game.FeedUpdate()
 Game.FeedUpdate()
