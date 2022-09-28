@@ -17,9 +17,9 @@ class Objectile{
         this.property = property
         this.speed = speed
         if(property <= 2){
-            this.pos_y = Game.window_h / 3 * 2
+            this.pos_y = Math.round(Game.window_h / 3 * 2)
         }else{
-            this.pos_y = Game.window_h / 3
+            this.pos_y = Math.round(Game.window_h / 3)
         }
     }
 
@@ -33,10 +33,6 @@ class Objectile{
         ctx.fillStyle = "rgb(220,12,12)"
         ctx.beginPath()
         ctx.fillRect(this.pos_x - 10, this.pos_y - 10, this.pos_x + 10, this.pos_y + 10)        
-    }
-
-    Delete(){
-        delete this
     }
 
 }

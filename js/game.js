@@ -16,7 +16,7 @@ let GameSingleton = (function(){
         StartNewGame() {
             this.bpm = 50; // ustawia startowe zmienne
             this.score = 0;
-            this.feed = new Array(5)
+            this.feed = new Array(0)
             this.game_state = true;
         }
 
@@ -39,9 +39,13 @@ let GameSingleton = (function(){
         }
 
         FeedUpdate(){
-            this.feed[0].Delete()
+            if(this.feed.length >= 5){
+                this.feed.shift()    
+            }
             this.feed.push(new Objectile(RandomNumber(1, 4)))      //do wywalenia
         }
+
+        
 
         CanvasResize() {
             //dopasowywuje rozmiar canvasa do okna
@@ -53,7 +57,6 @@ let GameSingleton = (function(){
             canvas.setAttribute("width", this.window_w);
 
             this.RenderBG()//zamienić na render ogólnie, abo potem wgl wywalić
-
         }
     }
 
@@ -82,8 +85,6 @@ function RandomNumber(min, max){
     return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
-console.log(GameSingleton)
-
 Game.RenderBG();
 Game.CanvasResize(); //dopasowywuje canvas przy uruchomieniu str
 Game.StartNewGame();
@@ -96,3 +97,4 @@ Game.FeedUpdate()
 Game.FeedUpdate()
 Game.FeedUpdate()
 
+console.log(Game.feed)
