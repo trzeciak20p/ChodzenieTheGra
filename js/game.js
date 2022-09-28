@@ -10,14 +10,17 @@ let GameSingleton = (function(){
         world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
         bpm = 50
         score = 0
+        refresh = 10
         feed //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
         game_state = false
-      
+        counter = 20
+
         StartNewGame() {
             this.bpm = 50; // ustawia startowe zmienne
             this.score = 0;
             this.feed = new Array(0)
             this.game_state = true;
+            this.MainLoop()
         }
 
         RenderBG(){
@@ -45,8 +48,6 @@ let GameSingleton = (function(){
             this.feed.push(new Objectile(RandomNumber(1, 4)))      //do wywalenia
         }
 
-        
-
         CanvasResize() {
             //dopasowywuje rozmiar canvasa do okna
             this.window_w = window.innerWidth;
@@ -58,6 +59,29 @@ let GameSingleton = (function(){
 
             this.RenderBG()//zamienić na render ogólnie, abo potem wgl wywalić
         }
+
+
+
+        MainLoop(){
+
+
+            this.RenderBG()
+            this.feed.forEach(elem => {
+                elem.UpdatePosition()
+            });
+
+            this.counter--      //chwilowy system wyłącznia gry
+            if(this.counter == 0){
+                this.game_state = false
+            }
+
+            requestAnimationFrame(this.MainLoop)
+            if(this.game_state){
+                setInterval(() => {this.MainLoop()}, this.refresh);
+            }
+        }
+
+
     }
 
 
