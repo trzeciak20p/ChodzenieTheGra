@@ -10,13 +10,13 @@ let GameSingleton = (function(){
         world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
         bpm = 50
         score = 0
-        feed = [0, 0, 0, 0, 0] //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
+        feed //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
         game_state = false
       
         StartNewGame() {
             this.bpm = 50; // ustawia startowe zmienne
             this.score = 0;
-            this.feed = [0, 0, 0, 0, 0];
+            this.feed = new Array(5)
             this.game_state = true;
         }
 
@@ -39,15 +39,16 @@ let GameSingleton = (function(){
         }
 
         FeedUpdate(){
-            this.feed.shift()
-            this.feed.push(RandomNumber(1, 4))
-            // console.log(this.feed)
+            this.feed[0].Delete()
+            this.feed.push(new Objectile(RandomNumber(1, 4)))      //do wywalenia
         }
 
         CanvasResize() {
             //dopasowywuje rozmiar canvasa do okna
             this.window_w = window.innerWidth;
             this.window_h = window.innerHeight;
+            this.line_up = this.window_h / 3
+            this.line_down = this.window_h / 3 * 2
             canvas.setAttribute("height", this.window_h - 94);
             canvas.setAttribute("width", this.window_w);
 
