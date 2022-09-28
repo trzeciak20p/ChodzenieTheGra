@@ -11,9 +11,10 @@ class Objectile{
     pos_x = Game.window_w
     property        //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
     speed
-    size = 10       //do wywalenia
+    size = 30       //do wywalenia
+    image
 
-    constructor(property, speed = 2){
+    constructor(property, speed = 1){
         this.property = property
         this.speed = speed
         if(property <= 2){
@@ -24,15 +25,14 @@ class Objectile{
     }
 
     UpdatePosition(){
-        this.pos_x -= this.speed
-        
+        this.pos_x -= this.speed       
         this.DrawObjectile()
     }
 
     DrawObjectile(){
         ctx.fillStyle = "rgb(220,12,12)"
         ctx.beginPath()
-        ctx.fillRect(this.pos_x - 10, this.pos_y - 10, this.pos_x + 10, this.pos_y + 10)        
+        ctx.fillRect(this.pos_x, this.pos_y, this.size, this.size)        
     }
 
 }

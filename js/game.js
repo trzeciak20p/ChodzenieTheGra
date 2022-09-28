@@ -10,10 +10,10 @@ let GameSingleton = (function(){
         world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
         bpm = 50
         score = 0
-        refresh = 10
+        refresh = 100
         feed //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
         game_state = false
-        counter = 20
+        counter = 40
 
         StartNewGame() {
             this.bpm = 50; // ustawia startowe zmienne
@@ -28,9 +28,8 @@ let GameSingleton = (function(){
             let url = this.world_urls[1] + this.world[0] + ".png";
             let image = new Image()
             image.src = url;
-            image.onload = () => {
-                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-            };
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
         }
     
         BpmUpdate() {    //wyświetla obecny bpm
@@ -75,8 +74,8 @@ let GameSingleton = (function(){
                 this.game_state = false
             }
 
-            requestAnimationFrame(this.MainLoop)
             if(this.game_state){
+                requestAnimationFrame(this.MainLoop)
                 setInterval(() => {this.MainLoop()}, this.refresh);
             }
         }
@@ -115,10 +114,10 @@ Game.StartNewGame();
 window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() });
   
 Game.FeedUpdate()
-Game.FeedUpdate()
-Game.FeedUpdate()
-Game.FeedUpdate()
-Game.FeedUpdate()
-Game.FeedUpdate()
+// Game.FeedUpdate()
+// Game.FeedUpdate()
+// Game.FeedUpdate()
+// Game.FeedUpdate()
+// Game.FeedUpdate()
 
 console.log(Game.feed)
