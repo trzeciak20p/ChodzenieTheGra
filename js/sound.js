@@ -5,6 +5,14 @@ document.addEventListener("keydown", function (event) {     //chwilowy input do 
     }
 })
 
+function Hitsound(){
+
+
+
+
+}
+
+
 const clock = new Tone.Clock(time => {
 	console.log(time);
 }, 1);

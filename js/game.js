@@ -11,17 +11,20 @@ let GameSingleton = (function(){
         world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
         bpm = 50
         score = 0
-        refresh = 20
-        feed //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
-        game_state = false
+        feed = []//nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
+        fps = 60
+        requestTime = 0      //milisecs inbetween each instance
         counter = 5000
+        game_state = false
 
         StartNewGame() {
             this.bpm = 50; // ustawia startowe zmienne
             this.score = 0;
             this.feed = new Array(0)
             this.game_state = true;
-            this.MainLoop()
+            this.requestTime = 0
+            let time = 0
+            this.MainLoop(time)
             Tone.start()
         }
 
@@ -64,24 +67,30 @@ let GameSingleton = (function(){
 
 
 
-        MainLoop(){
+        MainLoop(time){
 
-
-            this.RenderBG()     //wyświetlanie tła
-            this.feed.forEach(elem => {
-                elem.UpdatePosition()       //wyświetlanie przeszkód
-            });
-
-            this.counter--      //chwilowy system wyłącznia gry
-            if(this.counter == 0){
-                this.game_state = false
+            
+            if(time == this.fps){
+                this.RenderBG()     //wyświetlanie tła
+                this.feed.forEach(elem => {
+                    elem.UpdatePosition()       //wyświetlanie przeszkód
+                });
+                time = 0
             }
-            if(this.counter % 1000 == 1){
-                this.FeedUpdate()
-            }
+            
+
+            // this.counter--      //chwilowy system wyłącznia gry
+            // if(this.counter == 0){
+            //     this.game_state = false
+            // }
+            // if(this.counter % 1000 == 1){
+            //     this.FeedUpdate()
+            // }
+            console.log(time)
+            time += 1
             if(this.game_state){        //zapętlanie
-                requestAnimationFrame(this.MainLoop)
-                setInterval(() => {this.MainLoop()}, this.refresh);
+                requestAnimationFrame(this.MainLoop(time))
+                // setInterval(() => {this.MainLoop()}, this.refresh);
             }
         }
 
@@ -118,7 +127,8 @@ window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() }
 
 Game.RenderBG();
 Game.CanvasResize(); //dopasowywuje canvas przy uruchomieniu str
-// Game.StartNewGame();
+window.onload = () => {Game.StartNewGame()}
+
 
 Game.FeedUpdate()
 Game.FeedUpdate()
@@ -126,5 +136,7 @@ Game.FeedUpdate()
 // Game.FeedUpdate()
 // Game.FeedUpdate()
 // Game.FeedUpdate()
+
+
 
 console.log(Game.feed)

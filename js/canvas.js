@@ -1,8 +1,5 @@
 
 
-
-
-
 //zamiecić potem na realną grafike
 
 class Objectile{
