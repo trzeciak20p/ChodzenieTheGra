@@ -1,4 +1,6 @@
 
+// import * as Tone from 'tone'
+
 let GameSingleton = (function(){
     let instance        // tu zapisujemy instancje klasy
 
@@ -10,10 +12,10 @@ let GameSingleton = (function(){
         world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
         bpm = 50
         score = 0
-        refresh = 100
+        refresh = 60
         feed //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
         game_state = false
-        counter = 40
+        counter = 5000
 
         StartNewGame() {
             this.bpm = 50; // ustawia startowe zmienne
@@ -41,10 +43,11 @@ let GameSingleton = (function(){
         }
 
         FeedUpdate(){
-            if(this.feed.length >= 5){
+            if(this.feed.length >= 5){      //podzielić na tworzenie czasowe i usuwanie przy uderzeniu
                 this.feed.shift()    
             }
             this.feed.push(new Objectile(RandomNumber(1, 4)))      //do wywalenia
+            console.log("feeed")
         }
 
         CanvasResize() {
@@ -56,7 +59,7 @@ let GameSingleton = (function(){
             canvas.setAttribute("height", this.window_h - 94);
             canvas.setAttribute("width", this.window_w);
 
-            this.RenderBG()//zamienić na render ogólnie, abo potem wgl wywalić
+            this.RenderBG()
         }
 
 
@@ -64,17 +67,19 @@ let GameSingleton = (function(){
         MainLoop(){
 
 
-            this.RenderBG()
+            this.RenderBG()     //wyświetlanie tła
             this.feed.forEach(elem => {
-                elem.UpdatePosition()
+                elem.UpdatePosition()       //wyświetlanie przeszkód
             });
 
             this.counter--      //chwilowy system wyłącznia gry
             if(this.counter == 0){
                 this.game_state = false
             }
-
-            if(this.game_state){
+            if(this.counter % 1000 == 1){
+                this.FeedUpdate()
+            }
+            if(this.game_state){        //zapętlanie
                 requestAnimationFrame(this.MainLoop)
                 setInterval(() => {this.MainLoop()}, this.refresh);
             }
@@ -114,8 +119,8 @@ Game.StartNewGame();
 window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() });
   
 Game.FeedUpdate()
-// Game.FeedUpdate()
-// Game.FeedUpdate()
+Game.FeedUpdate()
+Game.FeedUpdate()
 // Game.FeedUpdate()
 // Game.FeedUpdate()
 // Game.FeedUpdate()
