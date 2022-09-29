@@ -14,7 +14,7 @@ class Objectile{
     size = 30       //do wywalenia
     image
 
-    constructor(property, speed = 1){
+    constructor(property, speed = 0.5){
         this.property = property
         this.speed = speed
         if(property <= 2){
