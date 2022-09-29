@@ -1,5 +1,4 @@
 
-// import * as Tone from 'tone'
 
 let GameSingleton = (function(){
     let instance        // tu zapisujemy instancje klasy
@@ -12,7 +11,7 @@ let GameSingleton = (function(){
         world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
         bpm = 50
         score = 0
-        refresh = 60
+        refresh = 20
         feed //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
         game_state = false
         counter = 5000
@@ -23,6 +22,7 @@ let GameSingleton = (function(){
             this.feed = new Array(0)
             this.game_state = true;
             this.MainLoop()
+            Tone.start()
         }
 
         RenderBG(){
@@ -113,11 +113,13 @@ function RandomNumber(min, max){
     return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
+
+window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() });
+
 Game.RenderBG();
 Game.CanvasResize(); //dopasowywuje canvas przy uruchomieniu str
-Game.StartNewGame();
-window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() });
-  
+// Game.StartNewGame();
+
 Game.FeedUpdate()
 Game.FeedUpdate()
 Game.FeedUpdate()
