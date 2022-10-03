@@ -1,122 +1,99 @@
 
 
-let GameSingleton = (function(){
-    let instance        // tu zapisujemy instancje klasy
 
-    class GameClass {
 
-        window_w = window.innerWidth
-        window_h = window.innerHeight
-        world_urls = ["", "graphics/world/bg/bg", "graphics/world/groud/ground", "sound/music/song",]
-        world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
-        bpm = 50
-        score = 0
-        feed = []//nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
-        fps = 60
-        requestTime = 0      //milisecs inbetween each instance
-        counter = 5000
-        game_state = false
+class GameClass {
 
-        StartNewGame() {
-            this.bpm = 50; // ustawia startowe zmienne
-            this.score = 0;
-            this.feed = new Array(0)
-            this.game_state = true;
-            this.requestTime = 0
-            let time = 0
-            this.MainLoop(time)
-            Tone.start()
-        }
+    window_w = window.innerWidth
+    window_h = window.innerHeight
+    world_urls = ["", "graphics/world/bg/bg", "graphics/world/groud/ground", "sound/music/song",]
+    world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
+    bpm = 50
+    score = 0
+    feed = []//nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
+    fps = 60
+    requestTime = 0      //milisecs inbetween each instance
+    counter = 5000
+    game_state = false
 
-        RenderBG(){
-            //Rysuje obecnie wybrany bg
-            let url = this.world_urls[1] + this.world[0] + ".png";
-            let image = new Image()
-            image.src = url;
-            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    StartNewGame() {
+        this.bpm = 50; // ustawia startowe zmienne
+        this.score = 0;
+        this.feed = new Array(0)
+        this.game_state = true;
+        this.requestTime = 0
+        let time = 0
+        this.MainLoop(time)
+        Tone.start()
+    }
 
-        }
+    RenderBG(){
+        //Rysuje obecnie wybrany bg
+        let url = this.world_urls[1] + this.world[0] + ".png";
+        let image = new Image()
+        image.src = url;
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    }
     
-        BpmUpdate() {    //wyświetla obecny bpm
-            nav[2].innerText = this.bpm;
+    BpmUpdate() {    //wyświetla obecny bpm
+        nav[2].innerText = this.bpm;
+    }
+
+    ScoreUpdate() {   //wyświetla obecną ilość punktów
+        nav[3].innerText = this.score;
+    }
+
+    FeedUpdate(){
+        if(this.feed.length >= 5){      //podzielić na tworzenie czasowe i usuwanie przy uderzeniu
+            this.feed.shift()    
         }
+        this.feed.push(new Objectile(RandomNumber(1, 4)))      //do wywalenia
+        console.log("feeed")
+    }
 
-        ScoreUpdate() {   //wyświetla obecną ilość punktów
-            nav[3].innerText = this.score;
-        }
-
-        FeedUpdate(){
-            if(this.feed.length >= 5){      //podzielić na tworzenie czasowe i usuwanie przy uderzeniu
-                this.feed.shift()    
-            }
-            this.feed.push(new Objectile(RandomNumber(1, 4)))      //do wywalenia
-            console.log("feeed")
-        }
-
-        CanvasResize() {
-            //dopasowywuje rozmiar canvasa do okna
-            this.window_w = window.innerWidth;
-            this.window_h = window.innerHeight;
-            this.line_up = this.window_h / 3
-            this.line_down = this.window_h / 3 * 2
-            canvas.setAttribute("height", this.window_h - 94);
-            canvas.setAttribute("width", this.window_w);
-
-            this.RenderBG()
-        }
-
-
-
-        MainLoop(time){
-
-            
-            if(time == this.fps){
-                this.RenderBG()     //wyświetlanie tła
-                this.feed.forEach(elem => {
-                    elem.UpdatePosition()       //wyświetlanie przeszkód
-                });
-                time = 0
-            }
-            
-
-            // this.counter--      //chwilowy system wyłącznia gry
-            // if(this.counter == 0){
-            //     this.game_state = false
-            // }
-            // if(this.counter % 1000 == 1){
-            //     this.FeedUpdate()
-            // }
-            console.log(time)
-            time += 1
-            if(this.game_state){        //zapętlanie
-                requestAnimationFrame(this.MainLoop(time))
-                // setInterval(() => {this.MainLoop()}, this.refresh);
-            }
-        }
-
-
+    CanvasResize() {
+        //dopasowywuje rozmiar canvasa do okna
+        this.window_w = window.innerWidth;
+        this.window_h = window.innerHeight;
+        this.line_up = this.window_h / 3
+        this.line_down = this.window_h / 3 * 2
+        canvas.setAttribute("height", this.window_h - 94);
+        canvas.setAttribute("width", this.window_w);
+        this.RenderBG()
     }
 
 
-    function CreateInstance(){
-        let object = new GameClass()   
-        return object;  
+
+    MainLoop(time){
+        
+        if(time == this.fps){
+            this.RenderBG()     //wyświetlanie tła
+            this.feed.forEach(elem => {
+                elem.UpdatePosition()       //wyświetlanie przeszkód
+            });
+            time = 0
+        }
+        
+        // this.counter--      //chwilowy system wyłącznia gry
+        // if(this.counter == 0){
+        //     this.game_state = false
+        // }
+        // if(this.counter % 1000 == 1){
+        //     this.FeedUpdate()
+        // }
+        console.log(time)
+        time += 1
+        if(this.game_state){        //zapętlanie
+            requestAnimationFrame(this.MainLoop(time))
+            // setInterval(() => {this.MainLoop()}, this.refresh);
+        }
+
     }
 
-    return{
-        getInstance: function(){
-            if(!instance){      //Jeśli nie ma instancji to ją tworzy
-                instance = CreateInstance()
-            }else{
-                console.log("jeden już istnieje")
-            }
-            return instance;        // W przeciwnym przypadku zwaraca już istniejącą
+}
 
-      }   
-    }
-})()
 
-let Game = GameSingleton.getInstance()
+let Game = new GameClass
 
 function RandomNumber(min, max){
     return Math.floor(Math.random() * (max + 1 - min) + min);
