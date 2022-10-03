@@ -9,22 +9,25 @@ document.addEventListener("keydown", function (event) {
     }
 })
 
-let Player = {
 
-    character_url: "",
-    character: 0,
+class PlayerClass{
 
+    character_url = ""
+    character = 0
 
 
     Jump(){
         console.log("jump")
     
-    },
+    }
     
     Duck(){
         console.log("duck")
     
     
     }
+    
 }
 
+
+let Player = new PlayerClass()
