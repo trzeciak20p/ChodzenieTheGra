@@ -4,16 +4,16 @@
 
 class Objectile{
 
-    pos_y
-    pos_x = Game.window_w
-    property        //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
-    speed
-    size = 30       //do wywalenia
-    image
+    
 
-    constructor(property, speed = 0.5){
-        this.property = property
+    constructor(property, speed = 4){
+        this.pos_y
+        this.pos_x = Game.window_w
+        this.property        //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
         this.speed = speed
+        this.size = 30       //do wywalenia
+        this.image
+
         if(property <= 2){
             this.pos_y = Math.round(Game.window_h / 3 * 2)
         }else{

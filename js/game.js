@@ -4,27 +4,30 @@
 
 class GameClass {
 
-    window_w = window.innerWidth
-    window_h = window.innerHeight
-    world_urls = ["", "graphics/world/bg/bg", "graphics/world/groud/ground", "sound/music/song",]
-    world =  [0, 0, 0, 0] //character, ground, song    (inaczej sie nie da, assocjacyjna zawiodła :c )
-    bpm = 50
-    score = 0
-    feed = []//nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
-    fps = 60
-    counter = 5000
-    game_state = false
+    
+
+    constructor(){
+        this.window_w = window.innerWidth
+        this.window_h = window.innerHeight
+        this.world_urls = ["", "graphics/world/bg/bg", "graphics/world/groud/ground", "sound/music/song",]
+        this.world =  [0, 0, 0, 0]       //character, ground, song (inaczej sie nie da, assocjacyjna zawiodła :c )
+        this.bpm = 50
+        this.score = 0
+        this.feed = []       //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
+        this.fps = 60
+        this.game_state = false
+    }
 
     StartNewGame() {
         this.bpm = 50; // ustawia startowe zmienne
         this.score = 0;
         this.feed = new Array(0)
         this.game_state = true;
-        Tone.start()
-        console.log("New game started")
         
-        Time.UpdateThen()
+        Tone.start()
+        Time.UpdateThen()   
 
+        console.log("New game started")
         this.MainLoop()
     }
 
@@ -65,20 +68,23 @@ class GameClass {
 
 
 
-    MainLoop(){
-        
+    MainLoop(){    
 
         Time.UpdateElapsed()
-        if( Time.elapsed > 1000 / this.fps){
+        
+        if(Time.elapsed > 1000 / this.fps){
             this.RenderBG()     //wyświetlanie tła
             this.feed.forEach(elem => {
                 elem.UpdatePosition()       //wyświetlanie przeszkód
             });
-            console.log(Time.elapsed)
 
-            Time.UpdateThen(this)
+            Time.UpdateThen()
+        }
+        if(Time.elapsed > 1000 / this.fps + 60){        //tu jakaś funkcja na czas czy coś
+            this.FeedUpdate()
         }
         
+
         // this.counter--      //chwilowy system wyłącznia gry
         // if(this.counter == 0){
         //     this.game_state = false
@@ -90,14 +96,14 @@ class GameClass {
 
         
         if(this.game_state){        //zapętlanie
-            requestAnimationFrame(this.MainLoop())
+            requestAnimationFrame(this.MainLoop.bind(this))
         }
 
     }
 
 }
 
-let Game = new GameClass
+let Game = new GameClass()
 
 function RandomNumber(min, max){
     return Math.floor(Math.random() * (max + 1 - min) + min);
