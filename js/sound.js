@@ -12,10 +12,12 @@ const clock = new Tone.Clock(time => {
     }  
 }, 1);
 
-const kicks = new Tone.Player({
-    url: "../sound/kick.mp3",
+try{
+let kicks = new Tone.Player({
+    url: "https://github.com/trzeciak20p/ChodzenieTheGra/tree/main/sound/kick.mp3",
     autostart: true,
-});
+}).toDestination()
+}catch{}
 
 class SoundClass{
 
@@ -23,7 +25,7 @@ class SoundClass{
     constructor(){}
 
     GameStart(){
-        kicks.startLoop()
+        // kicks.start()
         clock.start();
 
     }
