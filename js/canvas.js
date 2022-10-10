@@ -4,9 +4,7 @@
 
 class Objectile{
 
-    
-
-    constructor(property, speed = 4){
+    constructor(property, speed = 8){
         this.pos_y
         this.pos_x = Game.window_w
         this.property        //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
