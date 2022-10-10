@@ -1,10 +1,5 @@
 
-
-
-
 class GameClass {
-
-    
 
     constructor(){
         this.window_w = window.innerWidth
@@ -80,20 +75,9 @@ class GameClass {
 
             Time.UpdateThen()
         }
-        if(Time.elapsed > 1000 / this.fps + 60){        //tu jakaś funkcja na czas czy coś
+        if(Time.elapsed > 1000 / this.fps + 60){        //to zmienić żeby było na zegarze
             this.FeedUpdate()
         }
-        
-
-        // this.counter--      //chwilowy system wyłącznia gry
-        // if(this.counter == 0){
-        //     this.game_state = false
-        // }
-        // if(this.counter % 1000 == 1){
-        //     this.FeedUpdate()
-        // }
-
-
         
         if(this.game_state){        //zapętlanie
             requestAnimationFrame(this.MainLoop.bind(this))
@@ -112,17 +96,13 @@ function RandomNumber(min, max){
 
 window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() });
 
+
 Game.RenderBG();
 Game.CanvasResize(); //dopasowywuje canvas przy uruchomieniu str
 // window.onload = () => {Game.StartNewGame()}
 Game.StartNewGame()
 
 Game.FeedUpdate()
-Game.FeedUpdate()
-Game.FeedUpdate()
-// Game.FeedUpdate()
-// Game.FeedUpdate()
-// Game.FeedUpdate()
 
 
 
