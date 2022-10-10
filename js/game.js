@@ -12,7 +12,6 @@ class GameClass {
     score = 0
     feed = []//nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
     fps = 60
-    requestTime = 0      //milisecs inbetween each instance
     counter = 5000
     game_state = false
 
@@ -21,10 +20,12 @@ class GameClass {
         this.score = 0;
         this.feed = new Array(0)
         this.game_state = true;
-        this.requestTime = 0
-        let time = 0
-        this.MainLoop(time)
         Tone.start()
+        console.log("New game started")
+        
+        Time.UpdateThen()
+
+        this.MainLoop()
     }
 
     RenderBG(){
@@ -64,14 +65,18 @@ class GameClass {
 
 
 
-    MainLoop(time){
+    MainLoop(){
         
-        if(time == this.fps){
+
+        Time.UpdateElapsed()
+        if( Time.elapsed > 1000 / this.fps){
             this.RenderBG()     //wyświetlanie tła
             this.feed.forEach(elem => {
                 elem.UpdatePosition()       //wyświetlanie przeszkód
             });
-            time = 0
+            console.log(Time.elapsed)
+
+            Time.UpdateThen(this)
         }
         
         // this.counter--      //chwilowy system wyłącznia gry
@@ -81,17 +86,16 @@ class GameClass {
         // if(this.counter % 1000 == 1){
         //     this.FeedUpdate()
         // }
-        console.log(time)
-        time += 1
+
+
+        
         if(this.game_state){        //zapętlanie
-            requestAnimationFrame(this.MainLoop(time))
-            // setInterval(() => {this.MainLoop()}, this.refresh);
+            requestAnimationFrame(this.MainLoop())
         }
 
     }
 
 }
-
 
 let Game = new GameClass
 
@@ -104,8 +108,8 @@ window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() }
 
 Game.RenderBG();
 Game.CanvasResize(); //dopasowywuje canvas przy uruchomieniu str
-window.onload = () => {Game.StartNewGame()}
-
+// window.onload = () => {Game.StartNewGame()}
+Game.StartNewGame()
 
 Game.FeedUpdate()
 Game.FeedUpdate()
