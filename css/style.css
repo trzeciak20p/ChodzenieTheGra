@@ -213,6 +213,21 @@ body{
 #popup .slider:hover .slider_circle{
     background-color: #e3be83;
 }
+#popup .clock{
+    display: flex;
+    align-self: flex-end;
+    flex-basis: 100%;
+    margin-right: 10%;
+
+}
+#popup .clock div{
+    margin-bottom: 10px;
+    align-self: flex-end;
+    height: 30px;
+    color: var(--nav_1st);
+    font-size: 30px;
+}   
+
 nav{
     display: grid;
     margin: 0px;

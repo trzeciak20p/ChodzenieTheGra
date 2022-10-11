@@ -17,7 +17,7 @@ popup_display.addEventListener("click", () => {
     if(x >= rect.x && x <= rect.x + rect.width &&  y >= rect.y && y <= rect.y + rect.height){       //sprawdzanie czy myszka jest w obrębie popu-pa
     }else{
         popup_display.style.display = "none"        //jak nie to zamknięcie popupa
-        
+        clearInterval(Time.clockInterval)       //usuwanie interwału z zegara
     }
     
 })
@@ -31,7 +31,10 @@ ctx.imageSmoothingEnabled = false;
 function Popup(button){
     popup_display.style.display = "flex"        //pokazuje popupa
     popup.innerHTML = '<div class="header"><span>' + button + '</span><input id="popup_close" type="button" value="X"></div>'       //dodaje guziczek
-    document.getElementById("popup_close").addEventListener("click", () => {popup_display.style.display = "none"})      //Zamykanie pop-up'a
+    document.getElementById("popup_close").addEventListener("click", () => {
+        popup_display.style.display = "none"        //Zamykanie pop-up'a
+        clearInterval(Time.clockInterval)       //usuwanie interwału z zegara
+    })      
     switch (button) {
         case "login":     
             
@@ -60,6 +63,7 @@ function Popup(button){
         case "opcje":     
             new Slider(popup, "music volume")   //dodanie sliderów
             new Slider(popup, "effects volume")
+            Time.CreateClock(popup)
             break;
 
         default:
