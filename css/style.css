@@ -215,9 +215,11 @@ body{
 }
 #popup .clock{
     display: flex;
+    justify-content: space-between;
     align-self: flex-end;
     flex-basis: 100%;
     margin-right: 10%;
+    width: 80%;
 
 }
 #popup .clock div{
