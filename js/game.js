@@ -5,10 +5,12 @@ class GameClass {
         this.window_w = window.innerWidth
         this.window_h = window.innerHeight
         this.world_urls = ["", "graphics/world/bg/bg", "graphics/world/groud/ground", "sound/music/song",]
-        this.world =  [0, 0, 0, 0]       //character, ground, song (inaczej sie nie da, assocjacyjna zawiodła :c )
+        this.world =  [0, 0, 0, 0]       //character, bg, ground, song (inaczej sie nie da, assocjacyjna zawiodła :c )
+        this.bg_image = new Image()
+
         this.bpm = 50
         this.score = 0
-        this.feed = []       //nadciągający przeciwnicy 0 - brak,  1 - dół-unik, 2 - dół-atak, 3 - góra-unik, 4 - góra-atak
+        this.feed = []       //nadciągający przeciwnicy 0 - brak, 1 - góra-atak, 2 - góra-unik, 3 - dół-atak, 4 - dół-unik,
         this.fps = 60
         this.game_state = false
     }
@@ -28,10 +30,9 @@ class GameClass {
 
     RenderBG(){
         //Rysuje obecnie wybrany bg
-        let url = this.world_urls[1] + this.world[0] + ".png";
-        let image = new Image()
-        image.src = url;
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        
+        this.bg_image.src = this.world_urls[1] + this.world[1] + ".png";
+        ctx.drawImage(this.bg_image, 0, 0, canvas.width, canvas.height);
     }
     
     BpmUpdate() {    //wyświetla obecny bpm
@@ -47,7 +48,7 @@ class GameClass {
             this.feed.shift()    
         }
         this.feed.push(new Objectile(RandomNumber(1, 4)))      //do wywalenia
-        console.log("feeed")
+        // console.log("feeed")
     }
 
     CanvasResize() {
@@ -75,7 +76,7 @@ class GameClass {
 
             Time.UpdateThen()
         }
-        if(Time.elapsed > 1000 / this.fps + 60){        //to zmienić żeby było na zegarze
+        if(Time.elapsed > 1000 / this.fps * 2){        //to zmienić żeby było na zegarze
             this.FeedUpdate()
         }
         
@@ -100,7 +101,7 @@ window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() }
 Game.RenderBG();
 Game.CanvasResize(); //dopasowywuje canvas przy uruchomieniu str
 // window.onload = () => {Game.StartNewGame()}
-Game.StartNewGame()
+// Game.StartNewGame()
 
 Game.FeedUpdate()
 
