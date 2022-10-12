@@ -170,7 +170,7 @@ class Button{
         this.btn.appendChild(document.createElement("DIV"))     //div do podświetlania buttona przy najechaniu
         this.btn.addEventListener("click", () => {
             if(functn == 0){
-                Player.character = number
+                Player.character = number       //zmiana postaci
             }else{
                 Game.world[functn] = number     //zmiana tego co trzeba na to co trzeba
             }

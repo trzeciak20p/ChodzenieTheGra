@@ -32,7 +32,7 @@ class Objectile{
     }
 
     DrawObjectile(){
-        ctx.drawImage(this.graphic[this.property-1], this.pos_x, this.pos_y, this.size, this.size) 
+        ctx.drawImage(this.graphic[this.property-1], this.pos_x, this.pos_y, this.size, this.size)      // może dodać responsywność
 
 
         // ctx.fillStyle = "rgb(220,12,12)"

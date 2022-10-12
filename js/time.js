@@ -6,7 +6,6 @@ class TimeClass{
         this.date = new Date() 
         this.elapsed = 0
         this.then = Date.now()
-        console.log(this.date,this.elapsed,this.then)
     }
     
     UpdateElapsed(){

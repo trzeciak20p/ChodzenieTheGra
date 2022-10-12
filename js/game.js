@@ -57,7 +57,7 @@ class GameClass {
                 ctx.fillText(this.score, canvas.width / 2 , 170)
             }
             ctx.font = (this.pause_hint_font_size + 10) + "px ArcadeClassic"
-            ctx.fillText("Press space to start new game", canvas.width / 2 , canvas.height - 100)
+            ctx.fillText("Press  space  to  start new  game", canvas.width / 2 , canvas.height - 100)
             
             if(this.pause_hint_font_size <= 20){        //migotanie wiadomości    
                 this.pause_hint_font = true
