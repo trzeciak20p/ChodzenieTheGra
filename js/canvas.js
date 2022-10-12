@@ -20,9 +20,9 @@ class Objectile{
         this.graphic = [this.blue_box, this.pink_bomb, this.pink_box, this.blue_bomb]
 
         if(this.property == 1 || this.property == 2){
-            this.pos_y = Math.round(Game.window_h / 3)      //góra
+            this.pos_y = Math.round(Game.window_h / 4 - this.size)      //góra
         }else{
-            this.pos_y = Math.round(Game.window_h / 3 * 2)  //dół
+            this.pos_y = Math.round(Game.window_h / 3 * 2 - this.size)  //dół
         }
     }
 
