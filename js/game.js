@@ -45,7 +45,7 @@ class GameClass {
     PauseScreen(){
            
         Time.UpdateElapsed()
-        if(Time.elapsed > 1000 / this.fps * 3){
+        if(Time.elapsed > 1000 / this.fps * 2.5){
             ctx.fillStyle = "#2d2d2d"
             ctx.fillRect(0, 0, canvas.width, canvas.height)
             ctx.fillStyle = "#e0a13c"
@@ -54,7 +54,7 @@ class GameClass {
 
             if(!this.pierwsza_gra){       //sprawdzanie czy własnie uruchomiono grze czy użytkownik już przegrałs
                 ctx.fillText("Score:", canvas.width / 2 , 100)
-                ctx.fillText(this.score, canvas.width/ 2 , 170)
+                ctx.fillText(this.score, canvas.width / 2 , 170)
             }
             ctx.font = (this.pause_hint_font_size + 10) + "px ArcadeClassic"
             ctx.fillText("Press space to start new game", canvas.width / 2 , canvas.height - 100)
@@ -114,6 +114,9 @@ class GameClass {
         
         if(Time.elapsed > 1000 / this.fps){
             this.RenderBG()     //wyświetlanie tła
+            
+            Player.DrawChar(this.fps)
+
             this.feed.forEach(elem => {
                 elem.UpdatePosition()       //wyświetlanie przeszkód
             });
