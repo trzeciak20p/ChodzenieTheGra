@@ -25,8 +25,11 @@ popup_display.addEventListener("click", () => {
 const canvas = document.getElementById("main_canvas")       //canvas stuff
 const ctx = canvas.getContext("2d")
 let c_rect = canvas.getBoundingClientRect()
-ctx.filter = 'blur(0px)';
-ctx.imageSmoothingEnabled = false;
+ctx.filter = 'blur(0px)'
+ctx.imageSmoothingEnabled = false
+ctx.fillStyle = "#e0a13c"
+ctx.font = "100px ArcadeClassic"
+ctx.textAlign = "center"
 
 function Popup(button){
     popup_display.style.display = "flex"        //pokazuje popupa
