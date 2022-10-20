@@ -148,13 +148,21 @@ function RandomNumber(min, max){
 
 
 window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() });
+canvas.addEventListener("click", () => {
+    if(Game.game_state){
+        if(GetMousePos()[0] >= canvas.width / 2 && Player.state != "jump"){     //kontrolki na telefon
+            Player.state = "jump"
+            Player.frame_counter = 0
+        }else if(GetMousePos()[0] < canvas.width / 2 && Player.state != "duck"){
+             Player.state = "duck"
+            Player.frame_counter = 0
+        }
+    }else{      //start gry na telefon
+        Game.StartNewGame()
+    }
+})
 
 
-//dopasowywuje canvas przy uruchomieniu str
-// window.onload = () => {Game.StartNewGame()}
-// Game.StartNewGame()
-
-
-Game.FeedUpdate()
+Game.FeedUpdate()       // to ma nie być potem
 
 console.log(Game.feed)
