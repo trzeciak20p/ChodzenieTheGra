@@ -63,7 +63,7 @@ class PlayerClass{
     Jump(){
         
         if(Time.elapsed > 1000 / this.fps ){
-            this.frame.src = "graphics/animations/walking.png"      //zmiana klatek na chodzeniowe
+            this.frame.src = "graphics/animations/walking"+ this.character +".png"  //zmiana klatek na chodzeniowe
             
             if(this.frame_counter <= 3){     //podskok
                 this.pos_y = 100 +  (canvas.height / 3 * 2 - canvas.height / 4 ) / this.frame_counter 
@@ -111,7 +111,7 @@ class PlayerClass{
 
 
         if(Time.elapsed > 1000 / this.fps ){
-            this.frame.src = "graphics/animations/walking.png"      //zmiana klatek na chodzeniowe
+            this.frame.src = "graphics/animations/walking"+ this.character +".png"      //zmiana klatek na chodzeniowe
             ctx.drawImage(this.frame, this.walk_frame_size[0] * Math.floor(this.frame_counter / 2), 0, this.walk_frame_size[0], this.walk_frame_size[1]  , this.pos_x, canvas.height / 3 * 2, this.walk_frame_size[0] * 5, this.walk_frame_size[1] * 5)         
             //Math.floor (frame / 2) zmniejsza prędkość renderu 2krotnie
 
