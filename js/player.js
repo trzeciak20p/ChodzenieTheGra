@@ -9,9 +9,8 @@ document.addEventListener("keydown", function (event) {
     }else if(event.code == "KeyS" || event.code == "ArrowDown"){
         event.preventDefault()
         if(Game.game_state && Player.state != "duck"){
-            Player.Duck()
+            Player.state = "duck"
             Player.frame_counter = 1
-
         }
     }else if(event.code == "Space"){
         event.preventDefault()
@@ -32,9 +31,11 @@ class PlayerClass{
         this.pos_y = canvas.height
         this.walk_frame_size = [20, 12]     //rozmiar klatki w przypadku chodzenia
         this.jump_frame_size = [20, 12]
+        this.duck_frame_size = [20, 12]
         this.frame = new Image()
         this.frame_counter = 1
         this.state = "walking"
+        this.prev_state = ""
     }
     
     DrawChar(fps){
@@ -81,6 +82,11 @@ class PlayerClass{
             
             ctx.drawImage(this.frame, this.jump_frame_size[0] , 0, this.jump_frame_size[0], this.jump_frame_size[1]  , this.pos_x, this.pos_y, this.jump_frame_size[0] * 5, this.jump_frame_size[1] * 5)         
 
+
+            if(this.prev_state != "jump"){
+                this.prev_state = "jump"
+            }
+
             this.frame_counter++
             if(this.frame_counter > 20){     //zmiana klatek animacji
                 this.frame_counter = 0
@@ -97,12 +103,19 @@ class PlayerClass{
     Duck(){
         
         console.log("ae")
-    
+        this.pos_y = canvas.height / 3 * 2
+
+        ctx.drawImage(this.frame, this.duck_frame_size[0] , 0, this.duck_frame_size[0], this.duck_frame_size[1]  , this.pos_x, this.pos_y, this.duck_frame_size[0] * 5, this.duck_frame_size[1] * 5)         
+
+        if(this.prev_state != "duck"){
+            this.prev_state = "duck"
+        }
 
         this.frame_counter++
             if(this.frame_counter >= 14){     //zmiana klatek animacji
                 this.frame_counter = 0
-            }
+                this.state = "walking"
+        }
     }
     
 
@@ -114,6 +127,11 @@ class PlayerClass{
             this.frame.src = "graphics/animations/walking"+ this.character +".png"      //zmiana klatek na chodzeniowe
             ctx.drawImage(this.frame, this.walk_frame_size[0] * Math.floor(this.frame_counter / 2), 0, this.walk_frame_size[0], this.walk_frame_size[1]  , this.pos_x, canvas.height / 3 * 2, this.walk_frame_size[0] * 5, this.walk_frame_size[1] * 5)         
             //Math.floor (frame / 2) zmniejsza prędkość renderu 2krotnie
+
+
+            if(this.prev_state != "walking"){
+                this.prev_state = "walking"
+            }
 
             this.frame_counter++
             if(this.frame_counter >= 14){     //zmiana klatek animacji
