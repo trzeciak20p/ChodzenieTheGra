@@ -76,7 +76,7 @@ class PlayerClass{
         
             }
             this.pos_y -= 20
-            console.log(this.frame_counter, this.pos_y)
+            // console.log(this.frame_counter, this.pos_y)
             
     
             
@@ -101,20 +101,22 @@ class PlayerClass{
     }
     
     Duck(){
-        
-        console.log("ae")
-        this.pos_y = canvas.height / 3 * 2
 
-        ctx.drawImage(this.frame, this.duck_frame_size[0] , 0, this.duck_frame_size[0], this.duck_frame_size[1]  , this.pos_x, this.pos_y, this.duck_frame_size[0] * 5, this.duck_frame_size[1] * 5)         
+        if(Time.elapsed > 1000 / this.fps ){
+            this.frame.src = "graphics/animations/duck"+ this.character +".png"  //zmiana klatek na kucanie
+            this.pos_y = canvas.height / 3 * 2
+            console.log('ae')
+            ctx.drawImage(this.frame, this.duck_frame_size[0] * Math.floor(this.frame_counter / 2) , 0, this.duck_frame_size[0], this.duck_frame_size[1]  , this.pos_x, this.pos_y, this.duck_frame_size[0] * 5, this.duck_frame_size[1] * 5)         
 
-        if(this.prev_state != "duck"){
-            this.prev_state = "duck"
-        }
+            if(this.prev_state != "duck"){
+                this.prev_state = "duck"
+            }
 
-        this.frame_counter++
-            if(this.frame_counter >= 14){     //zmiana klatek animacji
-                this.frame_counter = 0
-                this.state = "walking"
+            this.frame_counter++
+                if(this.frame_counter >= 14){     //zmiana klatek animacji
+                    this.frame_counter = 0
+                    this.state = "walking"
+            }
         }
     }
     
