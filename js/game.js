@@ -29,7 +29,8 @@ class GameClass {
         this.feed = new Array(0)
         this.game_state = true;
         
-        Tone.start()
+        Sound.StartNewGame()
+        Tone.start()        //do późniejszej zmiany?
         Time.UpdateThen()   
 
         console.log("New game started")
@@ -123,11 +124,6 @@ class GameClass {
 
             Time.UpdateThen()
         }
-        if(Time.elapsed > 1000 / this.fps * 2){        //to zmienić żeby było na zegarze
-            this.FeedUpdate()
-        }
-
-        
         
         if(this.game_state){        //zapętlanie
             requestAnimationFrame(this.MainLoop.bind(this))
@@ -154,14 +150,14 @@ canvas.addEventListener("click", () => {
             Player.state = "jump"
             Player.frame_counter = 0
         }else if(GetMousePos()[0] < canvas.width / 2 && Player.state != "duck"){
-             Player.state = "duck"
+            Player.state = "duck"
             Player.frame_counter = 0
         }
     }else{      //start gry na telefon
         Game.StartNewGame()
     }
-})
 
+})
 
 Game.FeedUpdate()       // to ma nie być potem
 
