@@ -9,7 +9,7 @@ const clock = new Tone.Clock(time => {
 
 let kicks = new Tone.Player({
     url: "https://chodzeniethegra.zsti.me/sound/kick.mp3",
-    autostart: true,
+    // autostart: true,
 }).toDestination()
 
 

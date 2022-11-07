@@ -40,7 +40,7 @@ function Popup(button){
     })      
     switch (button) {
         case "login":     
-            
+            new Form(popup)
             break;
 
         case "customize": 
