@@ -113,7 +113,6 @@ class GameClass {
         this.line_down = this.window_h / 3 * 2
         canvas.setAttribute("height", this.window_h - 94);
         canvas.setAttribute("width", this.window_w);
-        this.RenderBG()
     }
 
     DrawHitLine(){
@@ -155,7 +154,7 @@ function RandomNumber(min, max){
 }
 
 
-window.addEventListener("resize", () => { Game.CanvasResize(); Game.RenderBG() });
+window.addEventListener("resize", () => { Game.CanvasResize() });
 canvas.addEventListener("click", () => {
     if(Game.game_state){
         if(GetMousePos()[0] >= canvas.width / 2 && Player.state != "jump"){     //kontrolki na telefon
