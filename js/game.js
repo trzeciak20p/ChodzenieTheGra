@@ -98,9 +98,9 @@ class GameClass {
     }
 
     FeedUpdate(){
-        if(this.feed.length >= 5){      //podzielić na tworzenie czasowe i usuwanie przy uderzeniu
-            this.feed.shift()    
-        }
+        // if(this.feed.length >= 5){      //podzielić na tworzenie czasowe i usuwanie przy uderzeniu
+        //     this.feed.shift()    
+        // }
         this.feed.push(new Objectile(RandomNumber(1, 4)))      //do wywalenia
         // console.log("feeed")
     }
@@ -117,7 +117,7 @@ class GameClass {
 
     DrawHitLine(){
         ctx.fillStyle = "#2d2d2d"
-        ctx.fillRect(Player.pos_x + 200, 0, 5, canvas.height)
+        ctx.fillRect(Player.pos_x + 300, 0, 5, canvas.height)
     }
 
 

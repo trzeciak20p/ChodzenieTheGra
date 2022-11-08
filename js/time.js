@@ -58,3 +58,4 @@ class TimeClass{
 }
 
 let Time = new TimeClass()
+let HitWindows = new TimeClass()
