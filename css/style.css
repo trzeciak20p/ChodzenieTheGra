@@ -354,5 +354,5 @@ main canvas{
     image-rendering: -webkit-crisp-edges;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-
+    background-color: #2d2d2d;
 }
