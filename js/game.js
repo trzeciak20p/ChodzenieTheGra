@@ -29,6 +29,9 @@ class GameClass {
         this.feed = new Array(0)
         this.game_state = true;
         
+        this.ScoreUpdate()
+        this.BpmUpdate()
+
         Sound.StartNewGame()
         Tone.start()        //do późniejszej zmiany?
         Time.UpdateThen()   
@@ -80,11 +83,17 @@ class GameClass {
         }
     }
     
-    BpmUpdate() {    //wyświetla obecny bpm
+    BpmUpdate(add){    //wyświetla obecny bpm
+        if(typeof add !== "undefined"){
+            this.bpm += add
+        }
         nav[2].innerText = this.bpm;
     }
 
-    ScoreUpdate() {   //wyświetla obecną ilość punktów
+    ScoreUpdate(add){   //wyświetla obecną ilość punktów z dodawaniem
+        if(typeof add !== "undefined"){
+            this.score += add
+        }
         nav[3].innerText = this.score;
     }
 
@@ -114,8 +123,7 @@ class GameClass {
         Time.UpdateElapsed()
         
         if(Time.elapsed > 1000 / this.fps){
-            this.RenderBG()     //wyświetlanie tła
-            
+            this.RenderBG()     //wyświetlanie tła          
             Player.DrawChar(this.fps)
 
             this.feed.forEach(elem => {
