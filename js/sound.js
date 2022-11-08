@@ -20,10 +20,7 @@ class SoundClass{
     StartNewGame(){
         // kicks.start()
         clock.start();
-
     }
-
-
 
 }
 

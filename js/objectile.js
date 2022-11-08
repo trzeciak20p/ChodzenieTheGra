@@ -27,8 +27,15 @@ class Objectile{
     }
 
     UpdatePosition(){
-        this.pos_x -= this.speed       
+        this.pos_x -= this.speed
+        this.DeathCheck()    
         this.DrawObjectile()
+    }
+
+    DeathCheck(){
+        if(this.pos_x < Player.pos_x + 200 - this.size){
+            Game.game_state = false
+        }
     }
 
     DrawObjectile(){

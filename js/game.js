@@ -23,7 +23,7 @@ class GameClass {
         this.PauseScreen(true)
     }
 
-    StartNewGame() {
+    StartNewGame(){
         this.bpm = 50; // ustawia startowe zmienne
         this.score = 0;
         this.feed = new Array(0)
@@ -105,7 +105,7 @@ class GameClass {
         // console.log("feeed")
     }
 
-    CanvasResize() {
+    CanvasResize(){
         //dopasowywuje rozmiar canvasa do okna
         this.window_w = window.innerWidth;
         this.window_h = window.innerHeight;
@@ -116,6 +116,10 @@ class GameClass {
         this.RenderBG()
     }
 
+    DrawHitLine(){
+        ctx.fillStyle = "#2d2d2d"
+        ctx.fillRect(Player.pos_x + 200, 0, 5, canvas.height)
+    }
 
 
     MainLoop(){    
@@ -125,7 +129,7 @@ class GameClass {
         if(Time.elapsed > 1000 / this.fps){
             this.RenderBG()     //wyświetlanie tła          
             Player.DrawChar(this.fps)
-
+            this.DrawHitLine()
             this.feed.forEach(elem => {
                 elem.UpdatePosition()       //wyświetlanie przeszkód
             });
