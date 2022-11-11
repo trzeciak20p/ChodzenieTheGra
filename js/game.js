@@ -10,7 +10,6 @@ class GameClass {
 
         this.bpm = 50
         this.score = 0
-        this.feed = []       //nadciągający przeciwnicy 0 - brak, 1 - góra-atak, 2 - góra-unik, 3 - dół-atak, 4 - dół-unik,
         this.fps = 60
         this.game_state = false
 
@@ -26,7 +25,7 @@ class GameClass {
     StartNewGame(){
         this.bpm = 50; // ustawia startowe zmienne
         this.score = 0;
-        this.feed = new Array(0)
+        Objectile.feed = new Array(0)
         this.game_state = true;
         
         this.ScoreUpdate()
@@ -40,13 +39,12 @@ class GameClass {
         this.MainLoop()
     }
 
-    RenderBG(){
-        //Rysuje obecnie wybrany bg
+    RenderBG(){         //Rysuje obecnie wybrany bg 
         this.bg_image.src = this.world_urls[1] + this.world[1] + ".png";
         ctx.drawImage(this.bg_image, 0, 0, canvas.width, canvas.height);
     }
 
-    PauseScreen(){
+    PauseScreen(){          //wyświetlanie ekranu pauzy
            
         Time.UpdateElapsed()
         if(Time.elapsed > 1000 / this.fps * 2.5){
@@ -97,16 +95,7 @@ class GameClass {
         nav[3].innerText = this.score;
     }
 
-    FeedUpdate(){
-        // if(this.feed.length >= 5){      //podzielić na tworzenie czasowe i usuwanie przy uderzeniu
-        //     this.feed.shift()    
-        // }
-        this.feed.push(new Objectile(RandomNumber(1, 4)))      //do wywalenia
-        // console.log("feeed")
-    }
-
-    CanvasResize(){
-        //dopasowywuje rozmiar canvasa do okna
+    CanvasResize(){         //dopasowywuje rozmiar canvasa do okna 
         this.window_w = window.innerWidth;
         this.window_h = window.innerHeight;
         this.line_up = this.window_h / 3
@@ -115,7 +104,7 @@ class GameClass {
         canvas.setAttribute("width", this.window_w);
     }
 
-    DrawHitLine(){
+    DrawHitLine(){      //rysuje hitlinie
         ctx.fillStyle = "#2d2d2d"
         ctx.fillRect(Player.pos_x + 300, 0, 5, canvas.height)
     }
@@ -129,7 +118,7 @@ class GameClass {
             this.RenderBG()     //wyświetlanie tła          
             Player.DrawChar(this.fps)
             this.DrawHitLine()
-            this.feed.forEach(elem => {
+            Objectile.feed.forEach(elem => {
                 elem.UpdatePosition()       //wyświetlanie przeszkód
             });
 
@@ -170,6 +159,5 @@ canvas.addEventListener("click", () => {
 
 })
 
-Game.FeedUpdate()       // to ma nie być potem
 
-console.log(Game.feed)
+console.log(Objectile.feed)

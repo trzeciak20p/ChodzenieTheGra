@@ -145,18 +145,18 @@ class PlayerClass{
     }
 
     Hit(up){
-        if(Game.feed[0].pos_x < this.pos_x + 400 + Game.feed[0].size){
-            if(up && Game.feed[0].property == 1){
-                Game.feed.shift()
+        if(Objectile.feed[0].pos_x < this.pos_x + 400 + Objectile.feed[0].size){
+            if(up && Objectile.feed[0].property == 1){
+                Objectile.feed.shift()
                 Game.ScoreUpdate(1)
-            }else if(up && Game.feed[0].property == 2){
+            }else if(up && Objectile.feed[0].property == 2){
                 Game.game_state = false
 
-            }else if(!up && Game.feed[0].property == 3){
-                Game.feed.shift()
+            }else if(!up && Objectile.feed[0].property == 3){
+                Objectile.feed.shift()
                 Game.ScoreUpdate(1)
 
-            }else if(!up && Game.feed[0].property == 4){
+            }else if(!up && Objectile.feed[0].property == 4){
                 Game.game_state = false
 
             }

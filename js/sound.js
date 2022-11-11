@@ -10,8 +10,8 @@ class SoundClass{
 
         this.clock = new Tone.Clock((time) => {
             if(Game.game_state == true) {
-                Game.FeedUpdate();
-
+                new Objectile(RandomNumber(1, 4))
+                
 
             }
 
