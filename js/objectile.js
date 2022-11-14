@@ -17,15 +17,13 @@ class Objectile{
         this.blue_box.src = "graphics/objects/blue_box.png";
         this.pink_box = new Image();
         this.pink_box.src = "graphics/objects/pink_box.png";
-        this.blue_bomb = new Image();
-        this.blue_bomb.src = "graphics/objects/blue_bomb.png";
-        this.pink_bomb = new Image();
-        this.pink_bomb.src = "graphics/objects/pink_bomb.png";
+        this.bomb = new Image();
+        this.bomb.src = "graphics/objects/bomb.png";
         this.graphic = [
             this.blue_box,
-            this.pink_bomb,
+            this.bomb,
             this.pink_box,
-            this.blue_bomb,
+            this.bomb,
         ];
 
         if(this.property == 1 || this.property == 2) {
