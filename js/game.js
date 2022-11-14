@@ -8,7 +8,6 @@ class GameClass {
         this.world =  [0, 0, 0, 0]       //character, bg, ground, song (inaczej sie nie da, assocjacyjna zawiodła :c )
         this.bg_image = new Image()
 
-        this.bpm = 50
         this.score = 0
         this.fps = 60
         this.game_state = false
@@ -22,14 +21,13 @@ class GameClass {
         this.PauseScreen(true)
     }
 
-    StartNewGame(){
-        this.bpm = 50; // ustawia startowe zmienne
+    StartNewGame(){     // ustawia startowe zmienne
+
         this.score = 0;
         Objectile.feed = new Array(0)
         this.game_state = true;
         
         this.ScoreUpdate()
-        this.BpmUpdate()
 
         Sound.StartNewGame()
         Tone.start()        //do późniejszej zmiany?
@@ -84,6 +82,7 @@ class GameClass {
     BpmUpdate(add){    //wyświetla obecny bpm
         if(typeof add !== "undefined"){
             this.bpm += add
+            Sound.bpm += 20
         }
         nav[2].innerText = this.bpm;
     }

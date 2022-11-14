@@ -30,7 +30,7 @@ class PlayerClass{
         this.character = 0
 
         this.pos_x = 40
-        this.pos_y = canvas.height
+        this.pos_y = canvas.height / 4 * 3
         this.walk_frame_size = [20, 12]     //rozmiar klatki w przypadku chodzenia
         this.jump_frame_size = [20, 12]
         this.duck_frame_size = [20, 12]
@@ -106,8 +106,7 @@ class PlayerClass{
 
         if(Time.elapsed > 1000 / this.fps ){
             this.frame.src = "graphics/animations/duck"+ this.character +".png"  //zmiana klatek na kucanie
-            this.pos_y = canvas.height / 3 * 2
-            console.log('ae')
+            this.pos_y = canvas.height / 4 * 3
             ctx.drawImage(this.frame, this.duck_frame_size[0] * this.frame_counter, 0, this.duck_frame_size[0], this.duck_frame_size[1]  , this.pos_x, this.pos_y, this.duck_frame_size[0] * 5, this.duck_frame_size[1] * 5)         
 
             if(this.prev_state != "duck"){
@@ -129,7 +128,7 @@ class PlayerClass{
 
         if(Time.elapsed > 1000 / this.fps ){
             this.frame.src = "graphics/animations/walking"+ this.character +".png"      //zmiana klatek na chodzeniowe
-            ctx.drawImage(this.frame, this.walk_frame_size[0] * Math.floor(this.frame_counter / 2), 0, this.walk_frame_size[0], this.walk_frame_size[1]  , this.pos_x, canvas.height / 3 * 2, this.walk_frame_size[0] * 5, this.walk_frame_size[1] * 5)         
+            ctx.drawImage(this.frame, this.walk_frame_size[0] * Math.floor(this.frame_counter / 2), 0, this.walk_frame_size[0], this.walk_frame_size[1]  , this.pos_x, canvas.height / 4 * 3, this.walk_frame_size[0] * 5, this.walk_frame_size[1] * 5)         
             //Math.floor (frame / 2) zmniejsza prędkość renderu 2krotnie
 
 
@@ -145,6 +144,7 @@ class PlayerClass{
     }
 
     Hit(up){
+        Tone.Transport.start();
         if(Objectile.feed[0].pos_x < this.pos_x + 400 + Objectile.feed[0].size){
             if(up && Objectile.feed[0].property == 1){
                 Objectile.feed.shift()
@@ -160,7 +160,7 @@ class PlayerClass{
                 Game.game_state = false
 
             }
-
+            
             
         }
 

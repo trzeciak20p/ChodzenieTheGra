@@ -136,10 +136,12 @@ class Slider{
 
         switch (functn){
             case "music volume":        //zmiana poziomu głośności
-                    Slider.music_volume = x
+                Slider.music_volume = x
+                Sound.UpdateMusicVolume(x)
                 break;
             case "effects volume":
-                    Slider.effects_volume = x
+                Slider.effects_volume = x
+                Sound.UpdateEffectsVolume(x)
                 break;
             default:
 
