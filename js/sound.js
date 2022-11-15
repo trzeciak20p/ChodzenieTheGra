@@ -75,11 +75,18 @@ class SoundClass{
 
     BeatUpdate(){       //zwiększa bpm
         this.beat_counter += 1
-        if(this.beat_counter > 20){     //ilość bitów które muszą przejść
-            this.BpmUpdate(5)
-            this.beat_counter = 0
-            
+        if(this.bpm < 110){
+            if(this.beat_counter > 10){     //ilość bitów które muszą przejść
+                this.BpmUpdate(10)
+                this.beat_counter = 1
+                }
+        }else{
+            if(this.beat_counter > 20){    
+                this.BpmUpdate(5)
+                this.beat_counter = 1
+            }
         }
+        
         Tone.Transport.bpm.rampTo(this.bpm * 2, 0.1)
 
     }
