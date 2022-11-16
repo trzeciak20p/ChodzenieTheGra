@@ -12,6 +12,7 @@
 
     --lb_border: 1px solid var(--nav_1st);
     --lb_height: 25px;
+    --h3_font_size: 30px;
 
     --login_img: url(../graphics/nav/login1.png);
     --login_img_hover: url(../graphics/nav/login2.png);
@@ -114,8 +115,7 @@ body{
     margin-top: 10px;
     width: 100%;
     color: var(--font);
-    font-size: 30px;
-    
+    font-size: var(--h3_font_size);
 }
 #popup .form label input[type="text"]{
     height: 20px;
@@ -152,7 +152,7 @@ body{
     width: 100%;
     text-align: center;
     line-height: 25px;
-    font-size: 25px;
+    font-size: var(--h3_font_size);
     color: var(--font);
 }
 #popup .customize_section .selected{
@@ -184,9 +184,9 @@ body{
     display: block;
     margin: 5px 0px;
     width: 100%;
-    height: 30px;
-    font-size: 30px;
-    line-height: 30px;
+    height: var(--h3_font_size);
+    font-size: var(--h3_font_size);
+    line-height: var(--h3_font_size);
     text-align: center;
     color: var(--font);
 }
@@ -234,11 +234,11 @@ body{
 }
 #popup .slider span{
     display: inline-block;
-    height: 30px;
+    height: var(--h3_font_size);
     width: 100%;
     text-transform: uppercase;
-    font-size: 30px;
-    line-height: 30px;
+    font-size: var(--h3_font_size);
+    line-height: var(--h3_font_size);
     text-align: center;
     color: var(--font);
 }
@@ -267,14 +267,23 @@ body{
 }
 #popup .theme_selector{
     align-self: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     margin-top: 10px;
+    width: 100%;
+    font-size: var(--h3_font_size);
+    color: var(--font);
+}
+#popup .theme_selector select{
+    margin: 5px;
     width: 50%;
     height: 20px;
     background-color: var(--nav_1st);
     text-align: center;
     color: var(--nav_2nd);
-
 }
+
 #popup .clock{
     display: flex;
     justify-content: space-between;
@@ -287,9 +296,9 @@ body{
 #popup .clock div{
     margin-bottom: 10px;
     align-self: flex-end;
-    height: 30px;
+    height: var(--h3_font_size);
     color: var(--nav_1st);
-    font-size: 30px;
+    font-size: var(--h3_font_size);
 }   
 
 nav{

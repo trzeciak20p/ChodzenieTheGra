@@ -21,7 +21,7 @@ class ThemeClass{
     ThemeSelector(where){       //Tworzy selector z dostępnymi motywami
 
         this.selector = document.createElement("select")
-        this.selector.setAttribute("class", "theme_selector")
+        
         this.data = JSON.parse(theme_data)
 
         for(let i in this.data){
@@ -32,8 +32,11 @@ class ThemeClass{
             this.selector.addEventListener("input", () => { this.ChangeTheme(this.dictionary[this.selector.value]) })       //zmiana motywu przy wybraniu
             this.selector.appendChild(this.option)
         }
-
-        where.append(this.selector)
+        let label = document.createElement("label")
+        label.setAttribute("class", "theme_selector")
+        label.innerText = "theme"
+        label.append(this.selector)
+        where.append(label)
     }
 
     ChangeTheme(theme){     //zmiana tła
