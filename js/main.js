@@ -14,7 +14,7 @@ popup_display.addEventListener("click", () => {
     let rect = popup.getBoundingClientRect()
     let x = GetMousePos()[0]
     let y = GetMousePos()[1]
-    if(x >= rect.x && x <= rect.x + rect.width &&  y >= rect.y && y <= rect.y + rect.height){       //sprawdzanie czy myszka jest w obrębie popu-pa
+    if(x >= rect.x - 1 && x <= rect.x + rect.width &&  y >= rect.y && y <= rect.y + rect.height){       //sprawdzanie czy myszka jest w obrębie popu-pa
     }else{
         popup_display.style.display = "none"        //jak nie to zamknięcie popupa
         clearInterval(Time.clockInterval)       //usuwanie interwału z zegara
@@ -66,6 +66,7 @@ function Popup(button){
         case "opcje":     
             new Slider(popup, "music volume")   //dodanie sliderów
             new Slider(popup, "effects volume")
+            Theme.ThemeSelector(popup)
             Time.CreateClock(popup)
             break;
 

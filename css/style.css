@@ -122,10 +122,12 @@ body{
     width: 100%;
 }
 #popup .form input[type="button"]{
+    cursor: pointer;
     align-self: center;
     margin-top: 10px;
     height: 25px;
     width: 200px;
+    background-color: var(--nav_1st);
     color: var(--nav_2nd);
     text-transform: uppercase;
 
@@ -262,6 +264,16 @@ body{
 }
 #popup .slider:hover .slider_circle{
     background-color: #e3be83;
+}
+#popup .theme_selector{
+    align-self: center;
+    margin-top: 10px;
+    width: 50%;
+    height: 20px;
+    background-color: var(--nav_1st);
+    text-align: center;
+    color: var(--nav_2nd);
+
 }
 #popup .clock{
     display: flex;

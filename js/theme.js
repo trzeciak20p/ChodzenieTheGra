@@ -8,6 +8,7 @@ class ThemeClass{
         }
 
         this.theme = 1
+        this.dictionary = {}
         this.data
         this.bg_color
         this.nav_1st 
@@ -17,11 +18,29 @@ class ThemeClass{
         this.ChangeTheme(1)
     }
 
+    ThemeSelector(where){       //Tworzy selector z dostępnymi motywami
+
+        this.selector = document.createElement("select")
+        this.selector.setAttribute("class", "theme_selector")
+        this.data = JSON.parse(theme_data)
+
+        for(let i in this.data){
+            this.dictionary[this.data[String(i)]["name"]] = i       //słownik do wczytywania numerka motywu po nazwie
+            this.option = document.createElement("option")
+            this.option.innerText = this.data[String(i)]["name"]
+
+            this.selector.addEventListener("input", () => { this.ChangeTheme(this.dictionary[this.selector.value]) })       //zmiana motywu przy wybraniu
+            this.selector.appendChild(this.option)
+        }
+
+        where.append(this.selector)
+    }
+
     ChangeTheme(theme){     //zmiana tła
         this.theme = theme
         this.GetTheme()
-
-        document.documentElement.style.setProperty('--bg_color', this.bg_color);
+        
+        document.documentElement.style.setProperty('--bg_color', this.bg_color);        //ogólne wartości
         document.documentElement.style.setProperty('--nav_1st', this.nav_1st);
         document.documentElement.style.setProperty('--nav_2nd', this.nav_2nd);
         document.documentElement.style.setProperty('--font', this.font);
@@ -34,17 +53,13 @@ class ThemeClass{
         document.documentElement.style.setProperty('--settings_img', this.data["settings_img"])
         document.documentElement.style.setProperty('--settings_img_hover', this.data["settings_img_hover"])
         
-        
-        
-
-
     }
 
     GetTheme(){     
 
         this.data = JSON.parse(theme_data)[String(this.theme)]      //pobieranie danych z json'a
 
-        this.bg_color = this.data["bg_color"]   
+        this.bg_color = this.data["bg_color"]       //przypisywanie danych
         this.nav_1st = this.data["nav_1st"]
         this.nav_2nd = this.data["nav_2nd"]
         this.font = this.data["font"]

@@ -1,5 +1,6 @@
 let theme_data = JSON.stringify({
     "1": {
+        "name" : "dark",
         "bg_color": "#2d2d2d",
         "nav_1st": "#cacdcf",
         "nav_2nd": "#232121",
@@ -14,6 +15,7 @@ let theme_data = JSON.stringify({
 
     }, 
     "2": {
+        "name": "light",
         "bg_color": "#c6c6c6",
         "nav_1st": "#232121",
         "nav_2nd": "#e9eef1",
