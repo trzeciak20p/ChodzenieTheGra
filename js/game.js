@@ -46,9 +46,9 @@ class GameClass {
            
         Time.UpdateElapsed()
         if(Time.elapsed > 1000 / this.fps * 2.5){
-            ctx.fillStyle = "#2d2d2d"
+            ctx.fillStyle = Theme.bg_color
             ctx.fillRect(0, 0, canvas.width, canvas.height)
-            ctx.fillStyle = "#e0a13c"
+            ctx.fillStyle = Theme.font
             ctx.font = (this.pause_hint_font_size + 40) + "px ArcadeClassic"
             ctx.textAlign = "center"
 

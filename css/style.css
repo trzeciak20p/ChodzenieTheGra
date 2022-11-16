@@ -4,12 +4,23 @@
 }
 
 :root{
+    --bg_color: #2d2d2d;
     --nav_2nd: #232121;
     --nav_1st: #cacdcf;
     --font:  #e0a13c;
+    --popup_bg: #000a;
+
     --lb_border: 1px solid var(--nav_1st);
     --lb_height: 25px;
-    /* 2px solid */
+
+    --login_img: url(../graphics/nav/login1.png);
+    --login_img_hover: url(../graphics/nav/login2.png);
+    --bpm_img: url(../graphics/nav/note1.png);
+    --lb_img: url(../graphics/nav/trophy1.png);
+    --lb_img_hover: url(../graphics/nav/trophy2.png);
+    --settings_img: url(../graphics/nav/cog1.png);
+    --settings_img_hover: url(../graphics/nav/cog2.png);
+    
 }
 ::-webkit-scrollbar{
     cursor: pointer;
@@ -30,7 +41,7 @@ body{
     padding: 0px;
     margin: 0px;   
     clear: both; 
-    background: #aaa;
+    background: var(--bg_color);
     width: 100vw;
     height: 100vh;
     font-family: ArcadeClassic;
@@ -53,7 +64,7 @@ body{
     width: 40%;
     height: 60%;
     z-index: 5;
-    background-color: #000a;
+    background-color: var(--popup_bg);
 }
 #popup .header{
     display: grid;
@@ -297,10 +308,10 @@ nav div:hover{
 }
 nav #login{
     grid-column: 2;
-    background-image: url(../graphics/nav/login1.png);
+    background-image: var(--login_img);
 }
 nav #login:hover{
-    background-image: url(../graphics/nav/login2.png);
+    background-image: var(--login_img_hover);
 }
 nav #customize{  
     grid-column: 3;
@@ -311,14 +322,14 @@ nav #bpm{
     cursor: default;
     grid-column: 5;
     text-align: justify;
-    background-image: url("../graphics/nav/note1.png");
+    background-image: var(--bpm_img);
     background-repeat: no-repeat;
     background-position: 110%;
 }
 nav #bpm:hover{
     background: var(--nav_2nd);    /* getting rid of the changeing colors while hovering */    
     color: var(--nav_1st);
-    background-image: url("../graphics/nav/note1.png");
+    background-image: var(--bpm_img);
     background-repeat: no-repeat;
     background-position: 110%;
 }
@@ -332,17 +343,17 @@ nav #score:hover{
 }
 nav #lb{
     grid-column: 8;
-    background-image: url(../graphics/nav/trophy1.png);
+    background-image: var(--lb_img);
 }
 nav #lb:hover{
-    background-image: url(../graphics/nav/trophy2.png);
+    background-image: var(--lb_img_hover);
 }
 nav #options{
     grid-column: 9;
-    background-image: url(../graphics/nav/cog1.png);
+    background-image: var(--settings_img);
 }
 nav #options:hover{
-    background-image: url(../graphics/nav/cog2.png);
+    background-image: var(--settings_img_hover);
 }
 main{
     margin: 0px;
@@ -354,5 +365,5 @@ main canvas{
     image-rendering: -webkit-crisp-edges;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    background-color: #2d2d2d;
+    background-color: var(--bg_color);
 }
