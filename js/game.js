@@ -55,9 +55,11 @@ class GameClass {
             if(!this.pierwsza_gra){       //sprawdzanie czy własnie uruchomiono grze czy użytkownik już przegrałs
                 ctx.fillText("Score:", canvas.width / 2 , 100)
                 ctx.fillText(this.score, canvas.width / 2 , 170)
+            }else{      //wyświetlanie tutoriala
+                this.DrawRules()
             }
             ctx.font = (this.pause_hint_font_size + 10) + "px ArcadeClassic"
-            ctx.fillText("Press  space  to  start new  game", canvas.width / 2 , canvas.height - 100)
+            ctx.fillText("Press  space  to  start  new  game", canvas.width / 2 , canvas.height - 100)
             
             if(this.pause_hint_font_size <= 20){        //migotanie wiadomości    
                 this.pause_hint_font = true
@@ -73,10 +75,21 @@ class GameClass {
 
             Time.UpdateThen()
         }
+        
 
         if(!this.game_state){
             requestAnimationFrame(this.PauseScreen.bind(this))
         }
+    }
+
+    DrawRules(){
+        ctx.font = "30px ArcadeClassic"
+        ctx.fillText("Hit boxes  to  survive!", canvas.width / 4  , canvas.height / 5 * 3)
+        ctx.fillText("Dodge  bombs...", canvas.width / 4 * 3 , canvas.height / 5 * 3)
+        ctx.fillText("or  You'll explode!", canvas.width / 4 * 3 , canvas.height / 5 * 3 + 35)
+        ctx.font = "20px ArcadeClassic"
+
+        ctx.fillText("(keybinds   adjustable   in   settings)", canvas.width / 4  , canvas.height / 5 * 3 + 35)
     }
     
     BpmUpdate(add){    //wyświetla obecny bpm
