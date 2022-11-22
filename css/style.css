@@ -284,11 +284,45 @@ body{
     color: var(--nav_2nd);
 }
 
+#popup .keybinds_selector{
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    color: var(--font);
+    text-align: center;
+}
+#popup .keybinds_selector span{
+    display: block;
+    width: 100%;
+    font-size: var(--h3_font_size);
+}
+#popup .keybinds_selector .column{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    font-size: 20px;
+}
+#popup .keybinds_selector .column .row:nth-child(1){
+    font-size: 25px;
+}
+#popup .keybinds_selector .column .row:hover{
+    cursor: pointer;
+    background-color: var(--font);
+    color: var(--nav_1st);
+}
+#popup .keybinds_selector .column .row:nth-child(1):hover{
+    cursor: default;
+    background-color: inherit;
+    color: var(--font);
+}
+
 #popup .clock{
     display: flex;
     justify-content: space-between;
     align-self: flex-end;
     flex-basis: 100%;
+    margin-top: 10px;
     margin-right: 10%;
     width: 80%;
 

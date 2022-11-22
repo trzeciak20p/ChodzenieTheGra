@@ -67,8 +67,8 @@ function Popup(button){
             new Slider(popup, "music volume")   //dodanie sliderów
             new Slider(popup, "effects volume")
             Theme.ThemeSelector(popup)
-            Time.CreateClock(popup)
             Keybinds.CreateKeybindsAdjustments(popup)
+            Time.CreateClock(popup)
             break;
 
         default:

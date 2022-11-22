@@ -21,6 +21,10 @@ class KeybindsClass{
             return;
         }
         tab.splice(index, 1)
+        if(this.binds_duck == tab){
+            console.log("ae")
+        }
+
     }
 
     AddInput(tab, input){
@@ -28,23 +32,28 @@ class KeybindsClass{
             return;
         }
         tab.push(input)
+        console.log(window.removeEventListener("keydown", Event))
+        this.selector.innerHTML = ""
+        this.CreateKeybindsAdjustments(this.where)
+    }
+
+    WaitForInput(tab){
+        window.addEventListener("keydown", (event) => this.AddInput(tab, event.code))
+
     }
 
     CreateKeybindsAdjustments(where){
-
+        this.where = where
         this.selector = document.createElement("DIV")
         this.selector.setAttribute("class", "keybinds_selector")
+        let header = document.createElement("SPAN")
+        header.innerText = "keybinds"
+        this.selector.appendChild(header)
 
         this.selector.appendChild(this.CreateTable(this.binds_jump, "jump"))
         this.selector.appendChild(this.CreateTable(this.binds_duck, "duck"))
 
-        
-
-
-
-
         where.appendChild(this.selector)
-
     }
 
     CreateTable(tab, name){
@@ -61,9 +70,12 @@ class KeybindsClass{
             column.appendChild(this.CreateRow(tab[i].split("Key"), name))
 
         }
-        
+        this.add_input = document.createElement("div")
+        this.add_input.setAttribute("class", "row")
+        this.add_input.addEventListener("click", () => {this.WaitForInput(tab)})
+        this.add_input.innerText = "add input"
 
-        
+        column.appendChild(this.add_input)
 
         return column;   
     }

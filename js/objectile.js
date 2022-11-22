@@ -33,14 +33,14 @@ class Objectile{
         }
         Objectile.feed.push(this)
 
-        Tone.Transport.schedule((time) => {
-            Tone.Draw.schedule(() => {
+        // Tone.Transport.schedule((time) => {
+        //     Tone.Draw.schedule(() => {
                 
-                kick.start()
+        //         kick.start()
         
-            }, time);
+        //     }, time);
         
-        }, this.time);
+        // }, this.time);
         console.log(this.time)
 
         Tone.Transport.start();
