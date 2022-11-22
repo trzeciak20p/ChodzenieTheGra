@@ -1,13 +1,13 @@
 
 document.addEventListener("keydown", function (event) {              
-    if (event.code == "KeyW" || event.code == "ArrowUp") {   //wykrywanie w, s, strzałek, spacji i przypisanie im skoku, kucnięcia          
+    if (Keybinds.binds_jump.includes(event.code)) {   //wykrywanie w, s, strzałek, spacji i przypisanie im skoku, kucnięcia          
         event.preventDefault()
         if(Game.game_state && Player.state != "jump"){
             Player.state = "jump"
             Player.frame_counter = 1
             Player.Hit(true)
         }
-    }else if(event.code == "KeyS" || event.code == "ArrowDown"){
+    }else if(Keybinds.binds_duck.includes(event.code)){
         event.preventDefault()
         if(Game.game_state && Player.state != "duck"){
             Player.state = "duck"
