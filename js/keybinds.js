@@ -1,17 +1,19 @@
 
 class KeybindsClass{
 
+    
     constructor(){
 
         if (KeybindsClass.exists) {
             return KeybindsClass.instance;
         }
 
+        this.forbidden = ["backspace", "tab", "enter", "shift", "crtl", "alt", "escape"]
         this.binds_jump = ["KeyW", "ArrowUp"]
         this.binds_duck = ["KeyS", "ArrowDown"]
 
-
     }
+
 
     DeleteInput(tab, input){
         let index = tab.indexOf(input)
@@ -22,7 +24,7 @@ class KeybindsClass{
     }
 
     AddInput(tab, input){
-        if(tab.indexOf(input) != -1){
+        if(tab.indexOf(input) != -1 && !this.forbidden.includes(input) ){
             return;
         }
         tab.push(input)
@@ -32,28 +34,57 @@ class KeybindsClass{
 
         this.selector = document.createElement("DIV")
         this.selector.setAttribute("class", "keybinds_selector")
-        this.CreateSelector(this.binds_duck)
+
+        this.selector.appendChild(this.CreateTable(this.binds_jump, "jump"))
+        this.selector.appendChild(this.CreateTable(this.binds_duck, "duck"))
+
+        
+
+
+
 
         where.appendChild(this.selector)
 
     }
 
-    CreateSelector(tab){
+    CreateTable(tab, name){
 
-        let selector = document.createElement("select")
+        let column = document.createElement("DIV")
+        column.setAttribute("class", "column")
+        column.setAttribute("find", name)
+        let header = document.createElement("DIV")
+        header.setAttribute("class", "row")
+        header.innerText = name
+        column.appendChild(header)
 
         for(let i in tab){
-            // this.dictionary[this.data[String(i)]["name"]] = i       //słownik do wczytywania numerka motywu po nazwie
-            // this.option = document.createElement("option")
-            // this.option.innerText = i.key
-            key =  new KeyboardEvent("keydown", , tab[i])
+            column.appendChild(this.CreateRow(tab[i].split("Key"), name))
 
-            console.log(tab[i],key.description)
-            // selector.addEventListener("input", () => { this.ChangeTheme(this.dictionary[this.selector.value]) })       //zmiana motywu przy wybraniu
-            // selector.appendChild(this.option)
         }
+        
 
-        return selector;
+        
+
+        return column;   
+    }
+
+    CreateRow(value, name){       //tworzy row z inputem
+        let row = document.createElement("DIV")
+        row.setAttribute("find", value)
+        row.setAttribute("class", "row")
+        row.innerText = value
+        row.addEventListener("click", () => this.DeleteRow(value, name))   //usuwanie po kliknięciu
+
+        return row;
+    }
+
+    DeleteRow(value, name){       //usuwa dany row
+
+        console.log(name, value,  "div[find='"+ name +"'] div[find='"+ value +"']")
+        document.querySelector("#popup .keybinds_selector div[find='"+ name +"'] div[find='"+ value +"']").remove()
+
+        this.DeleteInput(value)
+        return;
     }
 
 }
