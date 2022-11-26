@@ -1,0 +1,22 @@
+{
+  "name": "chodzeniethegra",
+  "version": "1.0.0",
+  "description": "Gra w chodzenie ale szypkie takie. Prawie rytmiczna ale wsm nie do końca.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trzeciak20p/ChodzenieTheGra.git"
+  },
+  "author": "Marek Trzeciak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trzeciak20p/ChodzenieTheGra/issues"
+  },
+  "homepage": "https://github.com/trzeciak20p/ChodzenieTheGra#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
