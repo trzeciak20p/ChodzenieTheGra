@@ -14,6 +14,7 @@
     <link rel="icon" href="graphics/icon.png">
     <link rel="stylesheet" href="css/style.css">
 
+    
     <script src="JSON/theme.js"></script>
     <script src="js/Tone.js"></script>
     <script src="js/sound.js" defer></script>
@@ -25,7 +26,7 @@
     <script src="js/player.js" defer></script>
     <script src="js/time.js" defer></script>
     <script src="js/game.js" defer></script>
-
+    
 
 </head>
 
@@ -55,6 +56,9 @@
 
     </main>
 
+    <?php 
+        require("php/connect.php");
+    ?>
 </body>
 
 </html>
