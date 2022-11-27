@@ -50,7 +50,6 @@ class Form{
         let label = document.createElement("LABEL")
         label.innerText = "password"
         label.appendChild(this.password)
-        console.log(this.password)
         this.form.appendChild(label)
 
         if(this.purpose == "register"){         //jeśli rejestracje to drugie pole na hasło do sprawdzenia poprawności
@@ -88,16 +87,22 @@ class Form{
 
     Submit(){
 
-        if(this.purpose = "login"){
+        if(this.purpose == "login"){
             
             this.req = new XMLHttpRequest();
-	        this.req.open("GET", `php/login.php?login=${this.password.value}&password=${this.password.value}`);
+	        this.req.open("GET", `php/login.php?login=${this.login.value}&password=${this.password.value}`);
             this.req.onload = function(){
 		        console.log(this.responseText);
 	        }
 	        this.req.send();
 
-
+        }else{
+            this.req = new XMLHttpRequest();
+	        this.req.open("GET", `php/register.php?login=${this.login.value}&password=${this.password.value}&password2=${this.password2.value}`);
+            this.req.onload = function(){
+		        console.log(this.responseText);
+	        }
+	        this.req.send();
         }
 
         

@@ -56,9 +56,6 @@
 
     </main>
 
-    <?php 
-        require("php/connect.php");
-    ?>
 </body>
 
 </html>
