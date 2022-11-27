@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(!empty($_GET["login"] && $_GET["password"] && $_GET["password2"])){
 
@@ -11,19 +12,19 @@ if(!empty($_GET["login"] && $_GET["password"] && $_GET["password2"])){
     }else if($_GET["password"] != $_GET["password2"]){      
         echo "hasła sie różnią";    
     }else{
-        echo "git";
-
-        session_start();
+         
         $con = new mysqli("localhost", "root", "");
+        $con -> query("use chodzeniethegra");
 
-
-        $req = `INSERT INTO users (" ", {$_GET["login"]}, {$_GET["password"]})`;
+        $req = "INSERT INTO users(username, password) values(" .$_GET['login']. ", " .$_GET['password'].  " )";
+        echo $req ;
         $con -> query($req); 
+        $con -> close();
 
-
-
-
-
+        $_SESSION["username"] = $_GET['login'];
+        $_SESSION["password"] = $_GET['password'];
+        
+        echo "łatwo";
     }
 
 
