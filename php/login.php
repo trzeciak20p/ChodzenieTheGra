@@ -5,8 +5,7 @@ if(!empty($_GET["login"] && $_GET["password"])){
     $con = new mysqli("localhost", "root", "");
     $con -> query("use chodzeniethegra");
 
-    $req = "select username, password from users";
-    $result = $con -> query($req); 
+    $result = $con -> query("select username, password from users"); 
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()) {
             $qol = true;
@@ -15,6 +14,7 @@ if(!empty($_GET["login"] && $_GET["password"])){
                     echo "Logged in!";
                     $_SESSION["username"] = $_GET['login'];
                     $_SESSION["password"] = $_GET['password'];
+                    $qol = false;
                     break;
                 }else{
                     echo "Wrong password!";
@@ -37,5 +37,3 @@ if(!empty($_GET["login"] && $_GET["password"])){
     echo "Ale weź wprowadź dane :|";
 
 }
-
-

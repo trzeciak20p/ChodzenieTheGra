@@ -16,15 +16,27 @@ if(!empty($_GET["login"] && $_GET["password"] && $_GET["password2"])){
         $con = new mysqli("localhost", "root", "");
         $con -> query("use chodzeniethegra");
 
-        $req = "INSERT INTO users(username, password) values(" .$_GET['login']. ", " .$_GET['password'].  " )";
-        echo $req ;
-        $con -> query($req); 
-        $con -> close();
+        $result = $con -> query("select username from users"); 
+        if($result->num_rows > 0){
+            $exist = false;
+            while($row = $result->fetch_assoc()) {
+                if($_GET["login"] == $row["username"]){
+                    $exist = true; 
+                }        
+            }
 
-        $_SESSION["username"] = $_GET['login'];
-        $_SESSION["password"] = $_GET['password'];
-        
-        echo "łatwo";
+            if($exist){
+                echo "This login is already taken!";
+            }else{
+                echo "Registered!";
+                $con -> query("INSERT INTO users(username, password) values(" .$_GET['login']. ", " .$_GET['password'].  " )");
+                $_SESSION["username"] = $_GET['login'];
+                $_SESSION["password"] = $_GET['password'];
+                
+            }
+        }
+    
+        $con -> close(); 
     }
 
 
