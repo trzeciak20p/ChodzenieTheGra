@@ -198,6 +198,13 @@ body{
     border-collapse: collapse;
     border-right: var(--lb_border);
 }
+#popup span{
+    width: 100%;
+    color: var(--font);
+    font-size: var(--h3_font_size);
+    text-align: center;
+    
+}
 #popup .lb th, #popup .lb tr{
     display: grid;
     grid-template-columns: 30px 1fr 100px;
@@ -210,7 +217,7 @@ body{
     color: var(--nav_1st);
     border: var(--lb_border);
 }
-#popup .lb th td{ 
+#popup .lb th{ 
     padding: 0px;
     display: block; 
     height: var(--lb_height);
