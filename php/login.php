@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if(!empty($_GET["login"] && $_GET["password"])){
 
     $con = new mysqli("localhost", "root", "", "chodzeniethegra");
