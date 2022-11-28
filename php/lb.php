@@ -10,7 +10,7 @@ if(!$conn){      //jak sie nie połączy
     die("Couldn't connect to database");
 }
 
-if( isset($_SESSION["login"]) ){
+if(isset($_SESSION["login"])){
     $query = "select best_score from Users where username = " . $_SESSION["login"];
     $result = $con->query($query);
     echo "<span> your best: ".  mysqli_fetch_assoc($result)["best_score"] ." </span>";
@@ -18,7 +18,7 @@ if( isset($_SESSION["login"]) ){
     echo "<span>LOGIN IN to set your score</span>";
 }
 
-if(isset( $_GET["limit"])){
+if(isset( $_GET["limit"]) && is_int($_GET["limit"]) ){
     $result = $con->query("select username, best_score from users descending order by best_score limit " . $_GET["limit"]);
 }else{
     $result = $con->query("select username, best_score from users descending order by best_score limit 50");
