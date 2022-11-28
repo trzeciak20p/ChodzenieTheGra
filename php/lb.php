@@ -1,6 +1,5 @@
 <?php
 
-ob_start();
 session_start();
 
 $con = new mysqli("localhost", "root", "", "chodzeniethegra");     //łaczenie z bazą danych
@@ -12,14 +11,14 @@ if(!$con){      //jak sie nie połączy
 if( isset($_SESSION["username"]) ){
 
     $result = $con->query("select best_score from users where username = '" . $_SESSION['username'] ."'");
+    $row = $result -> fetch_assoc();
     if($result -> num_rows != 1) {
         echo "<span>Error occured when trying to get your best score :c</span>";
-    }else if($result -> fetch_assoc()["best_score"] == null){
+    }else if($row["best_score"] == null){
         echo "<span>You have no score yet<br/>Go change it!</span>";
     }else{
-        echo "<span> your best: ".  $result -> fetch_assoc() ." </span>";
+        echo "<span> your best: ".  $row["best_score"]." </span>";
     }
-
     
 }else{
     echo "<span>LOGIN IN to set your score</span>";
