@@ -1,28 +1,30 @@
 <?php
 
-error_reporting(0);
 ob_start();
 session_start();
 
-$conn = mysqli_connect("localhost", "", "");     //łaczenie z bazą danych
+$con = new mysqli("localhost", "root", "", "chodzeniethegra");     //łaczenie z bazą danych
+
 
 if(!$conn){      //jak sie nie połączy
     die("Couldn't connect to database");
 }
 
-
-
 if( isset($_SESSION["login"]) ){
-    $query = "select best_score from Users where username = " $_SESSION["login"];
-    $result = mysqli_query($conn, $query);
+    $query = "select best_score from Users where username = " . $_SESSION["login"];
+    $result = $con->query($query);
     echo "<span> your best: ".  mysqli_fetch_assoc($result)["best_score"] ." </span>";
 }else{
     echo "<span>LOGIN IN to set your score</span>";
 }
 
-$query = "select username, best_score from Users order by best_scores descending limit " . $_GET["limit"];
-$result = mysqli_query($conn, $query);
-if(mysqli_num_rows($result) > 0){
+if(isset( $_GET["limit"])){
+    $result = $con->query("select username, best_score from Users order by best_scores descending limit " . $_GET["limit"]);
+}else{
+    $result = $con->query("select username, best_score from Users order by best_scores descending limit 50");
+}
+
+if($result->num_rows > 0){
     $i = 1;
 
     echo "<table class='lb'>";
@@ -32,7 +34,7 @@ if(mysqli_num_rows($result) > 0){
     echo "<td> score </td>";
     echo "</th>";
 
-    while($row = mysqli_fetch_assoc($result)){
+    while($row = $result->fetch_assoc()){
         echo "<tr>";        //wyświetlanie tabeli
         echo "<td>". $i ."</td>";   //miejsce
         echo "<td>". $row["username"] ."</td>";     //nazwa użytkownika
@@ -43,8 +45,7 @@ if(mysqli_num_rows($result) > 0){
 
     echo "</table>";
         
-}else{
-    echo "No scores so far! <br> Be the first one to get it!";
-}
-
-$conn -> close(); 
+    }else{
+        echo "No scores so far! <br> Be the first one to get it!";
+    }
+$con -> close(); 
