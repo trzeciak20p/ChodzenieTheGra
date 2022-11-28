@@ -111,7 +111,7 @@ class GameClass {
         this.req = new XMLHttpRequest();
 	    this.req.open("GET", `php/score.php?score=${this.score}`);
         this.req.onload = function(){
-		    console.log(this.responseText);
+		    // console.log(this.responseText);
 	    }
 	    this.req.send();
 
@@ -205,5 +205,3 @@ canvas.addEventListener("click", () => {
 
 })
 
-
-console.log(Objectile.feed)

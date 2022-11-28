@@ -41,7 +41,7 @@ class Objectile{
         //     }, time);
         
         // }, this.time);
-        console.log(this.time)
+        // console.log(this.time)
 
         Tone.Transport.start();
   }

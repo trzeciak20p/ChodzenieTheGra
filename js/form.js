@@ -102,7 +102,6 @@ class Form{
             this.req = new XMLHttpRequest();
 	        this.req.open("GET", `php/login.php?login=${this.login.value}&password=${this.password.value}`);
             this.req.onload = function(){
-		        console.log(this.responseText);
                 temp_ShowPopup(this.responseText)
 	        }
 	        this.req.send();
@@ -112,7 +111,6 @@ class Form{
             this.req = new XMLHttpRequest();
 	        this.req.open("GET", `php/register.php?login=${this.login.value}&password=${this.password.value}&password2=${this.password2.value}`);
             this.req.onload = function(){
-		        console.log(this.responseText);
                 temp_ShowPopup(this.responseText)
 	        }
 	        this.req.send();
@@ -128,7 +126,7 @@ class Form{
 
     HidePopup(){
         this.popup.setAttribute("style", "display: none;")
-        console.log("ae")
+
     }
 
 }
