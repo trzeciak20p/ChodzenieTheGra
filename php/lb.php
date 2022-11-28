@@ -26,9 +26,9 @@ if( isset($_SESSION["username"]) ){
 }
 
 if(isset( $_GET["limit"])){
-    $result = $con->query("select username, best_score from users descending order by best_score limit " . $_GET["limit"]);
+    $result = $con->query("select username, best_score from users order by users.best_score desc limit " . $_GET["limit"]);
 }else{
-    $result = $con->query("select username, best_score from users descending order by best_score limit 50 ");
+    $result = $con->query("select username, best_score from users order by users.best_score desc limit 50 ");
 }
 
 if($result->num_rows > 0){

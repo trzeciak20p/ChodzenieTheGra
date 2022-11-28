@@ -240,7 +240,7 @@ class Leaderboard{
         // this.AddHeader(["#", "name", "score"])  
         // this.DisplayScores()
         
-        this.ae()
+        this.CreateLeaderboard()
 
         where.appendChild(this.lb)
     }
@@ -287,18 +287,15 @@ class Leaderboard{
         
     }
 
-    ae(){
+    CreateLeaderboard(){
 
         let ae = this.lb
         this.req = new XMLHttpRequest();
         this.req.open("GET", `php/lb.php?limit=${this.limit}`);
         this.req.onload = function(){
-            console.log(this.responseText)
             ae.innerHTML = this.responseText;
         }
         this.req.send();
-
-        
 
     }
 
