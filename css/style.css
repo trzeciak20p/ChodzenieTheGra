@@ -101,6 +101,30 @@ body{
     color: var(--nav_2nd);
 }
 /* LOGIN */
+#popup .popup{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 10px;
+    width: inherit;
+    height: inherit;
+    background-color: #cacdcfd1;
+    font-size: var(--h3_font_size);
+    text-align: center;
+    z-index: 7;
+}
+#popup .popup .close_popup{
+    cursor: pointer;
+    width: 50%;
+    height: 30px;
+    font-size: 20px;
+    background-color: var(--nav_2nd);
+    color: var(--font);
+    z-index: 8;
+}
+
 #popup .form{
     padding: 10px 10%;
     display: flex;
@@ -108,7 +132,6 @@ body{
     flex-wrap: nowrap;
     justify-content: center;
     width: 80%;
-
 }
 #popup .form label{
     display: flex;
@@ -131,7 +154,6 @@ body{
     background-color: var(--nav_1st);
     color: var(--nav_2nd);
     text-transform: uppercase;
-
 }
 #popup .form .swap{
     cursor: pointer;

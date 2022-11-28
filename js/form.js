@@ -5,7 +5,17 @@ class Form{
         this.form = document.createElement("div")
         this.form.setAttribute("class", "form")
         this.CreateLoginForm()
-        // this.CreateRegisterForm()
+        
+        this.popup = document.createElement("div")
+        this.popup.setAttribute("class", "popup")
+        this.close_popup = document.createElement("div")
+        this.close_popup.setAttribute("class", "close_popup")
+        this.close_popup.addEventListener("click", this.HidePopup.bind(this))
+        this.close_popup.innerText = "okay"
+        where.appendChild(this.popup)
+        this.popup.appendChild(this.close_popup)
+
+
         where.appendChild(this.form)
     }
 
@@ -86,27 +96,39 @@ class Form{
     }
 
     Submit(){
-
+        let temp_ShowPopup = this.ShowPopup.bind(this)
         if(this.purpose == "login"){
             
             this.req = new XMLHttpRequest();
 	        this.req.open("GET", `php/login.php?login=${this.login.value}&password=${this.password.value}`);
             this.req.onload = function(){
 		        console.log(this.responseText);
+                temp_ShowPopup(this.responseText)
 	        }
 	        this.req.send();
 
         }else{
+            
             this.req = new XMLHttpRequest();
 	        this.req.open("GET", `php/register.php?login=${this.login.value}&password=${this.password.value}&password2=${this.password2.value}`);
             this.req.onload = function(){
 		        console.log(this.responseText);
+                temp_ShowPopup(this.responseText)
 	        }
 	        this.req.send();
         }
 
-        
+    }
 
+    ShowPopup(text){
+        this.popup.setAttribute("style", "display: flex;")
+        this.popup.innerText = text
+        this.popup.appendChild(this.close_popup)
+    }
+
+    HidePopup(){
+        this.popup.setAttribute("style", "display: none;")
+        console.log("ae")
     }
 
 }
