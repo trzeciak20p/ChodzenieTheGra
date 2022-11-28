@@ -446,6 +446,7 @@ nav #lb{
 nav #bpm{
     grid-column: 8;
     width: 80px;
+    background-image: none;
 }
 nav #score{
     grid-column: 7;
