@@ -56,7 +56,7 @@ class Form{
 
     CreatePassword(){       //tworzy pole na hasłem
         this.password = document.createElement("INPUT")
-        this.password.setAttribute("type", "text")
+        this.password.setAttribute("type", "password")
         let label = document.createElement("LABEL")
         label.innerText = "password"
         label.appendChild(this.password)
@@ -64,7 +64,7 @@ class Form{
 
         if(this.purpose == "register"){         //jeśli rejestracje to drugie pole na hasło do sprawdzenia poprawności
             this.password2 = document.createElement("INPUT")
-            this.password2.setAttribute("type", "text")
+            this.password2.setAttribute("type", "password")
             let label2 = document.createElement("LABEL")
             label2.innerText = "password"
             label2.appendChild(this.password2)
