@@ -13,8 +13,7 @@ if(!empty($_GET["login"] && $_GET["password"] && $_GET["password2"])){
         echo "hasła sie różnią";    
     }else{
          
-        $con = new mysqli("localhost", "root", "");
-        $con -> query("use chodzeniethegra");
+        $con = new mysqli("localhost", "root", "", "chodzeniethegra");
 
         $result = $con -> query("select username from users"); 
         if($result->num_rows > 0){

@@ -1,7 +1,9 @@
 <?php
 
-if(!empty($_SESSION["username"]) && !empty($_GET["score"])){
+if(!empty($_SESSION["username"]) && !empty($_GET["score"]) ){
 
+    $con = new mysqli("localhost", "root", "", "chodzeniethegra");
+    
     $result = $con -> query("select id, username, best_score from users"); 
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
@@ -9,7 +11,7 @@ if(!empty($_SESSION["username"]) && !empty($_GET["score"])){
                 $con -> query("update users set best_score = $_GET['score'] where id = $row['id']"); 
             }        
         }
-
+    }
 
 
 }

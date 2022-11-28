@@ -9,10 +9,18 @@ if(!$con){      //jak sie nie połączy
     die("Couldn't connect to database");
 }
 
-if( isset($_SESSION["login"]) ){
-    $query = "select best_score from users where username = " . $_SESSION["login"];
-    $result = $con->query($query);
-    echo "<span> your best: ".  mysqli_fetch_assoc($result)["best_score"] ." </span>";
+if( isset($_SESSION["username"]) ){
+
+    $result = $con->query("select best_score from users where username = '" . $_SESSION['username'] ."'");
+    if($result -> num_rows != 1) {
+        echo "<span>Error occured when trying to get your best score :c</span>";
+    }else if($result -> fetch_assoc()["best_score"] == null){
+        echo "<span>You have no score yet<br/>Go change it!</span>";
+    }else{
+        echo "<span> your best: ".  $result -> fetch_assoc() ." </span>";
+    }
+
+    
 }else{
     echo "<span>LOGIN IN to set your score</span>";
 }

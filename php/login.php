@@ -2,8 +2,7 @@
 
 if(!empty($_GET["login"] && $_GET["password"])){
 
-    $con = new mysqli("localhost", "root", "");
-    $con -> query("use chodzeniethegra");
+    $con = new mysqli("localhost", "root", "", "chodzeniethegra");
 
     $result = $con -> query("select username, password from users"); 
     if($result->num_rows > 0){
