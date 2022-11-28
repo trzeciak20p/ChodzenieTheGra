@@ -107,6 +107,16 @@ class GameClass {
         nav[3].innerText = this.score;
     }
 
+    UploadScore(){
+        this.req = new XMLHttpRequest();
+	    this.req.open("GET", `php/score.php?score=${this.score}`);
+        this.req.onload = function(){
+		    console.log(this.responseText);
+	    }
+	    this.req.send();
+
+    }
+
     CanvasResize(){         //dopasowywuje rozmiar canvasa do okna 
         if(window.innerWidth > 700){
             this.window_w = window.innerWidth;
