@@ -142,18 +142,19 @@ class PlayerClass{
     }
 
     Hit(up){
-        Tone.Transport.start();
+        
         if(Objectile.feed[0].pos_x < this.pos_x + 400 + Objectile.feed[0].size){
             if(up && Objectile.feed[0].property == 1){
                 Objectile.feed.shift()
                 Game.ScoreUpdate(1)
+                Sound.hitsound.triggerAttackRelease("C2","16n");
             }else if(up && Objectile.feed[0].property == 2){
                 Game.game_state = false
                 Game.UploadScore();
             }else if(!up && Objectile.feed[0].property == 3){
                 Objectile.feed.shift()
                 Game.ScoreUpdate(1)
-
+                Sound.hitsound.triggerAttackRelease("C2","16n");
             }else if(!up && Objectile.feed[0].property == 4){
                 Game.game_state = false
                 Game.UploadScore();

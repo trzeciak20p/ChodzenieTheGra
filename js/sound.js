@@ -1,4 +1,6 @@
 
+
+
 let kick = new Tone.Player({
   url: "https://chodzeniethegra.zsti.me/sound/kick.mp3",
   autostart: false,
@@ -15,6 +17,10 @@ class SoundClass{
         this.bpm = 60
         this.beat_counter = 0
         this.tick_couter = 0
+
+        this.hitsound = new Tone.MembraneSynth().toDestination();
+        this.hitsound.volume.value = 15;
+        
 
         // this.clock = new Tone.Clock((time) => {
         //     if(Game.game_state == true) {
@@ -42,7 +48,7 @@ class SoundClass{
 
 
         }, "1n");
-    
+        
     }
 
     StartNewGame() {
