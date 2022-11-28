@@ -29,12 +29,12 @@ if(!empty($_GET["login"] && $_GET["password"])){
         }
 
     }else{
-        echo "!err no results";
+        echo "No results";
     }
     
     $con -> close();
 
 }else{
-    echo "Ale weź wprowadź dane :|";
+    echo "Put in whole data pls :|";
 
 }

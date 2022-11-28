@@ -3,14 +3,12 @@ session_start();
 
 if(!empty($_GET["login"] && $_GET["password"] && $_GET["password2"])){
 
-    // echo "login: " . $_GET["login"] . " hasło: " . $_GET["password"] . $_GET["password2"] . "  ";
-
     if(strlen($_GET["login"]) < 5){
-        echo "za krótki login";
+        echo "Too short login (at least 5 chars)";
     }else if(strlen($_GET["password"]) < 5){
-        echo "za krótke hasło";
+        echo "Too short password (at least 5 chars)";
     }else if($_GET["password"] != $_GET["password2"]){      
-        echo "hasła sie różnią";    
+        echo "The passwords differ";    
     }else{
          
         $con = new mysqli("localhost", "root", "", "chodzeniethegra");
@@ -40,6 +38,6 @@ if(!empty($_GET["login"] && $_GET["password"] && $_GET["password2"])){
 
 
 }else{
-    echo "nie git";
+    echo "Couldn't register";
 
 }
