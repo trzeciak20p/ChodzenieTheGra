@@ -108,12 +108,21 @@ class GameClass {
     }
 
     CanvasResize(){         //dopasowywuje rozmiar canvasa do okna 
-        this.window_w = window.innerWidth;
-        this.window_h = window.innerHeight;
+        if(window.innerWidth > 700){
+            this.window_w = window.innerWidth;
+            this.window_h = window.innerHeight;
+            canvas.setAttribute("height", this.window_h - 94);
+            canvas.setAttribute("width", this.window_w);
+        }else{
+            this.window_h = window.innerWidth;
+            this.window_w = window.innerHeight - 94;
+            canvas.setAttribute("height", this.window_h);
+            canvas.setAttribute("width", this.window_w);
+        }
+        
         this.line_up = this.window_h / 3
         this.line_down = this.window_h / 3 * 2
-        canvas.setAttribute("height", this.window_h - 94);
-        canvas.setAttribute("width", this.window_w);
+        
     }
 
     DrawHitLine(){      //rysuje hitlinie
