@@ -430,6 +430,12 @@ main canvas{
 main{
     transform: rotate(90deg);
 }
+
+#popup{
+    transform: rotate(90deg);
+
+}
+
 nav{
     grid-template-columns: 0px 80px 80px 80px 80px 1px 80px 80px 0px;
 }
