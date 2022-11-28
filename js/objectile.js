@@ -60,10 +60,12 @@ class Objectile{
     DeathCheck(){
         if(this.pos_x < Player.pos_x + 200 - this.size ){
             if(this.property == 1 || this.property == 3){
+                Game.UploadScore();
                 Game.game_state = false;
                 Tone.Transport.stop();
             }else if(this.property == 4 && Player.state != "jump"){
-                Game.game_state = false
+                Game.UploadScore();
+                Game.game_state = false;
                 Tone.Transport.stop();
             }else{
                 Objectile.feed.shift()

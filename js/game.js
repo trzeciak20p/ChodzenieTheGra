@@ -107,13 +107,32 @@ class GameClass {
         nav[3].innerText = this.score;
     }
 
+    UploadScore(){
+        this.req = new XMLHttpRequest();
+	    this.req.open("GET", `php/score.php?score=${this.score}`);
+        this.req.onload = function(){
+		    console.log(this.responseText);
+	    }
+	    this.req.send();
+
+    }
+
     CanvasResize(){         //dopasowywuje rozmiar canvasa do okna 
-        this.window_w = window.innerWidth;
-        this.window_h = window.innerHeight;
+        if(window.innerWidth > 700){
+            this.window_w = window.innerWidth;
+            this.window_h = window.innerHeight;
+            canvas.setAttribute("height", this.window_h - 94);
+            canvas.setAttribute("width", this.window_w);
+        }else{
+            this.window_h = window.innerWidth;
+            this.window_w = window.innerHeight - 94;
+            canvas.setAttribute("height", this.window_h);
+            canvas.setAttribute("width", this.window_w);
+        }
+        
         this.line_up = this.window_h / 3
         this.line_down = this.window_h / 3 * 2
-        canvas.setAttribute("height", this.window_h - 94);
-        canvas.setAttribute("width", this.window_w);
+        
     }
 
     DrawHitLine(){      //rysuje hitlinie
@@ -158,13 +177,28 @@ function RandomNumber(min, max){
 window.addEventListener("resize", () => { Game.CanvasResize() });
 canvas.addEventListener("click", () => {
     if(Game.game_state){
-        if(GetMousePos()[0] >= canvas.width / 2 && Player.state != "jump"){     //kontrolki na telefon
-            Player.state = "jump"
-            Player.frame_counter = 0
-        }else if(GetMousePos()[0] < canvas.width / 2 && Player.state != "duck"){
-            Player.state = "duck"
-            Player.frame_counter = 0
+        if(window.width > 700){
+            if(GetMousePos()[0] >= canvas.width / 2 && Player.state != "jump"){     //kontrolki na telefon
+                Player.state = "jump"
+                Player.frame_counter = 1
+                Player.Hit(true)
+            }else if(GetMousePos()[0] < canvas.width / 2 && Player.state != "duck"){
+                Player.state = "duck"
+                Player.frame_counter = 1
+                Player.Hit(false)
+            }
+        }else{
+            if(GetMousePos()[1] >= canvas.width / 2 && Player.state != "jump"){     //kontrolki na telefon
+                Player.state = "jump"
+                Player.frame_counter = 1
+                Player.Hit(true)
+            }else if(GetMousePos()[1] < canvas.width / 2 && Player.state != "duck"){
+                Player.state = "duck"
+                Player.frame_counter = 1
+                Player.Hit(false)
+            }
         }
+        
     }else{      //start gry na telefon
         Game.StartNewGame()
     }

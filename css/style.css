@@ -42,7 +42,8 @@ body{
     padding: 0px;
     margin: 0px;   
     clear: both; 
-    background: var(--bg_color);
+    /* background: var(--bg_color); */
+    background-color: white;
     width: 100vw;
     height: 100vh;
     font-family: ArcadeClassic;
@@ -197,6 +198,13 @@ body{
     border-collapse: collapse;
     border-right: var(--lb_border);
 }
+#popup span{
+    width: 100%;
+    color: var(--font);
+    font-size: var(--h3_font_size);
+    text-align: center;
+    
+}
 #popup .lb th, #popup .lb tr{
     display: grid;
     grid-template-columns: 30px 1fr 100px;
@@ -209,7 +217,7 @@ body{
     color: var(--nav_1st);
     border: var(--lb_border);
 }
-#popup .lb th td{ 
+#popup .lb th{ 
     padding: 0px;
     display: block; 
     height: var(--lb_height);
@@ -421,4 +429,42 @@ main canvas{
     image-rendering: pixelated;
     image-rendering: crisp-edges;
     background-color: var(--bg_color);
+}
+
+
+@media (max-width: 700px){
+
+main{
+    transform: rotate(90deg);
+}
+
+#popup{
+    transform: rotate(90deg);
+
+}
+
+nav{
+    grid-template-columns: 0px 80px 80px 80px 80px 1px 80px 80px 0px;
+}
+nav div{
+    transform: rotate(90deg);
+}
+nav #options{
+    grid-column: 5;
+}
+
+nav #lb{
+    grid-column: 4;
+}
+nav #bpm{
+    grid-column: 8;
+    width: 80px;
+    background-image: none;
+}
+nav #score{
+    grid-column: 7;
+    width: 80px;
+}
+
+
 }

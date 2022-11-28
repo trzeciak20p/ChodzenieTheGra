@@ -66,7 +66,7 @@ class Form{
         this.submit_button = document.createElement("INPUT")
         this.submit_button.setAttribute("type", "button")
         this.submit_button.setAttribute("value", "submit")
-        this.submit_button.addEventListener("click", this.Submit())
+        this.submit_button.addEventListener("click", this.Submit.bind(this))
         this.form.appendChild(this.submit_button)
     }
 
@@ -85,5 +85,28 @@ class Form{
         this.form.appendChild(this.swap)
     }
 
-    Submit(){}      //tutaj już node
+    Submit(){
+
+        if(this.purpose == "login"){
+            
+            this.req = new XMLHttpRequest();
+	        this.req.open("GET", `php/login.php?login=${this.login.value}&password=${this.password.value}`);
+            this.req.onload = function(){
+		        console.log(this.responseText);
+	        }
+	        this.req.send();
+
+        }else{
+            this.req = new XMLHttpRequest();
+	        this.req.open("GET", `php/register.php?login=${this.login.value}&password=${this.password.value}&password2=${this.password2.value}`);
+            this.req.onload = function(){
+		        console.log(this.responseText);
+	        }
+	        this.req.send();
+        }
+
+        
+
+    }
+
 }

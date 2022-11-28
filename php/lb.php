@@ -1,50 +1,59 @@
 <?php
 
-error_reporting(0);
-ob_start();
 session_start();
 
-$conn = mysqli_connect("localhost", "", "");     //łaczenie z bazą danych
+$con = new mysqli("localhost", "root", "", "chodzeniethegra");     //łaczenie z bazą danych
 
-if(!$conn){      //jak sie nie połączy
+if(!$con){      //jak sie nie połączy
     die("Couldn't connect to database");
 }
 
+if( isset($_SESSION["username"]) ){
 
-
-if( isset($_SESSION["login"]) ){
-    $query = "select best_score from Users where username = " $_SESSION["login"];
-    $result = mysqli_query($conn, $query);
-    echo "<span> your best: ".  mysqli_fetch_assoc($result)["best_score"] ." </span>";
+    $result = $con->query("select best_score from users where username = '" . $_SESSION['username'] ."'");
+    $row = $result -> fetch_assoc();
+    if($result -> num_rows != 1) {
+        echo "<span>Error occured when trying to get your best score :c</span>";
+    }else if($row["best_score"] == null){
+        echo "<span>You have no score yet<br/>Go change it!</span>";
+    }else{
+        echo "<span> your best: ".  $row["best_score"]." </span>";
+    }
+    
 }else{
     echo "<span>LOGIN IN to set your score</span>";
 }
 
-$query = "select username, best_score from Users order by best_scores descending limit " . $_GET["limit"];
-$result = mysqli_query($conn, $query);
-if(mysqli_num_rows($result) > 0){
+if(isset( $_GET["limit"])){
+    $result = $con->query("select username, best_score from users order by users.best_score desc limit " . $_GET["limit"]);
+}else{
+    $result = $con->query("select username, best_score from users order by users.best_score desc limit 50 ");
+}
+
+if($result->num_rows > 0){
     $i = 1;
 
     echo "<table class='lb'>";
-    echo "<th>";
-    echo "<td> # </td>";
-    echo "<td> username </td>";
-    echo "<td> score </td>";
-    echo "</th>";
+    echo "<tr>";
+    echo "<th> # </th>";
+    echo "<th> username </th>";
+    echo "<th> score </th>";
+    echo "</tr>";
 
-    while($row = mysqli_fetch_assoc($result)){
-        echo "<tr>";        //wyświetlanie tabeli
-        echo "<td>". $i ."</td>";   //miejsce
-        echo "<td>". $row["username"] ."</td>";     //nazwa użytkownika
-        echo "<td>". $row["best_score"] ."</td>";       //wynik
-        echo "</tr>";
-        $i++;
+    while($row = $result->fetch_assoc()){
+        if($row["best_score"] != null){
+            echo "<tr>";        //wyświetlanie tabeli
+            echo "<td>". $i ."</td>";   //miejsce
+            echo "<td>". $row["username"] ."</td>";     //nazwa użytkownika
+            echo "<td>". $row["best_score"] ."</td>";       //wynik
+            echo "</tr>";
+            $i++;
+        }     
     }
-
     echo "</table>";
         
-}else{
-    echo "No scores so far! <br> Be the first one to get it!";
-}
+    }else{
+        echo "No scores so far! <br> Be the first one to get it!";
+    }
 
-$conn -> close(); 
+$con -> close();

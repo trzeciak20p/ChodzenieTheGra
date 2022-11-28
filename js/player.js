@@ -1,14 +1,12 @@
 
 document.addEventListener("keydown", function (event) {              
     if (Keybinds.binds_jump.includes(event.code)) {   //wykrywanie w, s, strzałek, spacji i przypisanie im skoku, kucnięcia          
-        event.preventDefault()
         if(Game.game_state && Player.state != "jump"){
             Player.state = "jump"
             Player.frame_counter = 1
             Player.Hit(true)
         }
     }else if(Keybinds.binds_duck.includes(event.code)){
-        event.preventDefault()
         if(Game.game_state && Player.state != "duck"){
             Player.state = "duck"
             Player.frame_counter = 1
@@ -151,14 +149,14 @@ class PlayerClass{
                 Game.ScoreUpdate(1)
             }else if(up && Objectile.feed[0].property == 2){
                 Game.game_state = false
-
+                Game.UploadScore();
             }else if(!up && Objectile.feed[0].property == 3){
                 Objectile.feed.shift()
                 Game.ScoreUpdate(1)
 
             }else if(!up && Objectile.feed[0].property == 4){
                 Game.game_state = false
-
+                Game.UploadScore();
             }
             
             

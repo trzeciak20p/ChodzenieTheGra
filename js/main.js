@@ -229,17 +229,19 @@ class Leaderboard{
 
     constructor(where, limit, best){
 
-        if(best){
-            this.DisplayBestScore(where)
-        }
+        // if(best){
+        //     this.DisplayBestScore(where)
+        // }
 
         this.limit = limit
         this.lb = document.createElement("TABLE")       //tworzenie tabeli z wynikami
         this.lb.setAttribute("class", "lb")
           
-        this.AddHeader(["#", "name", "score"])  
-        this.DisplayScores()
+        // this.AddHeader(["#", "name", "score"])  
+        // this.DisplayScores()
         
+        this.CreateLeaderboard()
+
         where.appendChild(this.lb)
     }
 
@@ -283,6 +285,18 @@ class Leaderboard{
         });
         this.lb.appendChild(this.th)
         
+    }
+
+    CreateLeaderboard(){
+
+        let ae = this.lb
+        this.req = new XMLHttpRequest();
+        this.req.open("GET", `php/lb.php?limit=${this.limit}`);
+        this.req.onload = function(){
+            ae.innerHTML = this.responseText;
+        }
+        this.req.send();
+
     }
 
 
