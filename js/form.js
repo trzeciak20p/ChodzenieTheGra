@@ -32,6 +32,7 @@ class Form{
         this.CreatePassword()       
         this.CreateSubmitButton()
         this.CreateSwapText()
+        this.CreateLogoutButton()
     }
 
     CreateLogin(){          //tworzy pole na login
@@ -74,6 +75,14 @@ class Form{
         this.form.appendChild(this.submit_button)
     }
 
+    CreateLogoutButton(){
+        this.logout_button = document.createElement("INPUT")
+        this.logout_button.setAttribute("type", "button")
+        this.logout_button.setAttribute("value", "logout")
+        this.logout_button.addEventListener("click", this.Logout.bind(this))
+        this.form.appendChild(this.logout_button)
+    }
+
     CreateSwapText(){
         this.swap = document.createElement("DIV")
         this.swap.setAttribute("class", "swap")
@@ -111,16 +120,28 @@ class Form{
         }
     }
 
+    Logout(){
+        let temp_ShowPopup = this.ShowPopup.bind(this)
+        this.req = new XMLHttpRequest();
+	    this.req.open("GET", "php/logout.php");
+        this.req.onload = function(){
+            temp_ShowPopup(this.responseText)
+	    }
+	    this.req.send();
+        this.logged_in.innerText = ""
+    }
+
     IsLoggedMessage(){
-        let loggedIn = document.createElement("span")
+        this.logged_in = document.createElement("span")
+        let temp_logged_in = this.logged_in
         this.req = new XMLHttpRequest();
 	    this.req.open("GET", "php/isLogged.php");
         this.req.onload = function(){
-            loggedIn.innerText = this.responseText
+            temp_logged_in.innerText = this.responseText
 	    }
 	    this.req.send();
-
-        this.form.appendChild(loggedIn)
+        this.logged_in = this.logged_in
+        this.form.appendChild(this.logged_in)
     }
 
     ShowPopup(text){

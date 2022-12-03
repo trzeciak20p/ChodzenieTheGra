@@ -14,7 +14,7 @@ if(!empty($_GET["login"] && $_GET["password"])){
                 if($_GET["password"] == $row["password"]){
                     echo "Logged in!";
                     $_SESSION["username"] = $_GET['login'];
-                    $_SESSION["password"] = $_GET['password'];
+                    // $_SESSION["password"] = $_GET['password'];
                     $qol = false;
                     break;
                 }else{
