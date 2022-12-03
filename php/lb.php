@@ -2,9 +2,9 @@
 
 session_start();
 
-$con = new mysqli("localhost", "root", "", "chodzeniethegra");     //łaczenie z bazą danych
+$con = new mysqli("localhost", "root", "", "chodzeniethegra");
 
-if(!$con){      //jak sie nie połączy
+if(!$con){ 
     die("Couldn't connect to database");
 }
 
@@ -21,17 +21,17 @@ if( isset($_SESSION["username"]) ){
     }
     
 }else{
-    echo "<span>LOGIN IN to set your score</span>";
+    echo "<span>LOGIN IN to set your score</span>";     //dodać otwieranie logowania
 }
 
-if(isset( $_GET["limit"])){
+if(isset( $_GET["limit"])){    //sets limit to displayed rows 
     $result = $con->query("select username, best_score from users order by users.best_score desc limit " . $_GET["limit"]);
-}else{
+}else{      //default display limit
     $result = $con->query("select username, best_score from users order by users.best_score desc limit 50 ");
 }
 
 if($result->num_rows > 0){
-    $i = 1;
+    $place = 1;  
 
     echo "<table class='lb'>";
     echo "<tr>";
@@ -41,19 +41,19 @@ if($result->num_rows > 0){
     echo "</tr>";
 
     while($row = $result->fetch_assoc()){
-        if($row["best_score"] != null){
-            echo "<tr>";        //wyświetlanie tabeli
-            echo "<td>". $i ."</td>";   //miejsce
-            echo "<td>". $row["username"] ."</td>";     //nazwa użytkownika
-            echo "<td>". $row["best_score"] ."</td>";       //wynik
+        if($row["best_score"] != null){     //checking if player had set score
+            echo "<tr>";        
+            echo "<td>". $place ."</td>";
+            echo "<td>". $row["username"] ."</td>";
+            echo "<td>". $row["best_score"] ."</td>"; 
             echo "</tr>";
-            $i++;
+            $place++;
         }     
     }
     echo "</table>";
-        
-    }else{
-        echo "No scores so far! <br> Be the first one to get it!";
-    }
+
+}else{
+    echo "No scores so far! <br> Be the first one to get it!";
+}
 
 $con -> close();

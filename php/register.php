@@ -2,21 +2,21 @@
 session_start();
 
 if(!empty($_GET["login"] && $_GET["password"] && $_GET["password2"])){
-
-    if(strlen($_GET["login"]) < 5){
+    // validation
+    if(strlen($_GET["login"]) < 5){     
         echo "Too short login (at least 5 chars)";
     }else if(strlen($_GET["password"]) < 5){
         echo "Too short password (at least 5 chars)";
-    }else if($_GET["password"] != $_GET["password2"]){      
+    }else if($_GET["password"] != $_GET["password2"]){    
         echo "The passwords differ";    
     }else{
          
         $con = new mysqli("localhost", "root", "", "chodzeniethegra");
 
         $result = $con -> query("select username from users"); 
-        if($result->num_rows > 0){
+        if($result -> num_rows > 0){
             $exist = false;
-            while($row = $result->fetch_assoc()) {
+            while($row = $result -> fetch_assoc()) {
                 if($_GET["login"] == $row["username"]){
                     $exist = true; 
                 }        
@@ -25,11 +25,10 @@ if(!empty($_GET["login"] && $_GET["password"] && $_GET["password2"])){
             if($exist){
                 echo "This login is already taken!";
             }else{
-                echo "Registered!";
-                $con -> query("INSERT INTO users(username, password) values(" .$_GET['login']. ", " .$_GET['password'].  " )");
+                $con -> query("INSERT INTO users(username, password) values('". $_GET['login'] ."', '". $_GET['password'] ."')");
                 $_SESSION["username"] = $_GET['login'];
                 $_SESSION["password"] = $_GET['password'];
-                
+                echo "Registered!";
             }
         }
     
