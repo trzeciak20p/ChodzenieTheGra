@@ -4,8 +4,9 @@ class Form{
     constructor(where){
         this.form = document.createElement("div")
         this.form.setAttribute("class", "form")
-        this.CreateLoginForm()
-        
+        this.purpose = "register"
+        this.CreateForm()
+        //adding popup
         this.popup = document.createElement("div")
         this.popup.setAttribute("class", "popup")
         this.close_popup = document.createElement("div")
@@ -18,24 +19,17 @@ class Form{
         where.appendChild(this.form)
     }
 
-    CreateLoginForm(){
+    CreateForm(){
+        if(this.purpose == "login"){
+            this.purpose = "register"
+        }else{
+            this.purpose = "login"
+        }
         this.form.innerHTML = ""
-        this.purpose = "login"
-
+        //adding content
         this.IsLoggedMessage()
         this.CreateLogin()
         this.CreatePassword()       
-        this.CreateSubmitButton()
-        this.CreateSwapText()
-    }
-
-    CreateRegisterForm(){
-        this.form.innerHTML = ""
-        this.purpose = "register"
-
-
-        this.CreateLogin()
-        this.CreatePassword()
         this.CreateSubmitButton()
         this.CreateSwapText()
     }
@@ -86,10 +80,10 @@ class Form{
         
         if(this.purpose == "login"){
             this.swap.innerText = "or register"
-            this.swap.addEventListener("click", this.CreateRegisterForm.bind(this))
+            this.swap.addEventListener("click", this.CreateForm.bind(this))
         }else{
             this.swap.innerText = "or log in"
-            this.swap.addEventListener("click", this.CreateLoginForm.bind(this))
+            this.swap.addEventListener("click", this.CreateForm.bind(this))
         }
         
         this.form.appendChild(this.swap)
