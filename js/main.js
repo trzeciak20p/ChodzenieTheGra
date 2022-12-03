@@ -3,10 +3,10 @@ const nav = document.querySelectorAll("nav div")
 const popup_display = document.getElementById("popup")
 const popup = document.querySelector("#popup > div")
 
-nav[0].addEventListener("click", () => {Popup("login")})  //Przypisywanie guzikom pokazywania pop-up'a  
+nav[0].addEventListener("click", () => {Popup("account")})  //Przypisywanie guzikom pokazywania pop-up'a  
 nav[1].addEventListener("click", () => {Popup("customize")})
 nav[4].addEventListener("click", () => {Popup("leaderboard")})
-nav[5].addEventListener("click", () => {Popup("opcje")})
+nav[5].addEventListener("click", () => {Popup("settings")})
 
 
 
@@ -37,9 +37,10 @@ function Popup(button){
     document.getElementById("popup_close").addEventListener("click", () => {
         popup_display.style.display = "none"        //Zamykanie pop-up'a
         clearInterval(Time.clockInterval)       //usuwanie interwału z zegara
-    })      
+    })   
+       
     switch (button) {
-        case "login":     
+        case "account":     
             new Form(popup)
             break;
 
@@ -63,7 +64,7 @@ function Popup(button){
             new Leaderboard(popup, 50, true)
             break;
 
-        case "opcje":     
+        case "settings":     
             new Slider(popup, "music volume")   //dodanie sliderów
             new Slider(popup, "effects volume")
             Theme.ThemeSelector(popup)
@@ -82,12 +83,12 @@ function Popup(button){
 }
 
 popup.addEventListener("mouseup", () => { Slider.mouse_down = 0 })      //jest tutaj żeby nie dołączać przy każym otwarciu popupa
+
 class Slider{
 
     static music_volume = 50        //startowe poziomy głośności
     static effects_volume = 50 
     static mouse_down = 0       //czy myszka kliknięta
-
 
     constructor(where, functn){     //gdzie umieścić, funkcja slidera
         this.slider = document.createElement("DIV")      //tworzenie wyglądu slidera
