@@ -15,25 +15,25 @@ class Form{
         where.appendChild(this.popup)
         this.popup.appendChild(this.close_popup)
 
-
         where.appendChild(this.form)
     }
 
     CreateLoginForm(){
         this.form.innerHTML = ""
-
         this.purpose = "login"
+
+        this.IsLoggedMessage()
         this.CreateLogin()
-        this.CreatePassword()
-        
+        this.CreatePassword()       
         this.CreateSubmitButton()
         this.CreateSwapText()
     }
 
     CreateRegisterForm(){
         this.form.innerHTML = ""
-
         this.purpose = "register"
+
+
         this.CreateLogin()
         this.CreatePassword()
         this.CreateSubmitButton()
@@ -85,10 +85,10 @@ class Form{
         this.swap.setAttribute("class", "swap")
         
         if(this.purpose == "login"){
-            this.swap.innerText = "You have an account? Log in here!"
+            this.swap.innerText = "or register"
             this.swap.addEventListener("click", this.CreateRegisterForm.bind(this))
         }else{
-            this.swap.innerText = "Don't have an account? Register now!"
+            this.swap.innerText = "or log in"
             this.swap.addEventListener("click", this.CreateLoginForm.bind(this))
         }
         
@@ -115,7 +115,18 @@ class Form{
 	        }
 	        this.req.send();
         }
+    }
 
+    IsLoggedMessage(){
+        let loggedIn = document.createElement("span")
+        this.req = new XMLHttpRequest();
+	    this.req.open("GET", "php/isLogged.php");
+        this.req.onload = function(){
+            loggedIn.innerText = this.responseText
+	    }
+	    this.req.send();
+
+        this.form.appendChild(loggedIn)
     }
 
     ShowPopup(text){
@@ -126,7 +137,6 @@ class Form{
 
     HidePopup(){
         this.popup.setAttribute("style", "display: none;")
-
     }
 
 }
