@@ -63,10 +63,12 @@ class Objectile{
                 Game.UploadScore();
                 Game.game_state = false;
                 Tone.Transport.stop();
+                AudioEffects.death_box.start();
             }else if(this.property == 4 && Player.state != "jump"){
                 Game.UploadScore();
                 Game.game_state = false;
                 Tone.Transport.stop();
+                AudioEffects.death_box.start();
             }else{
                 Objectile.feed.shift()
                 Game.ScoreUpdate(1)

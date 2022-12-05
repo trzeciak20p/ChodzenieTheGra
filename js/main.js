@@ -144,6 +144,7 @@ class Slider{
                 break;
             case "effects volume":
                 Slider.effects_volume = x
+                AudioEffects.UpdateVolume(x)
                 Sound.UpdateEffectsVolume(x)
                 break;
             default:

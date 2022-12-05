@@ -151,6 +151,7 @@ class PlayerClass{
             }else if(up && Objectile.feed[0].property == 2){
                 Game.game_state = false
                 Game.UploadScore();
+                AudioEffects.death_bomb.start()
             }else if(!up && Objectile.feed[0].property == 3){
                 Objectile.feed.shift()
                 Game.ScoreUpdate(1)
@@ -158,6 +159,7 @@ class PlayerClass{
             }else if(!up && Objectile.feed[0].property == 4){
                 Game.game_state = false
                 Game.UploadScore();
+                AudioEffects.death_bomb.start()
             }
             
             

@@ -17,8 +17,9 @@
     
     <script src="JSON/theme.js"></script>
     <script src="js/Tone.js"></script>
+    <script src="js/audioEffects.js"></script>
     <script src="js/sound.js" defer></script>
-    <script src="js/form.js"></script>
+    <script src="js/form.js" defer></script>
     <script src="js/keybinds.js"></script>
     <script src="js/main.js" defer></script>
     <script src="js/theme.js" defer></script>

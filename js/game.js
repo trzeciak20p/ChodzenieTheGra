@@ -31,7 +31,8 @@ class GameClass {
 
         Sound.StartNewGame()
         Tone.start()        //do późniejszej zmiany?
-        Time.UpdateThen()   
+        Time.UpdateThen()
+        new AudioEffects()  
 
         console.log("New game started")
         this.MainLoop()
