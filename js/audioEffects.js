@@ -10,11 +10,9 @@ class AudioEffects{         // Used to store and play audio effects
             return AudioEffects.instance;
         }
 
-        
-
     }
 
-    static UpdateVolume(value){
+    static UpdateVolume(value){     //changing the volume
         if(value <= 0 && !AudioEffects.volume_control[0].mute){      //mutes if effects weren't already muted
             AudioEffects.volume_control.forEach(player => {
                 player.mute = true
@@ -35,13 +33,19 @@ class AudioEffects{         // Used to store and play audio effects
         });
     }
 
-    static death_bomb = new Tone.Player({
+    static hitsound1 = new Tone.Player({       //when hitting right objects
+        url: "https://chodzeniethegra.zsti.me/sound/hitsound2.mp3",
+        autostart: false,
+        mute: false,
+    }).toDestination()
+
+    static death_bomb = new Tone.Player({       //when died by bomb
         url: "https://chodzeniethegra.zsti.me/sound/deltarune_explosion.mp3",
         autostart: false,
         mute: false,
     }).toDestination()
     
-    static death_box = new Tone.Player({
+    static death_box = new Tone.Player({        //when died by box
         url: "https://chodzeniethegra.zsti.me/sound/lego_breaking.mp3",
         autostart: false,
         mute: false,
