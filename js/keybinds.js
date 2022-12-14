@@ -6,21 +6,33 @@ class KeybindsClass{
         if(KeybindsClass.exists){
             return KeybindsClass.instance;
         }
-
+        //default set
         this.forbidden = ["Backspace", "Tab", "Enter", "ShiftLeft", "ShiftRight", "ControlLeft", "AltRight", "AltLeft", "Escape"]
         this.binds_jump = ["KeyW", "ArrowUp"]
         this.binds_duck = ["KeyS", "ArrowDown"]
 
+        if(localStorage.getItem("binds_jump") == null){     //checking if binds were saved before
+            localStorage.setItem("binds_jump", this.binds_jump)     //if no uploading default ones
+        }else{
+            this.binds_jump = localStorage.getItem("binds_jump").split(",")    //getting previously saved binds and reconverting it to array
+        }
+        if(localStorage.getItem("binds_duck") == null){     //same thing but for duck
+            localStorage.setItem("binds_duck", this.binds_duck)
+        }else{
+            this.binds_duck = localStorage.getItem("binds_duck").split(",")
+        }
+        
     }
 
     DeleteJumpInput(input){
-        input.length == 1 ? input = "Key" + input : true
+        input.length == 1 ? input = "Key" + input : true        //adding "Key" prefix for letters so it's interpreted correctly
         let index = this.binds_jump.indexOf(input) + 1
         if(index == -1){
             console.log(this.binds_jump, input, "not in array");
             return;
         }
-        this.binds_jump = this.binds_jump.splice(index, 1)
+        this.binds_jump = this.binds_jump.splice(index, 1)          //deleting bind
+        localStorage.getItem("binds_jump") = this.binds_jump        //updating local storage
     }
 
     DeleteDuckInput(input){
@@ -31,6 +43,7 @@ class KeybindsClass{
             return;
         }
         this.binds_duck = this.binds_duck.splice(index, 1)
+        localStorage.getItem("binds_duck") = this.binds_duck 
     }
 
     AddJumpInput(input){
@@ -41,6 +54,7 @@ class KeybindsClass{
         window.removeEventListener("keydown", Event)
         this.selector.innerHTML = ""
         this.CreateKeybindsAdjustments(this.where)
+        localStorage.getItem("binds_jump") = this.binds_jump        //updating local storage
     }
 
     AddDuckInput(input){
@@ -51,9 +65,10 @@ class KeybindsClass{
         window.removeEventListener("keydown", Event)
         this.selector.innerHTML = ""
         this.CreateKeybindsAdjustments(this.where)
+        localStorage.getItem("binds_duck") = this.binds_duck 
     }
 
-    WaitForInput(name){
+    WaitForInput(name){     //waits for player input and then bind it
         if(name == "jump"){
             window.addEventListener("keydown", (event) => this.AddJumpInput(event.code))
         }else{
@@ -61,7 +76,7 @@ class KeybindsClass{
         }
     }
 
-    CreateKeybindsAdjustments(where){
+    CreateKeybindsAdjustments(where){       //creates section wich shows and allows player to customize their binds
         this.where = where
         this.selector = document.createElement("DIV")
         this.selector.setAttribute("class", "keybinds_selector")
@@ -76,7 +91,6 @@ class KeybindsClass{
     }
 
     CreateTable(name){
-
         let column = document.createElement("DIV")
         column.setAttribute("class", "column")
         column.setAttribute("find", name)
@@ -84,10 +98,9 @@ class KeybindsClass{
         header.setAttribute("class", "row")
         header.innerText = name
         column.appendChild(header)
-
-        
-        if(name == "jump"){
-            for(let i in this.binds_jump){
+        // displaying every input
+        if(name == "jump"){     
+            for(let i in this.binds_jump){      
                 let value = this.binds_jump[i].split("Key")
                 value.length > 1 ? value.shift() : true
                 column.appendChild(this.CreateRow(value, name))               
@@ -110,7 +123,7 @@ class KeybindsClass{
         return column;   
     }
 
-    CreateRow(value, name){       //tworzy rząd z inputem
+    CreateRow(value, name){       //creates row with binding
         let row = document.createElement("DIV")
         row.setAttribute("find", value)
         row.setAttribute("class", "row")
@@ -120,12 +133,12 @@ class KeybindsClass{
         return row;
     }
 
-    DeleteRow(value, name){       //usuwa dany rząd
+    DeleteRow(value, name){       //deletes clicked row
 
         // console.log(name, value,  "div[find='"+ name +"'] div[find='"+ value +"']")
-        document.querySelector("#popup .keybinds_selector div[find='"+ name +"'] div[find='"+ value +"']").remove()
+        document.querySelector("#popup .keybinds_selector div[find='"+ name +"'] div[find='"+ value +"']").remove()     //removing displaying div
 
-        if(name == "jump"){
+        if(name == "jump"){     //removing binding
             this.DeleteJumpInput(String(value))
         }else{
             this.DeleteDuckInput(String(value))
